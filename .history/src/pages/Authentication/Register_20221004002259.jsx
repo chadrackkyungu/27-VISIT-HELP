@@ -1,8 +1,7 @@
 import PropTypes from "prop-types"
 import React, { useEffect, useState, useRef } from "react"
 import MetaTags from 'react-meta-tags';
-import { Row, Col, CardBody, Card, Alert, Form, Spinner, Button, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
-import classnames from "classnames"
+import { Row, Col, CardBody, Card, Alert, Container, Spinner, Button } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
 import { Link } from "react-router-dom"
 import AuthNavbar from './AuthNavbar';
@@ -117,99 +116,82 @@ const Register = props => {
             <input type="file" ref={refFileUpload} className="file-upload d-none" accept="image/*" onChange={changeThumb} />
           </div>
 
-          <CardBody className="form-horizontal form-wizard-wrapper wizard clearfix ">
-            <CardBody className="steps clearfix">
-              <ul>
-                <NavItem
-                  className={classnames({ current: activeTab === 1 })}>
-                  <NavLink
-                    className={classnames({ current: activeTab === 1 })}
-                    onClick={() => {
-                      setactiveTab(1)
-                    }}
-                  >
-                    <span className="number">1</span>
-                    Personal Details
-                  </NavLink>
-                </NavItem>
 
-                <NavItem className={classnames({ current: activeTab === 2 })}>
-                  <NavLink
-                    className={classnames({ active: activeTab === 2 })}
-                    onClick={() => {
-                      setactiveTab(2)
-                    }}
-                  >
-                    <span className="number">2</span>
-                    Address Details
-                  </NavLink>
-                </NavItem>
+          <div className="steps clearfix">
+            <ul>
+              <NavItem
+                className={classnames({ current: activeTab === 1 })}>
+                <NavLink
+                  className={classnames({ current: activeTab === 1 })}
+                  onClick={() => {
+                    setactiveTab(1)
+                  }}
+                >
+                  <span className="number">1.</span>{" "}
+                  Seller Details
+                </NavLink>
+              </NavItem>
+              <NavItem className={classnames({ current: activeTab === 2 })}>
+                <NavLink
+                  className={classnames({ active: activeTab === 2 })}
+                  onClick={() => {
+                    setactiveTab(2)
+                  }}
+                >
+                  <span className="number">2.</span>{" "}
+                  Company Document
+                </NavLink>
+              </NavItem>
+              <NavItem className={classnames({ current: activeTab === 3 })}>
+                <NavLink
+                  className={classnames({ active: activeTab === 3 })}
+                  onClick={() => {
+                    setactiveTab(3)
+                  }}
+                >
+                  <span className="number">3.</span>
+                  Bank Details
+                </NavLink>
+              </NavItem>
+              <NavItem className={classnames({ current: activeTab === 4 })}>
+                <NavLink
+                  className={classnames({ active: activeTab === 4 })}
+                  onClick={() => {
+                    setactiveTab(4)
+                  }}
+                >
+                  <span className="number">4.</span>
+                  Confirm Detail
+                </NavLink>
+              </NavItem>
+            </ul>
+          </div>
 
-                <NavItem className={classnames({ current: activeTab === 3 })}>
-                  <NavLink
-                    className={classnames({ active: activeTab === 3 })}
-                    onClick={() => {
-                      setactiveTab(3)
-                    }}
-                  >
-                    <span className="number">3</span>
-                    Confirm Details
-                  </NavLink>
-                </NavItem>
+          <CardBody>
+            <Card className="overflow-hidden rounded-75">
+              <CardBody className="p-2">
+                <div className="p-3">
+                  <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
 
-              </ul>
-            </CardBody>
+                    <FormInput1 />
+                    <FormInput2 />
+                    <FormInput3 />
+                    <FormInput4 />
+                    <FormInput5 />
 
-            <CardBody>
-              <Card className="overflow-hidden rounded-75">
-                <CardBody className="p-2">
-                  <div className="p-3">
-                    <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
-
-                      <TabContent activeTab={activeTab} className="body">
-                        <TabPane tabId={1}>
-                          <FormInput1 />
-                          <FormInput2 />
-                          <FormInput3 />
-                        </TabPane>
-                        <TabPane tabId={2}>
-                          <FormInput4 />
-                          <FormInput5 />
-                        </TabPane>
-                      </TabContent>
-
-
-                      {/* <div className="col-12 text-start">
+                    <div className="mb-3 row mt-3">
+                      <div className="col-12 text-start">
                         <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit">
                           {!loadBtn ? <span className="me-2">Submit</span> : null}
                           {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                         </button>
-                      </div> */}
+                      </div>
+                    </div>
 
-                      <ul className="d-flex me-3">
-                        <li className={`me-4 ${activeTab === 1 ? "previous disabled" : "previous"}`}>
-                          <Link to="#" className="btn btn-primary"
-                            onClick={() => {
-                              toggleTab(activeTab - 1)
-                            }}
-                          > Previous </Link>
-                        </li>
-
-                        <li className={`${activeTab === 2 ? "next disabled" : "next"} me-4`}>
-                          <Link to="#" className="btn btn-primary me-2"
-                            onClick={() => {
-                              toggleTab(activeTab + 1)
-                            }}
-                          > Next </Link>
-                        </li>
-
-                      </ul>
-
-                    </AvForm>
-                  </div>
-                </CardBody>
-              </Card>
-            </CardBody>
+                  </AvForm>
+                </div>
+              </CardBody>
+            </Card>
           </CardBody>
 
           <div className="text-center">

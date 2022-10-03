@@ -117,6 +117,7 @@ const Register = props => {
             <input type="file" ref={refFileUpload} className="file-upload d-none" accept="image/*" onChange={changeThumb} />
           </div>
 
+
           <CardBody className="form-horizontal form-wizard-wrapper wizard clearfix ">
             <CardBody className="steps clearfix">
               <ul>
@@ -160,6 +161,7 @@ const Register = props => {
               </ul>
             </CardBody>
 
+
             <CardBody>
               <Card className="overflow-hidden rounded-75">
                 <CardBody className="p-2">
@@ -186,8 +188,8 @@ const Register = props => {
                         </button>
                       </div> */}
 
-                      <ul className="d-flex me-3">
-                        <li className={`me-4 ${activeTab === 1 ? "previous disabled" : "previous"}`}>
+                      <ul className="d-flex mx-3">
+                        <li className={activeTab === 1 ? "previous disabled" : "previous"}>
                           <Link to="#" className="btn btn-primary"
                             onClick={() => {
                               toggleTab(activeTab - 1)
@@ -195,8 +197,8 @@ const Register = props => {
                           > Previous </Link>
                         </li>
 
-                        <li className={`${activeTab === 2 ? "next disabled" : "next"} me-4`}>
-                          <Link to="#" className="btn btn-primary me-2"
+                        <li className={activeTab === 2 ? "next disabled" : "next"}>
+                          <Link to="#" className="btn btn-primary"
                             onClick={() => {
                               toggleTab(activeTab + 1)
                             }}
@@ -210,6 +212,7 @@ const Register = props => {
                 </CardBody>
               </Card>
             </CardBody>
+
           </CardBody>
 
           <div className="text-center">

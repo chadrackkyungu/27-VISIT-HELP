@@ -117,8 +117,9 @@ const Register = props => {
             <input type="file" ref={refFileUpload} className="file-upload d-none" accept="image/*" onChange={changeThumb} />
           </div>
 
-          <CardBody className="form-horizontal form-wizard-wrapper wizard clearfix ">
-            <CardBody className="steps clearfix">
+
+          <div className="form-horizontal form-wizard-wrapper wizard clearfix mt-3">
+            <div className="steps clearfix">
               <ul>
                 <NavItem
                   className={classnames({ current: activeTab === 1 })}>
@@ -128,11 +129,10 @@ const Register = props => {
                       setactiveTab(1)
                     }}
                   >
-                    <span className="number">1</span>
-                    Personal Details
+                    <span className="number">1.</span>{" "}
+                    Seller Details
                   </NavLink>
                 </NavItem>
-
                 <NavItem className={classnames({ current: activeTab === 2 })}>
                   <NavLink
                     className={classnames({ active: activeTab === 2 })}
@@ -140,11 +140,10 @@ const Register = props => {
                       setactiveTab(2)
                     }}
                   >
-                    <span className="number">2</span>
-                    Address Details
+                    <span className="number">2.</span>{" "}
+                    Company Document
                   </NavLink>
                 </NavItem>
-
                 <NavItem className={classnames({ current: activeTab === 3 })}>
                   <NavLink
                     className={classnames({ active: activeTab === 3 })}
@@ -152,13 +151,13 @@ const Register = props => {
                       setactiveTab(3)
                     }}
                   >
-                    <span className="number">3</span>
-                    Confirm Details
+                    <span className="number">3.</span>
+                    Bank Details
                   </NavLink>
                 </NavItem>
-
               </ul>
-            </CardBody>
+            </div>
+
 
             <CardBody>
               <Card className="overflow-hidden rounded-75">
@@ -168,49 +167,36 @@ const Register = props => {
 
                       <TabContent activeTab={activeTab} className="body">
                         <TabPane tabId={1}>
-                          <FormInput1 />
-                          <FormInput2 />
-                          <FormInput3 />
+                          <Form>
+                            <FormInput1 />
+                            <FormInput2 />
+                            <FormInput3 />
+                          </Form>
                         </TabPane>
                         <TabPane tabId={2}>
-                          <FormInput4 />
-                          <FormInput5 />
+                          <Form>
+                            <FormInput4 />
+                            <FormInput5 />
+                          </Form>
                         </TabPane>
                       </TabContent>
 
-
-                      {/* <div className="col-12 text-start">
-                        <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit">
-                          {!loadBtn ? <span className="me-2">Submit</span> : null}
-                          {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
-                        </button>
-                      </div> */}
-
-                      <ul className="d-flex me-3">
-                        <li className={`me-4 ${activeTab === 1 ? "previous disabled" : "previous"}`}>
-                          <Link to="#" className="btn btn-primary"
-                            onClick={() => {
-                              toggleTab(activeTab - 1)
-                            }}
-                          > Previous </Link>
-                        </li>
-
-                        <li className={`${activeTab === 2 ? "next disabled" : "next"} me-4`}>
-                          <Link to="#" className="btn btn-primary me-2"
-                            onClick={() => {
-                              toggleTab(activeTab + 1)
-                            }}
-                          > Next </Link>
-                        </li>
-
-                      </ul>
+                      <div className="mb-3 row mt-3">
+                        <div className="col-12 text-start">
+                          <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit">
+                            {!loadBtn ? <span className="me-2">Submit</span> : null}
+                            {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
+                          </button>
+                        </div>
+                      </div>
 
                     </AvForm>
                   </div>
                 </CardBody>
               </Card>
             </CardBody>
-          </CardBody>
+
+          </div>
 
           <div className="text-center">
             <p>

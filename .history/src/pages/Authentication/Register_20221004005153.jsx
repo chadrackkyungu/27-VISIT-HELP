@@ -117,6 +117,7 @@ const Register = props => {
             <input type="file" ref={refFileUpload} className="file-upload d-none" accept="image/*" onChange={changeThumb} />
           </div>
 
+
           <CardBody className="form-horizontal form-wizard-wrapper wizard clearfix ">
             <CardBody className="steps clearfix">
               <ul>
@@ -159,6 +160,7 @@ const Register = props => {
 
               </ul>
             </CardBody>
+
 
             <CardBody>
               <Card className="overflow-hidden rounded-75">
@@ -210,6 +212,7 @@ const Register = props => {
                 </CardBody>
               </Card>
             </CardBody>
+
           </CardBody>
 
           <div className="text-center">
