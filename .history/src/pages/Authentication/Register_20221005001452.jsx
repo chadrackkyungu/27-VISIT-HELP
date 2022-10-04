@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React, { useEffect, useState, useRef } from "react"
 import MetaTags from 'react-meta-tags';
-import { Row, Col, CardBody, Card, Spinner, Button, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
+import { Row, Col, CardBody, Card, Alert, Form, Spinner, Button, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import classnames from "classnames"
 import { AvForm, AvField } from "availity-reactstrap-validation"
 import { Link } from "react-router-dom"
@@ -116,7 +116,7 @@ const Register = props => {
                     className={classnames({ active: activeTab === 3 })}
                     onClick={() => { setactiveTab(3) }}>
                     <span className="number">3</span>
-                    Review your details
+                    Confirm Details
                   </NavLink>
                 </NavItem>
 
@@ -129,7 +129,7 @@ const Register = props => {
                   <div className="p-3">
                     <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
 
-                      <TabContent activeTab={activeTab} className="body mb-5">
+                      <TabContent activeTab={activeTab} className="body">
 
                         <TabPane tabId={1}>
                           <FormInput1 />
@@ -143,7 +143,7 @@ const Register = props => {
                         </TabPane>
 
                         <TabPane tabId={3}>
-                          <UserDetails details={!showDetails ? {} : showDetails} />
+                          <UserDetails details={!showDetails ? null : showDetails} />
                         </TabPane>
 
                       </TabContent>
@@ -153,9 +153,13 @@ const Register = props => {
                           <Link to="#" className="btn btn-primary" onClick={() => { toggleTab(activeTab - 1) }}> Previous </Link>
                         </li>
 
-                        <li className={`${activeTab === 3 ? "next disabled" : "next"} me-4`}>
-                          <button className="btn btn-primary me-2" onClick={() => { toggleTab(activeTab + 1) }} type="submit"> Next </button>
-                        </li>
+                        {
+                          activeTab === 3 ? null : (
+                            <li className={`${activeTab === 3 ? "next disabled" : "next"} me-4`}>
+                              <button className="btn btn-primary me-2" onClick={() => { toggleTab(activeTab + 1) }} type="submit"> Next </button>
+                            </li>
+                          )
+                        }
 
                         {
                           activeTab === 3 ? (

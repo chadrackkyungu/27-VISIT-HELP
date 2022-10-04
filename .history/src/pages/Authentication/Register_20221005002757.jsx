@@ -153,9 +153,13 @@ const Register = props => {
                           <Link to="#" className="btn btn-primary" onClick={() => { toggleTab(activeTab - 1) }}> Previous </Link>
                         </li>
 
+                        {/* {
+                          activeTab >= 3 ? null : ( */}
                         <li className={`${activeTab === 3 ? "next disabled" : "next"} me-4`}>
                           <button className="btn btn-primary me-2" onClick={() => { toggleTab(activeTab + 1) }} type="submit"> Next </button>
                         </li>
+                        {/* )
+                        } */}
 
                         {
                           activeTab === 3 ? (

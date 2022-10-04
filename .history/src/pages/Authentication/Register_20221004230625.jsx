@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React, { useEffect, useState, useRef } from "react"
 import MetaTags from 'react-meta-tags';
-import { Row, Col, CardBody, Card, Spinner, Button, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
+import { Row, Col, CardBody, Card, Alert, Form, Spinner, Button, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import classnames from "classnames"
 import { AvForm, AvField } from "availity-reactstrap-validation"
 import { Link } from "react-router-dom"
@@ -14,7 +14,6 @@ import FormInput2 from "./components/FormInput2";
 import FormInput3 from "./components/FormInput3";
 import FormInput4 from "./components/FormInput4";
 import FormInput5 from "./components/FormInput5";
-import UserDetails from "./components/UserDetails";
 
 const Register = props => {
 
@@ -22,16 +21,16 @@ const Register = props => {
   const [profile, setProfile] = useState();
   const [profileServer, setProfileServer] = useState();
   const [activeTab, setactiveTab] = useState(1)
-  const [submit, setSubmit] = useState(false)
-  const [showDetails, setShowDetails] = useState()
 
   const handleValidSubmit = (e, v) => {
     e.preventDefault();
-    setShowDetails(v)
+    setloadBtn(true)
 
-    if (submit) {
-      setloadBtn(true)
+    if (activeTab < 3) {
+      return null;
     }
+
+    console.log(v)
 
   }
 
@@ -116,7 +115,7 @@ const Register = props => {
                     className={classnames({ active: activeTab === 3 })}
                     onClick={() => { setactiveTab(3) }}>
                     <span className="number">3</span>
-                    Review your details
+                    Confirm Details
                   </NavLink>
                 </NavItem>
 
@@ -129,23 +128,16 @@ const Register = props => {
                   <div className="p-3">
                     <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
 
-                      <TabContent activeTab={activeTab} className="body mb-5">
-
+                      <TabContent activeTab={activeTab} className="body">
                         <TabPane tabId={1}>
                           <FormInput1 />
                           <FormInput2 />
                           <FormInput3 />
                         </TabPane>
-
                         <TabPane tabId={2}>
                           <FormInput4 />
                           <FormInput5 />
                         </TabPane>
-
-                        <TabPane tabId={3}>
-                          <UserDetails details={!showDetails ? {} : showDetails} />
-                        </TabPane>
-
                       </TabContent>
 
                       <ul className="d-flex me-5">
@@ -153,22 +145,27 @@ const Register = props => {
                           <Link to="#" className="btn btn-primary" onClick={() => { toggleTab(activeTab - 1) }}> Previous </Link>
                         </li>
 
-                        <li className={`${activeTab === 3 ? "next disabled" : "next"} me-4`}>
-                          <button className="btn btn-primary me-2" onClick={() => { toggleTab(activeTab + 1) }} type="submit"> Next </button>
-                        </li>
+                        {
+                          activeTab === 3 ? null : (
+
+                            <li className={`${activeTab === 3 ? "next disabled" : "next"} me-4`}>
+                              <Link to="#" className="btn btn-primary me-2" onClick={() => { toggleTab(activeTab + 1) }}> Next </Link>
+                            </li>
+                          )
+                        }
 
                         {
                           activeTab === 3 ? (
                             <div className="col-12 text-center">
-                              <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit" onClick={() => setSubmit(true)} >
+                              <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit">
                                 {!loadBtn ? <span className="me-2">Submit</span> : null}
                                 {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                               </button>
                             </div>
                           ) : null
                         }
-                      </ul>
 
+                      </ul>
                     </AvForm>
                   </div>
                 </CardBody>
