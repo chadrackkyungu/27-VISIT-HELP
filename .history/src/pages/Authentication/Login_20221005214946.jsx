@@ -7,17 +7,17 @@ import { auth } from '../../Database/init-firebase'
 import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useHistory, useLocation } from "react-router-dom"
 import LoginForm from "./components/LoginForm";
-import loginImg from "../../assets/images/Register/login.svg";
+import Image from "../../assets/images/users/user-9.jpg";
+import SignUp from "../../assets/images/Register/Sign up.svg";
 
 const Login = props => {
   const history = useHistory()
   const location = useLocation()
   const [loadBtn, setloadBtn] = useState();
 
-  const handleValidSubmit = (e, values) => {
+  const handleValidSubmit = (e, inputVal) => {
     e.preventDefault();
-    setloadBtn(true)
-    console.log(values)
+    loginFunc(inputVal);
   }
 
   return (
@@ -30,10 +30,10 @@ const Login = props => {
 
         <Col md={3} className="registration-img">
           <div> <h3 className="text-white mt-4 mb-4">Login </h3> </div>
-          <div className="img-container mt-5 mb-3">
-            <img src={loginImg} alt="" />
+          <div className="img-container">
+            <img src={SignUp} alt="" />
           </div>
-          <p className="text-white mt-5 mb-4 m-5 text-center"> Your information is safe with us </p>
+          <p className="text-white mt-4 mb-4 m-5 text-center"> Your information is safe with us </p>
         </Col>
 
         <Col md={9} className="d-flex justify-content-center align-items-center">

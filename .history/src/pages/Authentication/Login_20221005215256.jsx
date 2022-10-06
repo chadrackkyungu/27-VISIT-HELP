@@ -14,10 +14,9 @@ const Login = props => {
   const location = useLocation()
   const [loadBtn, setloadBtn] = useState();
 
-  const handleValidSubmit = (e, values) => {
+  const handleValidSubmit = (e, inputVal) => {
     e.preventDefault();
-    setloadBtn(true)
-    console.log(values)
+    loginFunc(inputVal);
   }
 
   return (

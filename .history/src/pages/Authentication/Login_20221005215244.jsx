@@ -14,10 +14,9 @@ const Login = props => {
   const location = useLocation()
   const [loadBtn, setloadBtn] = useState();
 
-  const handleValidSubmit = (e, values) => {
+  const handleValidSubmit = (e, inputVal) => {
     e.preventDefault();
-    setloadBtn(true)
-    console.log(values)
+    loginFunc(inputVal);
   }
 
   return (
@@ -30,7 +29,7 @@ const Login = props => {
 
         <Col md={3} className="registration-img">
           <div> <h3 className="text-white mt-4 mb-4">Login </h3> </div>
-          <div className="img-container mt-5 mb-3">
+          <div className="img-container mt-5">
             <img src={loginImg} alt="" />
           </div>
           <p className="text-white mt-5 mb-4 m-5 text-center"> Your information is safe with us </p>

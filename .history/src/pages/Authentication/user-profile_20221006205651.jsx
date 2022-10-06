@@ -1,7 +1,13 @@
 import PropTypes from 'prop-types'
 import MetaTags from 'react-meta-tags';
 import React, { useState, useEffect, useRef } from "react"
-import { Container, Card, CardBody, Button } from "reactstrap"
+import {
+  Container,
+  Card,
+  CardBody,
+  Button
+} from "reactstrap"
+
 import { AvForm } from "availity-reactstrap-validation"
 import FormInput1 from './components/FormInput1';
 import FormInput2 from './components/FormInput2';
@@ -17,6 +23,7 @@ const UserProfile = () => {
   function handleValidSubmit(e, values) {
     e.target.preventDefault();
     setloadBtn(true);
+
     console.log(values);
 
   }
@@ -39,6 +46,7 @@ const UserProfile = () => {
       reader.readAsDataURL(event.target.files[0]);
     }
   };
+
 
   return (
     <React.Fragment>

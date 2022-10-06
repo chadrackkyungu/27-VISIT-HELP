@@ -3,7 +3,7 @@ import MetaTags from 'react-meta-tags';
 import React, { useState } from "react"
 import { Row, Col, Card, CardBody, Container } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
-import forgotPass from "../../assets/images/Register/forgot-password.svg";
+import loginImg from "../../assets/images/Register/login.svg";
 
 const ForgetPasswordPage = props => {
 
@@ -23,7 +23,7 @@ const ForgetPasswordPage = props => {
         <Col md={3} className="registration-img">
           <div> <h3 className="text-white mt-4 mb-4"> Forgot Password </h3> </div>
           <div className="img-container mt-5 mb-3">
-            <img src={forgotPass} alt="" />
+            <img src={loginImg} alt="" />
           </div>
           <p className="text-white mt-5 mb-4 m-5 text-center"> Your information is safe with us </p>
         </Col>
@@ -42,7 +42,7 @@ const ForgetPasswordPage = props => {
                   <Row className="mb-3">
                     <Col className="text-end">
                       <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit" onClick={() => setSubmit(true)} >
-                        {!loadBtn ? <span className="me-2">Forgot Password</span> : null}
+                        {!loadBtn ? <span className="me-2">Reset Password</span> : null}
                         {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                       </button>
                     </Col>
@@ -50,11 +50,11 @@ const ForgetPasswordPage = props => {
                 </AvForm>
               </CardBody>
             </Card>
-            <p className="p-1 text-center">
-              © {new Date().getFullYear()} Online Learning. Crafted with
-              <i className="mdi mdi-heart text-danger" /> by visit-help.com
-            </p>
           </div>
+          <p className="p-1">
+            © {new Date().getFullYear()} Online Learning. Crafted with
+            <i className="mdi mdi-heart text-danger" /> by visit-help.com
+          </p>
 
         </Col>
       </Row>

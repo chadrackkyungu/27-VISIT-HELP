@@ -17,6 +17,7 @@ const UserProfile = () => {
   function handleValidSubmit(e, values) {
     e.target.preventDefault();
     setloadBtn(true);
+
     console.log(values);
 
   }
@@ -39,6 +40,7 @@ const UserProfile = () => {
       reader.readAsDataURL(event.target.files[0]);
     }
   };
+
 
   return (
     <React.Fragment>

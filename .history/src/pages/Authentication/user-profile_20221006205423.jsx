@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types'
 import MetaTags from 'react-meta-tags';
 import React, { useState, useEffect, useRef } from "react"
-import { Container, Card, CardBody, Button } from "reactstrap"
+import {
+  Container,
+  Card,
+  CardBody,
+} from "reactstrap"
+
 import { AvForm } from "availity-reactstrap-validation"
 import FormInput1 from './components/FormInput1';
 import FormInput2 from './components/FormInput2';
@@ -12,11 +17,11 @@ import FormInput5 from './components/FormInput5';
 const UserProfile = () => {
 
   const [loadBtn, setloadBtn] = useState();
-  const [profile, setProfile] = useState();
 
   function handleValidSubmit(e, values) {
     e.target.preventDefault();
     setloadBtn(true);
+
     console.log(values);
 
   }
@@ -40,6 +45,7 @@ const UserProfile = () => {
     }
   };
 
+
   return (
     <React.Fragment>
       <div className="page-content">
@@ -50,7 +56,8 @@ const UserProfile = () => {
 
           <div className="d-flex justify-content-center align-items-center mt-3">
             <img src={profile === undefined ? Image : profile} alt="user" width={100} height={100} className="rounded" />
-            <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5" onClick={onThumbChangeClick}
+            <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5"
+              onClick={onThumbChangeClick}
             > <i className="ion ion-md-image"></i>
             </Button>
             <input type="file" ref={refFileUpload} className="file-upload d-none" accept="image/*" onChange={changeThumb} />
@@ -63,8 +70,8 @@ const UserProfile = () => {
                 <FormInput1 />
                 <FormInput2 />
                 <FormInput3 />
-                {/* <FormInput4 />
-                <FormInput5 /> */}
+                <FormInput4 />
+                <FormInput5 />
 
                 <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit" onClick={() => setSubmit(true)} >
                   {!loadBtn ? <span className="me-2">Submit</span> : null}

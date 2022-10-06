@@ -45,7 +45,11 @@ const Login = props => {
                     <LoginForm />
                     <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit" onClick={() => setSubmit(true)} >
                       {!loadBtn ? <span className="me-2">Submit</span> : null}
-                      {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
+                      {!loadBtn ? null : <span>  <Spinner as="span"
+                        animation="grow"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true" size="sm" /> Loading...</span>}
                     </button>
                   </AvForm>
                 </div>
