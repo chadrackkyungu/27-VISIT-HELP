@@ -11,7 +11,6 @@ const UserProfile = () => {
 
   const [loadBtn, setloadBtn] = useState();
   const [profile, setProfile] = useState();
-  const [profileServer, setProfileServer] = useState();
 
   function handleValidSubmit(e, values) {
     e.target.preventDefault();

@@ -8,8 +8,8 @@ const Footer = () => {
         <Container fluid={true}>
           <Row>
             <div className="col-12">
-              © {new Date().getFullYear()} Created With <span className="d-none d-sm-inline-block">
-                <i className="mdi mdi-heart text-danger"></i> by visit-help.com</span>
+              © {new Date().getFullYear()} Created With <span className="d-none d-sm-inline-block"> 
+              <i className="mdi mdi-heart text-danger"></i> by Chadrack_code.</span>
             </div>
           </Row>
         </Container>

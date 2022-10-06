@@ -11,7 +11,6 @@ const UserProfile = () => {
 
   const [loadBtn, setloadBtn] = useState();
   const [profile, setProfile] = useState();
-  const [profileServer, setProfileServer] = useState();
 
   function handleValidSubmit(e, values) {
     e.target.preventDefault();
@@ -47,7 +46,7 @@ const UserProfile = () => {
         </MetaTags>
         <Container fluid>
 
-          <div className="d-flex justify-content-center align-items-center mb-4">
+          <div className="d-flex justify-content-center align-items-center mb-5">
             <img src={profile === undefined ? Image : profile} alt="user" width={100} height={100} className="rounded" />
             <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5" onClick={onThumbChangeClick}
             > <i className="ion ion-md-image"></i>

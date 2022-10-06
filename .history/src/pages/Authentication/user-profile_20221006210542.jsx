@@ -4,14 +4,11 @@ import React, { useState, useEffect, useRef } from "react"
 import { Container, Card, CardBody, Button } from "reactstrap"
 import { AvForm } from "availity-reactstrap-validation"
 import UpdateProfile from './components/UpdateProfile';
-import UpdatePasswordProfile from './components/UpdatePasswordProfile';
-import Image from "../../assets/images/users/user-9.jpg";
 
 const UserProfile = () => {
 
   const [loadBtn, setloadBtn] = useState();
   const [profile, setProfile] = useState();
-  const [profileServer, setProfileServer] = useState();
 
   function handleValidSubmit(e, values) {
     e.target.preventDefault();
@@ -47,7 +44,7 @@ const UserProfile = () => {
         </MetaTags>
         <Container fluid>
 
-          <div className="d-flex justify-content-center align-items-center mb-4">
+          <div className="d-flex justify-content-center align-items-center mt-3">
             <img src={profile === undefined ? Image : profile} alt="user" width={100} height={100} className="rounded" />
             <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5" onClick={onThumbChangeClick}
             > <i className="ion ion-md-image"></i>
@@ -55,34 +52,20 @@ const UserProfile = () => {
             <input type="file" ref={refFileUpload} className="file-upload d-none" accept="image/*" onChange={changeThumb} />
           </div>
 
-          <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
-            <Card>
-              <CardBody>
+          <Card>
+            <CardBody>
+              <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
+
                 <UpdateProfile />
-              </CardBody>
-            </Card>
-            <div className="text-center">
-              <button className="btn btn-registration-clr w-md waves-effect waves-light m-4" type="submit" onClick={() => setSubmit(true)} >
-                {!loadBtn ? <span className="me-2">Update</span> : null}
-                {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
-              </button>
-            </div>
-          </AvForm>
 
-          <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
-            <Card>
-              <CardBody>
-                <UpdatePasswordProfile />
-              </CardBody>
-            </Card>
-            <div className="text-center">
-              <button className="btn btn-registration-clr w-md waves-effect waves-light mb-4" type="submit" onClick={() => setSubmit(true)} >
-                {!loadBtn ? <span className="me-2">Update</span> : null}
-                {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
-              </button>
-            </div>
-          </AvForm>
+                <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit" onClick={() => setSubmit(true)} >
+                  {!loadBtn ? <span className="me-2">Submit</span> : null}
+                  {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
+                </button>
 
+              </AvForm>
+            </CardBody>
+          </Card>
         </Container>
       </div>
     </React.Fragment>
