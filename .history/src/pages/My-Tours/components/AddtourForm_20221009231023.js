@@ -1,18 +1,18 @@
 import React from 'react'
-import { AvField } from "availity-reactstrap-validation"
+import { AvField, AvForm } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
-function Form1() {
+function AddtourForm() {
     return (
         <div>
             <Row>
                 <Col md={6}>
                     <div className="mb-3">
                         <AvField
-                            name="firstName"
-                            label="First Name"
+                            name="tourName"
+                            label="Tour Name"
                             className="form-control"
-                            placeholder="Enter your first name"
+                            placeholder="Enter tour name"
                             type="text"
                             required
                         />
@@ -58,9 +58,10 @@ function Form1() {
                         </AvField>
                     </div>
                 </Col>
+
             </Row>
         </div>
     )
 }
 
-export default Form1
+export default AddtourForm

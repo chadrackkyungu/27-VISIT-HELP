@@ -1,8 +1,8 @@
 import React from 'react'
-import { AvField } from "availity-reactstrap-validation"
+import { AvField, AvForm } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
-function Form1() {
+function AddtourForm() {
     return (
         <div>
             <Row>
@@ -58,9 +58,10 @@ function Form1() {
                         </AvField>
                     </div>
                 </Col>
+
             </Row>
         </div>
     )
 }
 
-export default Form1
+export default AddtourForm

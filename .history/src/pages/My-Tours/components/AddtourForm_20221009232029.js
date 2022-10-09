@@ -1,30 +1,18 @@
 import React from 'react'
-import { AvField } from "availity-reactstrap-validation"
+import { AvField, AvForm } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
-function Form1() {
+function AddtourForm() {
     return (
         <div>
             <Row>
                 <Col md={6}>
                     <div className="mb-3">
                         <AvField
-                            name="firstName"
-                            label="First Name"
+                            name="tourName"
+                            label="Tour Name"
                             className="form-control"
-                            placeholder="Enter your first name"
-                            type="text"
-                            required
-                        />
-                    </div>
-                </Col>
-                <Col md={6}>
-                    <div className="mb-3">
-                        <AvField
-                            name="lastName"
-                            label="Last Name"
-                            className="form-control"
-                            placeholder="Enter your last name"
+                            placeholder="Enter tour name"
                             type="text"
                             required
                         />
@@ -34,28 +22,53 @@ function Form1() {
                 <Col md={6}>
                     <div className="mb-3">
                         <AvField
-                            name="dateOfBirth"
-                            label="Date of birth"
+                            name="duration"
+                            label="Duration"
                             className="form-control"
-                            type="date"
+                            placeholder="Enter your duration"
+                            type="text"
                             required
                         />
                     </div>
                 </Col>
+
                 <Col md={6}>
                     <div className="mb-3">
                         <AvField
-                            name="gender"
-                            label="Gender"
+                            name="summary"
+                            label="Summary"
+                            className="form-control"
+                            type="text"
+                            required
+                        />
+                    </div>
+                </Col>
+
+                <Col md={6}>
+                    <div className="mb-3">
+                        <AvField
+                            name="type"
+                            label="TourType"
                             type="select"
-                            placeholder="Enter your last name"
                             required
                         >
                             <option> Select... </option>
-                            <option> Male </option>
-                            <option> Female </option>
-                            <option> Others </option>
+                            <option> easy </option>
+                            <option> medium </option>
+                            <option> difficulty </option>
                         </AvField>
+                    </div>
+                </Col>
+
+                <Col md={6}>
+                    <div className="mb-3">
+                        <AvField
+                            name="groupSize"
+                            label="Max Group Size"
+                            className="form-control"
+                            type="number"
+                            required
+                        />
                     </div>
                 </Col>
             </Row>
@@ -63,4 +76,4 @@ function Form1() {
     )
 }
 
-export default Form1
+export default AddtourForm
