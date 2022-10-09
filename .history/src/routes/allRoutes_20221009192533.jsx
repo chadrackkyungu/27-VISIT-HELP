@@ -19,7 +19,6 @@ import MyAccount from '../pages/Account/Account';
 import MyTourForTourGuides from '../pages/My-Tours/My-tour-for-tour-guide';
 import MyLeadGuide from '../pages/My-Lead-Guide/My-lead-guide';
 import AdminTours from '../pages/My-Tours/Admin-Tour';
-import MyTickets from '../pages/My Tickets/MyTickets';
 
 const userRoutes = [
   { path: "/dashboard", exact: true, component: Dashboard },
@@ -29,7 +28,6 @@ const userRoutes = [
   { path: "/lead-guide-tours", exact: true, component: MyTourForTourGuides },
   { path: "/my-lead-guide", exact: true, component: MyLeadGuide },
   { path: "/admin-tour", exact: true, component: AdminTours },
-  { path: "/my-tickets", exact: true, component: MyTickets },
 
   { path: "*", exact: true, component: () => <Redirect to="/dashboard" /> },
 ]
