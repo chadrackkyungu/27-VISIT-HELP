@@ -5,19 +5,12 @@ import Image from "../../../assets/images/users/user-9.jpg";
 import Form1 from "./form1";
 import Form2 from "./form2";
 import Form3 from "./form3";
-import Form4 from "./form4";
 
 function Form() {
 
     const [loadBtn, setloadBtn] = useState();
     const [profile, setProfile] = useState();
     const [profileServer, setProfileServer] = useState();
-
-    const handleValidSubmit = (e, values) => {
-        e.preventDefault();
-        setloadBtn(true)
-        console.log(values)
-    }
 
     const refFileUpload = useRef(null);
     const onThumbChangeClick = () => {
@@ -44,21 +37,53 @@ function Form() {
             <div className="d-flex justify-content-center align-items-center mt-3">
                 <img src={profile === undefined ? Image : profile} alt="user" width={100} height={100} className="rounded" />
                 <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5"
-                    onClick={onThumbChangeClick}> <i className="ion ion-md-image"></i>
+                    onClick={onThumbChangeClick}
+                > <i className="ion ion-md-image"></i>
                 </Button>
                 <input type="file" ref={refFileUpload} className="file-upload d-none" accept="image/*" onChange={changeThumb} />
             </div>
 
             <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
                 <Form1 />
-                <Form3 />
                 <Form2 />
-                <Form4 />
+                <Form3 />
 
-                <button className="btn text-white mt-4" type="submit" onClick={() => setSubmit(true)} >
-                    {!loadBtn ? <span className="me-2">Submit</span> : null}
-                    {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
-                </button>
+                <Row>
+                    <Col md={4}>
+                        <div className="mb-3">
+                            <AvField
+                                name="IdNumber"
+                                label="Id / Passport Number"
+                                type="text"
+                                placeholder="Id or passport number"
+                                required
+                            />
+                        </div>
+                    </Col>
+                    <Col md={4}>
+                        <div className="mb-3">
+                            <AvField
+                                name="phoneNumber"
+                                label="Phone Number"
+                                type="number"
+                                placeholder="Enter your phone number"
+                                required
+                            />
+                        </div>
+                    </Col>
+                    <Col md={4}>
+                        <div className="mb-3">
+                            <AvField
+                                name="alternativeNumber"
+                                label="Alternative Number"
+                                type="number"
+                                placeholder="Enter your phone number"
+                                required
+                            />
+                        </div>
+                    </Col>
+                </Row>
+
 
             </AvForm>
         </div>

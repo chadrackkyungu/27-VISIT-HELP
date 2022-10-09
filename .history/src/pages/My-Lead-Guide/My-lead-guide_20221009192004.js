@@ -49,6 +49,7 @@ const Employees = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     <tr key={"_tr_" + "key"} >
                                         <td>
                                             <div className="form-check font-size-16">
@@ -57,6 +58,7 @@ const Employees = () => {
                                             </div>
                                         </td>
                                         <td>{"656565"}</td>
+
                                         <td>{"john"} {"muleka"}</td>
                                         <td>{"email"}</td>
                                         <td>{'Lead-guide'}</td>
@@ -64,14 +66,15 @@ const Employees = () => {
                                             onClick={() => {
                                                 setLExample(true)
                                                 setViewEmployee()
-                                            }}> View  </Badge>
-                                        </td>
+                                            }}>
+                                            View  </Badge></td>
 
-                                        <td className="cursor-pointer"
+                                        <td className="cursor-pointer p-5"
                                             onClick={() => {
                                                 setRightModalScrollExample(true)
                                                 setViewEmployee();
-                                            }}> <Badge className='p-2'> Edit </Badge>
+                                            }}> <Badge>
+                                                Edit </Badge>
                                         </td>
 
                                         <td>
@@ -79,7 +82,9 @@ const Employees = () => {
                                                 onClick={() => {
                                                     setSmExample(true)
                                                     setViewEmployee()
-                                                }}> Delete </Badge>
+                                                }}
+                                            >
+                                                Delete </Badge>
                                         </td>
                                     </tr>
 

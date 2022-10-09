@@ -13,12 +13,6 @@ function Form() {
     const [profile, setProfile] = useState();
     const [profileServer, setProfileServer] = useState();
 
-    const handleValidSubmit = (e, values) => {
-        e.preventDefault();
-        setloadBtn(true)
-        console.log(values)
-    }
-
     const refFileUpload = useRef(null);
     const onThumbChangeClick = () => {
         if (refFileUpload) {

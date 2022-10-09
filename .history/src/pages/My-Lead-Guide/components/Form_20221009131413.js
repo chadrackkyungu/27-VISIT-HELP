@@ -13,12 +13,6 @@ function Form() {
     const [profile, setProfile] = useState();
     const [profileServer, setProfileServer] = useState();
 
-    const handleValidSubmit = (e, values) => {
-        e.preventDefault();
-        setloadBtn(true)
-        console.log(values)
-    }
-
     const refFileUpload = useRef(null);
     const onThumbChangeClick = () => {
         if (refFileUpload) {
@@ -55,7 +49,7 @@ function Form() {
                 <Form2 />
                 <Form4 />
 
-                <button className="btn text-white mt-4" type="submit" onClick={() => setSubmit(true)} >
+                <button className="btn btn-registration-clr w-md waves-effect waves-light  mt-4" type="submit" onClick={() => setSubmit(true)} >
                     {!loadBtn ? <span className="me-2">Submit</span> : null}
                     {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                 </button>

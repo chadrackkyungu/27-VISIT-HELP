@@ -5,7 +5,6 @@ import MetaTags from 'react-meta-tags';
 import { Container } from "reactstrap"
 import Form from './components/Form';
 import EditLeadGuideForm from './components/EditLeadGuideForm';
-import LeadGuideDetails from './components/LeadGuideDetails';
 
 
 const Employees = () => {
@@ -49,6 +48,7 @@ const Employees = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     <tr key={"_tr_" + "key"} >
                                         <td>
                                             <div className="form-check font-size-16">
@@ -57,29 +57,33 @@ const Employees = () => {
                                             </div>
                                         </td>
                                         <td>{"656565"}</td>
+
                                         <td>{"john"} {"muleka"}</td>
                                         <td>{"email"}</td>
                                         <td>{'Lead-guide'}</td>
-                                        <td><Badge className='bg-success cursor-pointer p-2'
+                                        <td><Badge className='bg-success cursor-pointer'
                                             onClick={() => {
                                                 setLExample(true)
                                                 setViewEmployee()
-                                            }}> View  </Badge>
-                                        </td>
+                                            }}>
+                                            View  </Badge></td>
 
                                         <td className="cursor-pointer"
                                             onClick={() => {
                                                 setRightModalScrollExample(true)
                                                 setViewEmployee();
-                                            }}> <Badge className='p-2'> Edit </Badge>
+                                            }}> <Badge>
+                                                Edit </Badge>
                                         </td>
 
                                         <td>
-                                            <Badge className="bg-danger cursor-pointer p-2"
+                                            <Badge className="bg-danger cursor-pointer"
                                                 onClick={() => {
                                                     setSmExample(true)
                                                     setViewEmployee()
-                                                }}> Delete </Badge>
+                                                }}
+                                            >
+                                                Delete </Badge>
                                         </td>
                                     </tr>
 
@@ -110,7 +114,7 @@ const Employees = () => {
                     </Modal.Header>
 
                     <Modal.Body>
-                        <LeadGuideDetails />
+
                     </Modal.Body>
 
                     <Modal.Footer>
@@ -141,7 +145,6 @@ const Employees = () => {
                         <Button variant="danger" onClick={deleteFunc}>Yes</Button>
                     </Modal.Footer>
                 </Modal>
-
             </div>
         </>
     );
