@@ -1,0 +1,17 @@
+.sidebar {
+    background: #ffffff !important;
+    height: 100vh !important;
+    height: 25vh; // experiment with this value, try changing to 110vh
+    min-height: 200px;
+    overflow: auto;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 5%;
+}
+
+.Account-container {
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    border: 5px solid red;
+    margin-top: 2em;
+}

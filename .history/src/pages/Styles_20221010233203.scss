@@ -1,0 +1,17 @@
+.sidebar {
+    position: sticky;
+    top: 80px;
+    /* the height of the header (60px) + its bottom margin (20px) */
+    background: rgb(255, 100, 100);
+    padding: 20px;
+    width: 20%;
+    height: 1000px;
+    margin-bottom: 20px;
+}
+
+// .Account-container {
+//     display: grid;
+//     grid-template-columns: 15% 1fr;
+//     border: 5px solid red;
+//     margin-top: 2em;
+// }

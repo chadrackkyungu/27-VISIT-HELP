@@ -1,0 +1,13 @@
+.sidebar {
+    background: #ffffff !important;
+    min-height: 100vh; // experiment with this value, try changing to 110vh
+    position: sticky;
+    top: 0;
+}
+
+.Account-container {
+    display: grid;
+    grid-template-columns: 15% 1fr;
+    border: 5px solid red;
+    margin-top: 2em;
+}

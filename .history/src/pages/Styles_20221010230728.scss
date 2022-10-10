@@ -1,0 +1,11 @@
+.sidebar {
+    background: #e25959 !important;
+    height: 100vh !important;
+    // margin-top: 2em;
+}
+
+.Account-container {
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    border: 5px solid red;
+}

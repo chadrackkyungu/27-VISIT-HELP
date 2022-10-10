@@ -1,0 +1,13 @@
+.sidebar {
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    background: rgb(255, 255, 255);
+    overflow-x: hidden;
+    padding-top: 4em;
+}
+
+.content {
+    margin-left: 15em;
+}
