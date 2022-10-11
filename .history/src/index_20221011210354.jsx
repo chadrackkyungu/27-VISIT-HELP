@@ -18,6 +18,7 @@ const app = (
   </Provider>
 )
 
+//!  Note i want be using useselector & useDispatch from "react-redux" to get state & actions, instead i will used the one below
 export const useStore1Dispatch = createDispatchHook(store1Context);
 export const useStore1Selector = createSelectorHook(store1Context);
 

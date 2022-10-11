@@ -49,7 +49,7 @@ const Login = props => {
                     </button>
 
                     <div className="col-12 mt-5">
-                      You don't have an account ? <Link to="/register" className='text-success'> Register </Link>
+                      You don't have an account ? <Link to="/forgot-password" className='text-success'> Register </Link>
                     </div>
 
                   </AvForm>

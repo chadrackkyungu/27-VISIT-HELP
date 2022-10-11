@@ -9,7 +9,6 @@ import "aos/dist/aos.css"
 import "./assets/scss/theme.scss"
 
 const App = props => {
-
   return (
     <React.Fragment>
       <Router>

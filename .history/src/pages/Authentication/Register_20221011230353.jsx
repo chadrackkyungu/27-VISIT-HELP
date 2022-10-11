@@ -26,36 +26,35 @@ const Register = props => {
   const [submit, setSubmit] = useState(false)
   const [showDetails, setShowDetails] = useState()
 
-  const handleValidSubmit = (e, values) => {
+  const handleValidSubmit = (e, v) => {
     e.preventDefault();
-    setShowDetails(values)
-
-    console.log(values)
+    setShowDetails(v)
 
     if (submit) {
       setloadBtn(true)
     }
 
+
     const myHeaders = new Headers();
     const formdata = new FormData();
-    formdata.append("firstName", values.firstName);
-    formdata.append("lastName", values.lastName);
-    formdata.append("IdNumber", values.IdNumber);
-    formdata.append("phoneNumber", values.phoneNumber);
-    formdata.append("alternativeNumber", values.alternativeNumber);
-    formdata.append("gender", values.gender);
-    formdata.append("dateOfBirth", values.dateOfBirth);
-    formdata.append("streetAddress", values.streetAddress);
-    formdata.append("country", values.country);
-    formdata.append("stateProvince", values.stateProvince);
-    formdata.append("city", values.city);
-    formdata.append("houseNumber", values.houseNumber);
-    formdata.append("zipCode", values.zipCode);
-    formdata.append("agreed", values.checkboxCustomInputExample2[0]);
-    formdata.append("email", values.email);
-    formdata.append("photo", !profileServer ? " " : profileServer);
-    formdata.append("password", values.password);
-    formdata.append("passwordConfirm", values.passwordConfirm);
+    formdata.append("firstName", "Whitney");
+    formdata.append("lastName", "matjie");
+    formdata.append("IdNumber", "123456HYUI");
+    formdata.append("phoneNumber", "0827000150");
+    formdata.append("alternativeNumber", "0827000155");
+    formdata.append("gender", "femal");
+    formdata.append("dateOfBirth", "1997-02-23");
+    formdata.append("streetAddress", "56 richard street");
+    formdata.append("country", "South Africa");
+    formdata.append("stateProvince", "Gauteng");
+    formdata.append("city", "Joburg");
+    formdata.append("houseNumber", "58");
+    formdata.append("zipCode", "2198");
+    formdata.append("agreed", "true");
+    formdata.append("email", "whitney@gmail.com");
+    formdata.append("photo", "");
+    formdata.append("password", "123456");
+    formdata.append("passwordConfirm", "123456");
 
     const requestOptions = {
       method: 'POST',
@@ -64,23 +63,18 @@ const Register = props => {
       redirect: 'follow'
     };
 
-    fetch("https://tourisms.herokuapp.com/api/v1/users/signup", requestOptions)
+    fetch(`${process.env.BACKE_END_API}users/signup`, requestOptions)
       .then(response => response.json())
       .then(result => {
         if (result.status === "success") {
-          successMessage('Verified your email to complete your registration')
-          setloadBtn(false)
-        }
-        if (result.status === "fail") {
-          warningMessage(message)
-          setloadBtn(false)
+
         }
       })
-      .catch(error => {
-        warningMessage(`Sorry something went wrong please try again ${error.message}`)
-      });
+      .catch(error => console.log('error', error));
 
   }
+
+  console.log(process.env.NODE_END_API)
 
   const refFileUpload = useRef(null);
   const onThumbChangeClick = () => {

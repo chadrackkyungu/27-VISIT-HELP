@@ -48,8 +48,8 @@ const Login = props => {
                       {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                     </button>
 
-                    <div className="col-12 mt-5">
-                      You don't have an account ? <Link to="/register" className='text-success'> Register </Link>
+                    <div className="col-12 mt-2">
+                      You don't have an account ? <Link to="/forgot-password" className='text-success'> Register </Link>
                     </div>
 
                   </AvForm>

@@ -8,7 +8,6 @@ import { Link } from "react-router-dom"
 import AuthNavbar from './AuthNavbar';
 import Image from "../../assets/images/users/user-9.jpg";
 import SignUp from "../../assets/images/Register/Sign up.svg";
-import { successMessage, warningMessage } from "../../components/Toast"
 
 import FormInput1 from "./components/FormInput1";
 import FormInput2 from "./components/FormInput2";
@@ -26,59 +25,13 @@ const Register = props => {
   const [submit, setSubmit] = useState(false)
   const [showDetails, setShowDetails] = useState()
 
-  const handleValidSubmit = (e, values) => {
+  const handleValidSubmit = (e, v) => {
     e.preventDefault();
-    setShowDetails(values)
-
-    console.log(values)
+    setShowDetails(v)
 
     if (submit) {
       setloadBtn(true)
     }
-
-    const myHeaders = new Headers();
-    const formdata = new FormData();
-    formdata.append("firstName", values.firstName);
-    formdata.append("lastName", values.lastName);
-    formdata.append("IdNumber", values.IdNumber);
-    formdata.append("phoneNumber", values.phoneNumber);
-    formdata.append("alternativeNumber", values.alternativeNumber);
-    formdata.append("gender", values.gender);
-    formdata.append("dateOfBirth", values.dateOfBirth);
-    formdata.append("streetAddress", values.streetAddress);
-    formdata.append("country", values.country);
-    formdata.append("stateProvince", values.stateProvince);
-    formdata.append("city", values.city);
-    formdata.append("houseNumber", values.houseNumber);
-    formdata.append("zipCode", values.zipCode);
-    formdata.append("agreed", values.checkboxCustomInputExample2[0]);
-    formdata.append("email", values.email);
-    formdata.append("photo", !profileServer ? " " : profileServer);
-    formdata.append("password", values.password);
-    formdata.append("passwordConfirm", values.passwordConfirm);
-
-    const requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: formdata,
-      redirect: 'follow'
-    };
-
-    fetch("https://tourisms.herokuapp.com/api/v1/users/signup", requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        if (result.status === "success") {
-          successMessage('Verified your email to complete your registration')
-          setloadBtn(false)
-        }
-        if (result.status === "fail") {
-          warningMessage(message)
-          setloadBtn(false)
-        }
-      })
-      .catch(error => {
-        warningMessage(`Sorry something went wrong please try again ${error.message}`)
-      });
 
   }
 
@@ -217,7 +170,7 @@ const Register = props => {
                     </AvForm>
 
                     <div className="col-12 mt-5">
-                      You already have an account ? <Link to="/login" className='text-success'> Login </Link>
+                      You  have an account ? <Link to="/login" className='text-success'> Login </Link>
                     </div>
 
 

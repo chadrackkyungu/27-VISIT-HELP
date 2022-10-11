@@ -29,7 +29,7 @@ function UserDetails(props) {
                 </Col>
             </Row>
             <AvCheckboxGroup inline name="checkboxCustomInputExample2" required className="mt-5">
-                <AvCheckbox customInput label="Do you agree to the terms & conditions ? " className="me-3 bg-white" value={true} />
+                <AvCheckbox customInput label="Do you agree to the terms & conditions ? " />
             </AvCheckboxGroup>
         </div>
     )

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Row, Col } from "reactstrap";
-import { AvForm, AvField, AvGroup, AvInput, AvFeedback, AvRadioGroup, AvRadio, AvCheckboxGroup, AvCheckbox } from 'availity-reactstrap-validation';
 
 function UserDetails(props) {
 
@@ -19,7 +18,7 @@ function UserDetails(props) {
                     <p> <b>Alternative number :</b> {props.details.alternativeNumber}</p>
                     <p> <b>Date of birth :</b> {props.details.dateOfBirth}</p>
                     <p> <b>City :</b> {props.details.city}</p>
-                    <p> <b>Street Address :</b> {props.details.streetAddress}</p>
+                    <p> <b>City :</b> {props.details.streetAddress}</p>
                 </Col>
                 <Col md={4}>
                     <p> <b>Password :</b> {props.details.password}</p>
@@ -28,9 +27,6 @@ function UserDetails(props) {
                     <p> <b>Zip Code :</b> {props.details.zipCode}</p>
                 </Col>
             </Row>
-            <AvCheckboxGroup inline name="checkboxCustomInputExample2" required className="mt-5">
-                <AvCheckbox customInput label="Do you agree to the terms & conditions ? " className="me-3 bg-white" value={true} />
-            </AvCheckboxGroup>
         </div>
     )
 

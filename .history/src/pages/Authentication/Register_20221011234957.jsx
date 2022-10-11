@@ -30,7 +30,7 @@ const Register = props => {
     e.preventDefault();
     setShowDetails(values)
 
-    console.log(values)
+    console.log(values.checkboxCustomInputExample2[0])
 
     if (submit) {
       setloadBtn(true)
@@ -53,7 +53,7 @@ const Register = props => {
     formdata.append("zipCode", values.zipCode);
     formdata.append("agreed", values.checkboxCustomInputExample2[0]);
     formdata.append("email", values.email);
-    formdata.append("photo", !profileServer ? " " : profileServer);
+    formdata.append("photo", profileServer);
     formdata.append("password", values.password);
     formdata.append("passwordConfirm", values.passwordConfirm);
 
@@ -67,6 +67,7 @@ const Register = props => {
     fetch("https://tourisms.herokuapp.com/api/v1/users/signup", requestOptions)
       .then(response => response.json())
       .then(result => {
+        console.log(result.message);
         if (result.status === "success") {
           successMessage('Verified your email to complete your registration')
           setloadBtn(false)

@@ -1,5 +1,5 @@
 {
-    "name": "Visit Help",
+    "name": "veltrixreact",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
@@ -29,7 +29,7 @@
         "chart.js": "^2.9.4",
         "chartist": "^0.11.4",
         "classnames": "^2.3.1",
-        "dotenv": "^8.6.0",
+        "dotenv": "^8.2.0",
         "draft-js": "^0.11.7",
         "echarts": "^5.1.1",
         "echarts-for-react": "^3.0.1",
@@ -95,7 +95,7 @@
         "react-star-ratings": "^2.3.0",
         "react-super-responsive-table": "^5.2.0",
         "react-switch": "^6.0.0",
-        "react-toastify": "^9.0.8",
+        "react-toastify": "^9.0.1",
         "react-toastr": "^3.0.0",
         "react-twitter-auth": "0.0.13",
         "reactstrap": "^8.9.0",
@@ -109,11 +109,12 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "react-scripts build ",
+        "build": "webpack --env.BACKE_END_API=https://tourisms.herokuapp.com/ --config webpack.config.build.js",
         "lint": "eslint .",
         "format": "prettier --write \"**/*.{js,jsx,json,md,html,css,less,scss}\"",
         "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "dev": "webpack --env.BACKE_END_API=http://localhost:3000 --config webpack.config.dev.js"
     },
     "eslintConfig": {
         "extends": [
@@ -163,6 +164,7 @@
         "moment": "2.29.1"
     },
     "devDependencies": {
+        "dotenv-webpack": "^8.0.1",
         "eslint-config-standard-react": "^9.2.0",
         "eslint-plugin-react": "^7.20.6",
         "prettier": "^2.1.1"

@@ -7,9 +7,8 @@ import NonAuthLayout from "./components/NonAuthLayout"
 import AOS from "aos"
 import "aos/dist/aos.css"
 import "./assets/scss/theme.scss"
-
+console.log(process.env.NODE_END_API)
 const App = props => {
-
   return (
     <React.Fragment>
       <Router>

@@ -32,7 +32,7 @@ function FormInput5() {
                     <div className="mb-3">
                         <AvField
                             name="streetAddress"
-                            label="Street Address"
+                            label="House Number"
                             type="text"
                             required
                             placeholder="Enter your street address"

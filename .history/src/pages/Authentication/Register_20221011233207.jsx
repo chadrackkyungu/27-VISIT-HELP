@@ -51,9 +51,9 @@ const Register = props => {
     formdata.append("city", values.city);
     formdata.append("houseNumber", values.houseNumber);
     formdata.append("zipCode", values.zipCode);
-    formdata.append("agreed", values.checkboxCustomInputExample2[0]);
-    formdata.append("email", values.email);
-    formdata.append("photo", !profileServer ? " " : profileServer);
+    formdata.append("agreed", values);
+    formdata.append("email", values.agreed);
+    formdata.append("photo", profileServer);
     formdata.append("password", values.password);
     formdata.append("passwordConfirm", values.passwordConfirm);
 
@@ -69,10 +69,6 @@ const Register = props => {
       .then(result => {
         if (result.status === "success") {
           successMessage('Verified your email to complete your registration')
-          setloadBtn(false)
-        }
-        if (result.status === "fail") {
-          warningMessage(message)
           setloadBtn(false)
         }
       })

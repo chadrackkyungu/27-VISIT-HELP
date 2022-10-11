@@ -53,7 +53,7 @@ const Register = props => {
     formdata.append("zipCode", values.zipCode);
     formdata.append("agreed", values.checkboxCustomInputExample2[0]);
     formdata.append("email", values.email);
-    formdata.append("photo", !profileServer ? " " : profileServer);
+    formdata.append("photo", !profileServer ? "" : profileServer);
     formdata.append("password", values.password);
     formdata.append("passwordConfirm", values.passwordConfirm);
 
