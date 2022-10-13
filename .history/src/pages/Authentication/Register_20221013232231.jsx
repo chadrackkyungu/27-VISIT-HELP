@@ -238,7 +238,7 @@ const Register = () => {
 
       <Modal show={modal} onHide={() => setModal(false)} size="sm">
         <Modal.Body >
-          <h5 className="text-success"> Thank you for registering with us, Verified your email to confirm the registration </h5>
+          <p className="text-success"> Thank you for registering with us, Verified your email to confirm the registration </p>
         </Modal.Body>
         <Modal.Footer>
           <Button className="bg-danger text-white" onClick={() => setModal(false)}>Yes</Button>

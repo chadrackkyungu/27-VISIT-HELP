@@ -8,7 +8,6 @@ import { Provider, createDispatchHook, createSelectorHook } from "react-redux"
 const store1Context = React.createContext();
 import store from "./store"
 import { Redux_store } from './Redux/store/store';
-import { Slide, ToastContainer } from 'react-toastify';
 
 const app = (
   <Provider store={Redux_store} context={store1Context}>

@@ -3,10 +3,11 @@ import MetaTags from 'react-meta-tags';
 import React, { useEffect, useState } from "react"
 import { Row, Col, CardBody, Card, Spinner, Container } from "reactstrap"
 import { AvForm } from "availity-reactstrap-validation"
+import { auth } from '../../Database/init-firebase'
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { useHistory, useLocation, Link } from "react-router-dom"
 import LoginForm from "./components/LoginForm";
 import loginImg from "../../assets/images/Register/login.svg";
-import { successMessage, warningMessage } from "../../components/Toast"
 
 const Login = props => {
   const history = useHistory()
@@ -16,16 +17,19 @@ const Login = props => {
   const handleValidSubmit = (e, values) => {
     e.preventDefault();
     setloadBtn(true)
+    console.log(values)
 
-    const myHeaders = new Headers();
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzBjMzNlMGRhNWMwZmUwZGJmZGY3YiIsImlhdCI6MTY2NTY4NjU0NCwiZXhwIjoxNjczNDYyNTQ0fQ.LWYR0DtRzoY-nKj9SgW-8vs57CID_tv0sfYDoL7AYEI");
     myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Cookie", "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDg1YzFhNWFhZDkwOTE5OGQ2YTFiZCIsImlhdCI6MTY2NTY4NjU1NSwiZXhwIjoxNjczNDYyNTU1fQ.y9R1wqxfbSpgKg6Ps0Ic7R--5o0YvsuMH_5o5OsO6f4");
 
-    const raw = JSON.stringify({
-      "email": values.email,
-      "password": values.password
+    var raw = JSON.stringify({
+      "email": "johnmuleka@gmail.com",
+      "password": "1234"
     });
 
-    const requestOptions = {
+    var requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: raw,
@@ -33,21 +37,9 @@ const Login = props => {
     };
 
     fetch("https://tourisms.herokuapp.com/api/v1/users/login", requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        if (result.status === 'success') {
-          successMessage("You have successfully logged in!");
-          setloadBtn(false);
-        }
-        if (result.status === 'fail') {
-          warningMessage("Try again something went wrong");
-          setloadBtn(false);
-        }
-      })
-      .catch(error => {
-        warningMessage(`Something went wrong try again ${error.message}`);
-        setloadBtn(false);
-      });
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
   }
 
   return (
@@ -73,8 +65,7 @@ const Login = props => {
                 <div className="p-3">
                   <AvForm className="form-horizontal mt-4" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
                     <LoginForm />
-
-                    <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit">
+                    <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit" onClick={() => setSubmit(true)} >
                       {!loadBtn ? <span className="me-2">Submit</span> : null}
                       {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                     </button>

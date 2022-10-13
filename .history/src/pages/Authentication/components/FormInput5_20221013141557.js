@@ -1,5 +1,5 @@
 import React from 'react'
-import { AvField, AvCheckboxGroup, AvCheckbox } from "availity-reactstrap-validation"
+import { AvField } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
 function FormInput5() {
@@ -40,10 +40,6 @@ function FormInput5() {
                     </div>
                 </Col>
             </Row>
-
-            <AvCheckboxGroup inline name="checkboxCustomInputExample2" required className="mt-5">
-                <AvCheckbox customInput label="Do you agree to the terms & conditions ? " className="me-3 bg-white" value={true} />
-            </AvCheckboxGroup>
 
         </div>
     )

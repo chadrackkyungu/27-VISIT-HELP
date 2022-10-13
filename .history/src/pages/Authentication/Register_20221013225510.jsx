@@ -2,7 +2,6 @@ import PropTypes from "prop-types"
 import React, { useState, useRef } from "react"
 import MetaTags from 'react-meta-tags';
 import { Row, Col, CardBody, Card, Spinner, Button, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
-import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import classnames from "classnames"
 import { AvForm } from "availity-reactstrap-validation"
@@ -14,7 +13,7 @@ import FormInput2 from "./components/FormInput2";
 import FormInput3 from "./components/FormInput3";
 import FormInput4 from "./components/FormInput4";
 import FormInput5 from "./components/FormInput5";
-// import UserDetails from "./components/UserDetails";
+import UserDetails from "./components/UserDetails";
 
 const Register = () => {
 
@@ -24,7 +23,6 @@ const Register = () => {
   const [activeTab, setactiveTab] = useState(1)
   const [submit, setSubmit] = useState(false)
   const [showDetails, setShowDetails] = useState()
-  const [modal, setModal] = useState(false)
 
   const handleValidSubmit = (e, values) => {
     e.preventDefault();
@@ -32,9 +30,7 @@ const Register = () => {
     setloadBtn(true)
 
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer null");
     const formdata = new FormData();
-
     formdata.append("firstName", values.firstName);
     formdata.append("lastName", values.lastName);
     formdata.append("IdNumber", values.IdNumber);
@@ -65,18 +61,16 @@ const Register = () => {
       .then(response => response.json())
       .then(result => {
         if (result.status === "success") {
-          // successMessage('Verified your email to complete your registration')
+          successMessage('Verified your email to complete your registration')
           setloadBtn(false)
-          setModal(true)
         }
         if (result.status === "fail") {
-          warningMessage("Sorry something went wrong please try again")
+          warningMessage(message)
           setloadBtn(false)
         }
       })
       .catch(error => {
         warningMessage(`Sorry something went wrong please try again`)
-        setloadBtn(false)
       });
 
   }
@@ -235,16 +229,6 @@ const Register = () => {
 
         </Col>
       </Row>
-
-      <Modal show={modal} onHide={() => setModal(false)} size="sm">
-        <Modal.Body >
-          <h5 className="text-success"> Thank you for registering with us, Verified your email to confirm the registration </h5>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className="bg-danger text-white" onClick={() => setModal(false)}>Yes</Button>
-        </Modal.Footer>
-      </Modal>
-
     </React.Fragment>
   )
 }

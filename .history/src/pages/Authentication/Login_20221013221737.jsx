@@ -16,8 +16,10 @@ const Login = props => {
   const handleValidSubmit = (e, values) => {
     e.preventDefault();
     setloadBtn(true)
+    console.log(values)
 
     const myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzBjMzNlMGRhNWMwZmUwZGJmZGY3YiIsImlhdCI6MTY2NTY4NjU0NCwiZXhwIjoxNjczNDYyNTQ0fQ.LWYR0DtRzoY-nKj9SgW-8vs57CID_tv0sfYDoL7AYEI");
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
@@ -35,19 +37,9 @@ const Login = props => {
     fetch("https://tourisms.herokuapp.com/api/v1/users/login", requestOptions)
       .then(response => response.json())
       .then(result => {
-        if (result.status === 'success') {
-          successMessage("You have successfully logged in!");
-          setloadBtn(false);
-        }
-        if (result.status === 'fail') {
-          warningMessage("Try again something went wrong");
-          setloadBtn(false);
-        }
+        console.log(result);
       })
-      .catch(error => {
-        warningMessage(`Something went wrong try again ${error.message}`);
-        setloadBtn(false);
-      });
+      .catch(error => console.log('error', error));
   }
 
   return (

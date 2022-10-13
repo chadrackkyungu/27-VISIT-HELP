@@ -16,6 +16,7 @@ const Login = props => {
   const handleValidSubmit = (e, values) => {
     e.preventDefault();
     setloadBtn(true)
+    console.log(values)
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -40,13 +41,12 @@ const Login = props => {
           setloadBtn(false);
         }
         if (result.status === 'fail') {
-          warningMessage("Try again something went wrong");
+          successMessage("Try again something went wrong");
           setloadBtn(false);
         }
       })
       .catch(error => {
-        warningMessage(`Something went wrong try again ${error.message}`);
-        setloadBtn(false);
+        successMessage(`Something went wrong try again ${error.message}`);
       });
   }
 

@@ -1,22 +1,23 @@
 import PropTypes from "prop-types"
-import React, { useState, useRef } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import MetaTags from 'react-meta-tags';
 import { Row, Col, CardBody, Card, Spinner, Button, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
-import { Modal } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import classnames from "classnames"
-import { AvForm } from "availity-reactstrap-validation"
+import { AvForm, AvField } from "availity-reactstrap-validation"
+import { Link } from "react-router-dom"
+import AuthNavbar from './AuthNavbar';
 import Image from "../../assets/images/users/user-9.jpg";
 import SignUp from "../../assets/images/Register/Sign up.svg";
 import { successMessage, warningMessage } from "../../components/Toast"
+
 import FormInput1 from "./components/FormInput1";
 import FormInput2 from "./components/FormInput2";
 import FormInput3 from "./components/FormInput3";
 import FormInput4 from "./components/FormInput4";
 import FormInput5 from "./components/FormInput5";
-// import UserDetails from "./components/UserDetails";
+import UserDetails from "./components/UserDetails";
 
-const Register = () => {
+const Register = props => {
 
   const [loadBtn, setloadBtn] = useState();
   const [profile, setProfile] = useState();
@@ -24,17 +25,22 @@ const Register = () => {
   const [activeTab, setactiveTab] = useState(1)
   const [submit, setSubmit] = useState(false)
   const [showDetails, setShowDetails] = useState()
-  const [modal, setModal] = useState(false)
 
   const handleValidSubmit = (e, values) => {
     e.preventDefault();
     setShowDetails(values)
-    setloadBtn(true)
+
+    console.log(values)
+
+    if (submit) {
+      setloadBtn(true)
+    }
 
     const myHeaders = new Headers();
-    myHeaders.append("Authorization", "Bearer null");
-    const formdata = new FormData();
+    myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMzBjMzNlMGRhNWMwZmUwZGJmZGY3YiIsImlhdCI6MTY2NTUxNDY2NywiZXhwIjoxNjczMjkwNjY3fQ.YHvWAsgJtKw1r8zhYkqLHzJ2yTSruxr0tq5yJ8s6MO4");
+    myHeaders.append("Cookie", "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDVkMThjYTVlZjFhNmFkNjYyOTg5NyIsImlhdCI6MTY2NTUyMDAxMywiZXhwIjoxNjczMjk2MDEzfQ.Ps_qVNWl0DOPdlQdQKUMGlBGhUuAGmEimLTXU7MXKmc");
 
+    const formdata = new FormData();
     formdata.append("firstName", values.firstName);
     formdata.append("lastName", values.lastName);
     formdata.append("IdNumber", values.IdNumber);
@@ -65,18 +71,16 @@ const Register = () => {
       .then(response => response.json())
       .then(result => {
         if (result.status === "success") {
-          // successMessage('Verified your email to complete your registration')
+          successMessage('Verified your email to complete your registration')
           setloadBtn(false)
-          setModal(true)
         }
         if (result.status === "fail") {
-          warningMessage("Sorry something went wrong please try again")
+          warningMessage(message)
           setloadBtn(false)
         }
       })
       .catch(error => {
-        warningMessage(`Sorry something went wrong please try again`)
-        setloadBtn(false)
+        warningMessage(`Sorry something went wrong please try again ${error.message}`)
       });
 
   }
@@ -102,7 +106,7 @@ const Register = () => {
 
   function toggleTab(tab) {
     if (activeTab !== tab) {
-      if (tab >= 1 && tab <= 2) {
+      if (tab >= 1 && tab <= 3) {
         setactiveTab(tab)
       }
     }
@@ -197,21 +201,20 @@ const Register = () => {
                           <Link to="#" className="btn btn-primary" onClick={() => { toggleTab(activeTab - 1) }}> Previous </Link>
                         </li>
 
-                        <li className={`${activeTab === 2 ? "next disabled" : "next"} me-4`}>
+                        <li className={`${activeTab === 3 ? "next disabled" : "next"} me-4`}>
                           <button className="btn btn-primary me-2" onClick={() => { toggleTab(activeTab + 1) }} type="submit"> Next </button>
                         </li>
 
-                        {/* {
-                          activeTab === 3 ? ( */}
-                        <div className="col-12 text-center">
-                          {/* <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit" onClick={() => setSubmit(true)} > */}
-                          <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit">
-                            {!loadBtn ? <span className="me-2">Submit</span> : null}
-                            {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
-                          </button>
-                        </div>
-                        {/* ) : null
-                        } */}
+                        {
+                          activeTab === 3 ? (
+                            <div className="col-12 text-center">
+                              <button className="btn btn-registration-clr w-md waves-effect waves-light" type="submit" onClick={() => setSubmit(true)} >
+                                {!loadBtn ? <span className="me-2">Submit</span> : null}
+                                {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
+                              </button>
+                            </div>
+                          ) : null
+                        }
                       </ul>
 
                     </AvForm>
@@ -235,16 +238,6 @@ const Register = () => {
 
         </Col>
       </Row>
-
-      <Modal show={modal} onHide={() => setModal(false)} size="sm">
-        <Modal.Body >
-          <h5 className="text-success"> Thank you for registering with us, Verified your email to confirm the registration </h5>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className="bg-danger text-white" onClick={() => setModal(false)}>Yes</Button>
-        </Modal.Footer>
-      </Modal>
-
     </React.Fragment>
   )
 }

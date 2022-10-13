@@ -46,7 +46,6 @@ const Login = props => {
       })
       .catch(error => {
         warningMessage(`Something went wrong try again ${error.message}`);
-        setloadBtn(false);
       });
   }
 

@@ -2,7 +2,6 @@ import PropTypes from "prop-types"
 import React, { useState, useRef } from "react"
 import MetaTags from 'react-meta-tags';
 import { Row, Col, CardBody, Card, Spinner, Button, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
-import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import classnames from "classnames"
 import { AvForm } from "availity-reactstrap-validation"
@@ -14,7 +13,7 @@ import FormInput2 from "./components/FormInput2";
 import FormInput3 from "./components/FormInput3";
 import FormInput4 from "./components/FormInput4";
 import FormInput5 from "./components/FormInput5";
-// import UserDetails from "./components/UserDetails";
+import UserDetails from "./components/UserDetails";
 
 const Register = () => {
 
@@ -24,7 +23,6 @@ const Register = () => {
   const [activeTab, setactiveTab] = useState(1)
   const [submit, setSubmit] = useState(false)
   const [showDetails, setShowDetails] = useState()
-  const [modal, setModal] = useState(false)
 
   const handleValidSubmit = (e, values) => {
     e.preventDefault();
@@ -65,9 +63,8 @@ const Register = () => {
       .then(response => response.json())
       .then(result => {
         if (result.status === "success") {
-          // successMessage('Verified your email to complete your registration')
+          successMessage('Verified your email to complete your registration')
           setloadBtn(false)
-          setModal(true)
         }
         if (result.status === "fail") {
           warningMessage("Sorry something went wrong please try again")
@@ -236,14 +233,15 @@ const Register = () => {
         </Col>
       </Row>
 
-      <Modal show={modal} onHide={() => setModal(false)} size="sm">
+      <Modal show={deleteModal} onHide={() => setDeleteModal(false)} size="sm">
         <Modal.Body >
-          <h5 className="text-success"> Thank you for registering with us, Verified your email to confirm the registration </h5>
+          <p> Verified your email to confirm the registration </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="bg-danger text-white" onClick={() => setModal(false)}>Yes</Button>
+          <Button className="bg-success text-white" onClick={deleteProperty}>Yes</Button>
         </Modal.Footer>
       </Modal>
+
 
     </React.Fragment>
   )
