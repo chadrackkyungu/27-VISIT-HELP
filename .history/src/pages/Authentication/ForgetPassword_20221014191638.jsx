@@ -28,7 +28,7 @@ const ForgetPasswordPage = () => {
       redirect: 'follow'
     };
 
-    fetch("https://tourisms.herokuapp.com/api/v1/users/forgotPassword", requestOptions)
+    fetch("http://localhost:4000/api/v1/users/forgotPassword", requestOptions)
       .then(response => response.json())
       .then(result => {
         if (result.status === 'success') {

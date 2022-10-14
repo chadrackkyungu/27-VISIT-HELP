@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import MetaTags from 'react-meta-tags';
 import React, { useState } from "react"
-import { Row, Col, Card, CardBody, Spinner } from "reactstrap"
+import { Row, Col, Card, CardBody, Container } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
 import forgotPass from "../../assets/images/Register/forgot-password.svg";
 import { successMessage, warningMessage } from "../../components/Toast"

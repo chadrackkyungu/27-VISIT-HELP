@@ -18,6 +18,7 @@ const VerifiedEmail = props => {
 
         const myHeaders = new Headers();
         const raw = "";
+
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
@@ -42,6 +43,7 @@ const VerifiedEmail = props => {
             </MetaTags>
 
             <Row>
+
                 <Col md={3} className="registration-img">
                     <div> <h3 className="text-white mt-4 mb-4">Verified email </h3> </div>
                     <div className="img-container mt-5 mb-3">
@@ -60,6 +62,7 @@ const VerifiedEmail = props => {
                         </Card>
                     </div>
                 </Col>
+
             </Row>
         </React.Fragment>
     )

@@ -12,12 +12,13 @@ const VerifiedEmail = props => {
     const location = useLocation()
     const [loadBtn, setloadBtn] = useState();
 
-    const verifiedHandler = () => {
+    const handleValidSubmit = (e, values) => {
         e.preventDefault();
         setloadBtn(true)
 
         const myHeaders = new Headers();
         const raw = "";
+
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
@@ -25,7 +26,7 @@ const VerifiedEmail = props => {
             redirect: 'follow'
         };
 
-        fetch(`https://tourisms.herokuapp.com/api/v1/users/verify/${id}/${token}`, requestOptions)
+        fetch(`https://tourisms.herokuapp.com/api/v1/users/verify/${}/${token}`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result.status === 'success') {
@@ -42,6 +43,7 @@ const VerifiedEmail = props => {
             </MetaTags>
 
             <Row>
+
                 <Col md={3} className="registration-img">
                     <div> <h3 className="text-white mt-4 mb-4">Verified email </h3> </div>
                     <div className="img-container mt-5 mb-3">
@@ -53,13 +55,14 @@ const VerifiedEmail = props => {
                 <Col md={9} className="d-flex justify-content-center align-items-center">
                     <div className='w-50'>
                         <Card className="overflow-hidden">
-                            <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit" onClick={() => { verifiedHandler }}>
+                            <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit">
                                 {!loadBtn ? <span className="me-2">Submit</span> : null}
                                 {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                             </button>
                         </Card>
                     </div>
                 </Col>
+
             </Row>
         </React.Fragment>
     )

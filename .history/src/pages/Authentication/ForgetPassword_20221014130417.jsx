@@ -1,17 +1,15 @@
 import PropTypes from 'prop-types'
 import MetaTags from 'react-meta-tags';
 import React, { useState } from "react"
-import { Row, Col, Card, CardBody, Spinner } from "reactstrap"
+import { Row, Col, Card, CardBody, Container } from "reactstrap"
 import { AvForm, AvField } from "availity-reactstrap-validation"
 import forgotPass from "../../assets/images/Register/forgot-password.svg";
-import { successMessage, warningMessage } from "../../components/Toast"
 
-const ForgetPasswordPage = () => {
+const ForgetPasswordPage = props => {
 
   const [loadBtn, setloadBtn] = useState();
   const handleValidSubmit = (e, values) => {
     e.preventDefault();
-    setloadBtn(true)
 
     const myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer null");
@@ -31,19 +29,10 @@ const ForgetPasswordPage = () => {
     fetch("https://tourisms.herokuapp.com/api/v1/users/forgotPassword", requestOptions)
       .then(response => response.json())
       .then(result => {
-        if (result.status === 'success') {
-          successMessage("Check your email to reset your password");
-          setloadBtn(false);
-        }
-        if (result.status === 'fail') {
-          warningMessage("Try again something went wrong");
-          setloadBtn(false);
-        }
+
       })
-      .catch(error => {
-        warningMessage(`Something went wrong try again ${error.message}`);
-        setloadBtn(false);
-      });
+      .catch(error => console.log('error', error));
+
   }
 
   return (
@@ -74,7 +63,7 @@ const ForgetPasswordPage = () => {
                   </div>
                   <Row className="mb-3">
                     <Col className="text-end">
-                      <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit">
+                      <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit" onClick={() => setSubmit(true)} >
                         {!loadBtn ? <span className="me-2">Forgot Password</span> : null}
                         {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                       </button>
