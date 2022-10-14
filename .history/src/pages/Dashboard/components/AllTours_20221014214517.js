@@ -45,8 +45,8 @@ function Cards() {
                     <div className="d-flex justify-content-between align-items-center">
                       <Link to="/tour-details/1" className='btn btn-success'>View details</Link>
                       <p className='mt-2'>Ratings({tour.ratingsQuantity})</p>
-                      {/* <FcLike size={32} className="like-btn" />
-                      <FcLikePlaceholder size={32} className="like-btn" /> */}
+                      <FcLike size={32} className="like-btn" />
+                      <FcLikePlaceholder size={32} className="like-btn" />
                     </div>
                   </CardBody>
                 </Card>

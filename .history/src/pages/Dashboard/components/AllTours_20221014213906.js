@@ -37,16 +37,16 @@ function Cards() {
                       <img src={`${tourImg}${tour.imageCover}`} alt="" className='w-100' />
                     </div>
                     <div className="d-flex justify-content-between">
-                      <h4>{tour.name}</h4>
-                      <button className='btn btn-warning'>R {tour.price}</button>
+                      <h4>Park virunga</h4>
+                      <button className='btn btn-warning'>R 250</button>
                     </div>
-                    <p className='tour-description'> {tour.description} </p>
+                    <p className='tour-description'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat error nostrum numquam, deserunt, doloribus accusamus quo incidunt iste animi magnam quidem eius. Aliquam, sint recusandae. Quidem ad rerum doloremque sapiente.</p>
 
                     <div className="d-flex justify-content-between align-items-center">
                       <Link to="/tour-details/1" className='btn btn-success'>View details</Link>
-                      <p className='mt-2'>Ratings({tour.ratingsQuantity})</p>
-                      {/* <FcLike size={32} className="like-btn" />
-                      <FcLikePlaceholder size={32} className="like-btn" /> */}
+                      <p className='mt-2'>Ratings(45)</p>
+                      <FcLike size={32} className="like-btn" />
+                      <FcLikePlaceholder size={32} className="like-btn" />
                     </div>
                   </CardBody>
                 </Card>
