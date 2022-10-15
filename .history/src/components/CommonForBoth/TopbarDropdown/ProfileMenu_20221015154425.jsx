@@ -49,23 +49,17 @@ const ProfileMenu = () => {
       <Dropdown isOpen={menu} toggle={() => setMenu(!menu)} className="d-inline-block">
 
         <DropdownToggle className="btn header-item waves-effect" id="page-header-user-dropdown" tag="button">
-          <img className="rounded-circle header-profile-user" crossorigin="anonymous" src={!pic ? user1 : `${userImg}${pic}`} alt="" />
+          <img className="rounded-circle header-profile-user" src={!pic ? user1 : `${userImg}${pic}`} alt="" />
           <span className="text-white"> {userDet?.data?.data?.firstName} </span>
         </DropdownToggle>
 
         <DropdownMenu className="dropdown-menu-end">
-
-          <DropdownItem tag="a" href="/my-account">
-            <i className="bx bx-user font-size-16 align-middle me-1" />My Account
-          </DropdownItem>
-
+          <DropdownItem tag="a" href="/my-account"><i className="bx bx-user font-size-16 align-middle me-1" />My Account</DropdownItem>
           <div className="dropdown-divider" />
 
           <Link onClick={LogoutHandler} className="dropdown-item cursor-pointer">
-            <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
-            <span>Logout</span>
+            <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" /><span>Logout</span>
           </Link>
-
         </DropdownMenu>
 
       </Dropdown>

@@ -7,7 +7,7 @@ import AdminProfile from './AdminProfile';
 function MyBookings() {
     return (
         <div>
-            <AdminProfile />
+            {/* <AdminProfile /> */}
         </div>
     )
 }

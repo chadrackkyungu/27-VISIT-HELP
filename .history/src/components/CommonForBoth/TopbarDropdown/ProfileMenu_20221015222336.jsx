@@ -33,7 +33,7 @@ const ProfileMenu = () => {
         if (result.status === 'success') {
           dispatch(Login(""));
           successMessage("You have successfully logged out!");
-          location.reload();
+          // location.reload();
         }
         if (result.status === 'fail') {
           warningMessage("Try again something went wrong");

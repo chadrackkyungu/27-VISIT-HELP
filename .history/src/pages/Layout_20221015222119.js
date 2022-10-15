@@ -14,11 +14,9 @@ function Layout(props) {
     const userDet = useStore1Selector(userDetails);
 
     if (!userDet.token) {
-        return (
-            window.setTimeout(() => {
-                history.push("/login");
-            })
-        )
+        window.setTimeout(() => {
+            history.push("/dashboard");
+        }, 3000);
     }
 
     return (

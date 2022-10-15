@@ -21,6 +21,8 @@ function tourContent({ id }) {
         return <Loading />
     }
 
+    console.log(filterTour)
+
     return (
         <div>
             <h2 className='title'> {filterTour[0]?.name} </h2>

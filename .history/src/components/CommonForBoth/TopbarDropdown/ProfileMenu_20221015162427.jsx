@@ -54,18 +54,12 @@ const ProfileMenu = () => {
         </DropdownToggle>
 
         <DropdownMenu className="dropdown-menu-end">
-
-          <DropdownItem tag="a" href="/my-account">
-            <i className="bx bx-user font-size-16 align-middle me-1" />My Account
-          </DropdownItem>
-
+          <DropdownItem tag="a" href="/my-account"><i className="bx bx-user font-size-16 align-middle me-1" />My Account</DropdownItem>
           <div className="dropdown-divider" />
 
           <Link onClick={LogoutHandler} className="dropdown-item cursor-pointer">
-            <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
-            <span>Logout</span>
+            <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" /><span>Logout</span>
           </Link>
-
         </DropdownMenu>
 
       </Dropdown>

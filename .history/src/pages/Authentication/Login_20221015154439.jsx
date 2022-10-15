@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import MetaTags from 'react-meta-tags';
-import React, { useState } from "react"
-import { Row, Col, CardBody, Card, Spinner } from "reactstrap"
+import React, { useEffect, useState } from "react"
+import { Row, Col, CardBody, Card, Spinner, Container } from "reactstrap"
 import { AvForm } from "availity-reactstrap-validation"
-import { useHistory, Link } from "react-router-dom"
+import { useHistory, useLocation, Link } from "react-router-dom"
 import LoginForm from "./components/LoginForm";
 import loginImg from "../../assets/images/Register/login.svg";
 import { successMessage, warningMessage } from "../../components/Toast"

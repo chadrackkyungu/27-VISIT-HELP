@@ -17,7 +17,7 @@ function Layout(props) {
         return (
             window.setTimeout(() => {
                 history.push("/login");
-            })
+            }, 1)
         )
     }
 
