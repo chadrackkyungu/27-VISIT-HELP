@@ -11,10 +11,17 @@ function Cards() {
   const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
   const { data, length, error, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
 
-  if (!data) { return <Loading /> }
+  if (!data) {
+    return <Loading />
+  }
 
   return (
     <React.Fragment className="banner mt-5 mb-5">
+
+      <p className="text-center  my-5 text-p">
+        Hey! We have live and prereordered tutorial that will grab that dream job, with best tutor on the planette.  with Evening lesson's you will get the best you have been looking for
+      </p>
+
       <Row className='mt-5'>
         {
           data?.map((tour, i) => {

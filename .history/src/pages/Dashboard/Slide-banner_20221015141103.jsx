@@ -78,7 +78,7 @@ class Slidewithcontrol extends Component {
 
     return (
       <React.Fragment>
-        <div>
+        <div className="">
           <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous}>
             {slides}
             <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />

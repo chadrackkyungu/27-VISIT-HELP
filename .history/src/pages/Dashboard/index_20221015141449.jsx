@@ -23,8 +23,8 @@ const Dashboard = () => {
             <SlideBanner />
 
 
-            <h5 className="text-description">
-              Date and time data is commonly managed by database systems and is incredibly important, but can often be trickier to handle correctly than it initially appears. Databases must be able to store date and time data in clear, unambiguous formats, transform that data into user-friendly formats to interact with client applications, and perform time-based operations taking into account complexities like different timezones and changes in daylight savings time.
+            <h5 >
+              Hey! We have live and prereordered tutorial that will grab that dream job, with best tutor on the planette.  with Evening lesson's you will get the best you have been looking for
             </h5>
 
           </div>

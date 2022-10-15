@@ -15,6 +15,11 @@ function Cards() {
 
   return (
     <React.Fragment className="banner mt-5 mb-5">
+
+      <h5 className="text-center  my-5 text-p">
+        Hey! We have live and prereordered tutorial that will grab that dream job, with best tutor on the planette.  with Evening lesson's you will get the best you have been looking for
+      </h5>
+
       <Row className='mt-5'>
         {
           data?.map((tour, i) => {

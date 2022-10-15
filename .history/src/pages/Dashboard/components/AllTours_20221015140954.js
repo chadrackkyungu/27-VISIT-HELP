@@ -15,6 +15,7 @@ function Cards() {
 
   return (
     <React.Fragment className="banner mt-5 mb-5">
+
       <Row className='mt-5'>
         {
           data?.map((tour, i) => {
