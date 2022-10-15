@@ -4,7 +4,6 @@ import Img from "../../../assets/images/users/user-9.jpg"
 import Img2 from "../../../assets/images/users/avatar-8.jpg"
 import { useParams } from 'react-router-dom'
 import useFetch from 'hooks/useFecth'
-import Loading from '../../../components/Loading';
 
 function tourContent() {
 
@@ -16,6 +15,7 @@ function tourContent() {
     }
 
     const filterTour = data.filter(tour => tour.id === id);
+    console.log(filterTour);
 
     return (
         <div>

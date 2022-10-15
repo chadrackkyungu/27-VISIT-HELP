@@ -15,16 +15,15 @@ import Loading from '../../../components/Loading';
 function ImageSlider() {
 
     const { id } = useParams();
-    const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
-    const tourCoverImg = "https://tourisms.herokuapp.com/img/images/";
     const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`);
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     if (!data) {
         return <Loading />
     }
     const filterTour = data.filter(tour => tour.id === id);
-    const images = filterTour[0]?.images
+    console.log(filterTour[0]?.imageCover);
+
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     return (
         <div>
@@ -35,16 +34,10 @@ function ImageSlider() {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper2"
             >
-                <SwiperSlide> <img src={`${tourImg}${filterTour[0]?.imageCover}`} /></SwiperSlide>
-                {
-                    images?.map((img, i) => {
-                        return (
-                            <SwiperSlide key={i}>
-                                <img src={`${tourCoverImg}${img}`} />
-                            </SwiperSlide>
-                        )
-                    })
-                }
+                <SwiperSlide> <img src={filterTour[0]?.imageCover} /></SwiperSlide>
+                <SwiperSlide><img src="https://swiperjs.com/demos/images/nature-2.jpg" /></SwiperSlide>
+                <SwiperSlide><img src="https://swiperjs.com/demos/images/nature-3.jpg" /></SwiperSlide>
+                <SwiperSlide><img src="https://swiperjs.com/demos/images/nature-4.jpg" /></SwiperSlide>
             </Swiper>
 
             <Swiper
@@ -56,16 +49,10 @@ function ImageSlider() {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper"
             >
-                <SwiperSlide> <img src={`${tourImg}${filterTour[0]?.imageCover}`} /></SwiperSlide>
-                {
-                    images?.map((img, i) => {
-                        return (
-                            <SwiperSlide key={i}>
-                                <img src={`${tourCoverImg}${img}`} />
-                            </SwiperSlide>
-                        )
-                    })
-                }
+                <SwiperSlide> <img src="https://swiperjs.com/demos/images/nature-1.jpg" /> </SwiperSlide>
+                <SwiperSlide> <img src="https://swiperjs.com/demos/images/nature-2.jpg" /> </SwiperSlide>
+                <SwiperSlide> <img src="https://swiperjs.com/demos/images/nature-3.jpg" /> </SwiperSlide>
+                <SwiperSlide> <img src="https://swiperjs.com/demos/images/nature-4.jpg" /> </SwiperSlide>
             </Swiper>
 
         </div>

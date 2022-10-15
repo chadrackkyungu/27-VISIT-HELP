@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row, Card, CardBody } from "reactstrap"
-import "../Style.scss";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import tour1 from "../../../assets/images/gallery/tour-1.svg"
 import tour2 from "../../../assets/images/gallery/tour-2.svg"
@@ -11,12 +10,14 @@ import Loading from 'components/Loading';
 
 function Cards() {
 
-  const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
+  const tourImg = "https://tourisms.herokuapp.com/img/tours/";
   const { data, length, error, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`);
 
   if (!data) {
     return <Loading />
   }
+
+  console.log(tourImg);
 
   return (
     <React.Fragment className="banner mt-5 mb-5">
@@ -32,8 +33,8 @@ function Cards() {
               <Col md={4} key={i}>
                 <Card className='tour-card'>
                   <CardBody>
-                    <div className='pb-4 image-cover'>
-                      <img src={`${tourImg}${tour.imageCover}`} alt="" />
+                    <div className='w-100 pb-4'>
+                      <img src={`${tourImg}${tour.imageCover}`} alt="" className='w-100' />
                     </div>
                     <div className="d-flex justify-content-between">
                       <h4>{tour.name}</h4>

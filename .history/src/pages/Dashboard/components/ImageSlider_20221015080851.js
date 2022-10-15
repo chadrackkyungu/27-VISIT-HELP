@@ -24,7 +24,11 @@ function ImageSlider() {
         return <Loading />
     }
     const filterTour = data.filter(tour => tour.id === id);
+
     const images = filterTour[0]?.images
+    console.log(
+        images
+    )
 
     return (
         <div>
@@ -36,15 +40,15 @@ function ImageSlider() {
                 className="mySwiper2"
             >
                 <SwiperSlide> <img src={`${tourImg}${filterTour[0]?.imageCover}`} /></SwiperSlide>
-                {
-                    images?.map((img, i) => {
-                        return (
-                            <SwiperSlide key={i}>
+                <SwiperSlide>
+                    {
+                        images?.map((img, i) => {
+                            return (
                                 <img src={`${tourCoverImg}${img}`} />
-                            </SwiperSlide>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </SwiperSlide>
             </Swiper>
 
             <Swiper
@@ -57,15 +61,15 @@ function ImageSlider() {
                 className="mySwiper"
             >
                 <SwiperSlide> <img src={`${tourImg}${filterTour[0]?.imageCover}`} /></SwiperSlide>
-                {
-                    images?.map((img, i) => {
-                        return (
-                            <SwiperSlide key={i}>
+                <SwiperSlide>
+                    {
+                        images?.map((img, i) => {
+                            return (
                                 <img src={`${tourCoverImg}${img}`} />
-                            </SwiperSlide>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </SwiperSlide>
             </Swiper>
 
         </div>

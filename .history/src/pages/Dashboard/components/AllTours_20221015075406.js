@@ -18,6 +18,8 @@ function Cards() {
     return <Loading />
   }
 
+  console.log(tourImg);
+
   return (
     <React.Fragment className="banner mt-5 mb-5">
 

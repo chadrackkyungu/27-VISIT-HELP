@@ -35,16 +35,16 @@ function ImageSlider() {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper2"
             >
-                <SwiperSlide> <img src={`${tourImg}${filterTour[0]?.imageCover}`} /></SwiperSlide>
-                {
-                    images?.map((img, i) => {
-                        return (
-                            <SwiperSlide key={i}>
+                {/* <SwiperSlide> <img src={`${tourImg}${filterTour[0]?.imageCover}`} /></SwiperSlide> */}
+                <SwiperSlide>
+                    {
+                        images?.map((img, i) => {
+                            return (
                                 <img src={`${tourCoverImg}${img}`} />
-                            </SwiperSlide>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </SwiperSlide>
             </Swiper>
 
             <Swiper
@@ -56,16 +56,16 @@ function ImageSlider() {
                 modules={[FreeMode, Navigation, Thumbs]}
                 className="mySwiper"
             >
-                <SwiperSlide> <img src={`${tourImg}${filterTour[0]?.imageCover}`} /></SwiperSlide>
-                {
-                    images?.map((img, i) => {
-                        return (
-                            <SwiperSlide key={i}>
+                {/* <SwiperSlide> <img src={`${tourImg}${filterTour[0]?.imageCover}`} /></SwiperSlide> */}
+                <SwiperSlide>
+                    {
+                        images?.map((img, i) => {
+                            return (
                                 <img src={`${tourCoverImg}${img}`} />
-                            </SwiperSlide>
-                        )
-                    })
-                }
+                            )
+                        })
+                    }
+                </SwiperSlide>
             </Swiper>
 
         </div>

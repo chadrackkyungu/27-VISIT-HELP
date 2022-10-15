@@ -4,7 +4,6 @@ import Img from "../../../assets/images/users/user-9.jpg"
 import Img2 from "../../../assets/images/users/avatar-8.jpg"
 import { useParams } from 'react-router-dom'
 import useFetch from 'hooks/useFecth'
-import Loading from '../../../components/Loading';
 
 function tourContent() {
 
@@ -16,18 +15,18 @@ function tourContent() {
     }
 
     const filterTour = data.filter(tour => tour.id === id);
+    console.log(filterTour);
 
     return (
         <div>
-            <h2 className='title'> {filterTour[0]?.name} </h2>
+            <h2 className='title'> THE PARK CAMPER TOUR </h2>
 
             <Row>
                 <Col md={6}>
                     <h4> QUICK FACTS </h4>
                     <p> <b>NEXT DATE </b> : August 2021 </p>
-                    <p> <b>DIFFICULTY </b> : {filterTour[0]?.difficulty} </p>
-                    <p> <b>PARTICIPANTS </b> : {filterTour[0]?.maxGroupSize} </p>
-
+                    <p> <b>DIFFICULTY </b> : Medium </p>
+                    <p> <b>PARTICIPANTS </b> : 20 People </p>
                     <h4> YOUR TOUR GUIDES </h4>
                     <div className="guide-container">
                         <div className='img-container'>
@@ -42,9 +41,13 @@ function tourContent() {
                 </Col>
 
                 <Col md={6}>
-                    <h4 className='text-uppercase'> ABOUT THE {filterTour[0]?.name} </h4>
+                    <h4> ABOUT THE PARK CAMPER TOUR </h4>
                     <p className='description'>
-                        {filterTour[0]?.description}
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web
+                        page editors now use Lorem Ipsum as their default model text, and a search
+                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web
+                        page editors now use Lorem Ipsum as their default model text, and a search
+
                     </p>
                 </Col>
             </Row>
