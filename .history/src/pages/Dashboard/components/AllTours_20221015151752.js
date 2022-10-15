@@ -5,17 +5,15 @@ import "../Style.scss";
 import { FcLike, FcLikePlaceholder } from "react-icons/fc";
 import useFetch from "../../../hooks/useFecth";
 import Loading from '../../../components/Loading';
-import { useStore1Selector } from "../../../index";
-import { userDetails } from "../../../Redux/Slices/userSlice";
+import { useStore1Selector } from "../../index";
+import { userDetails } from "../../Redux/Slices/userSlice";
 
 function Cards() {
 
-  const user = useStore1Selector(userDetails);
   const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
   const { data, length, error, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
-  if (!data) { return <Loading /> }
 
-  console.log(user)
+  if (!data) { return <Loading /> }
 
   return (
     <React.Fragment className="banner mt-5 mb-5">

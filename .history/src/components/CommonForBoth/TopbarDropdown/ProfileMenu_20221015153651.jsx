@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from "reactstrap"
 import { Link } from "react-router-dom"
 import user1 from "../../../assets/images/users/avatar.webp"
-import { userDetails, Login } from '../../../Redux/Slices/userSlice'
-import { useStore1Selector, useStore1Dispatch } from '../../../index';
-import { successMessage, warningMessage } from "../../../components/Toast"
+import { useHistory, useLocation } from "react-router-dom"
+import { userDetails } from '../../../Redux/Slices/userSlice'
+import { useStore1Selector } from '../../../index';
+import { successMessage, warningMessage } from "../../components/Toast"
 
 const ProfileMenu = () => {
 
   const [menu, setMenu] = useState(false);
+  const history = useHistory()
+  const location = useLocation()
   const userDet = useStore1Selector(userDetails);
-  const dispatch = useStore1Dispatch();
   const userImg = "https://tourisms.herokuapp.com/img/users/";
   const pic = userDet?.data?.data?.photo;
   const token = userDet?.token
@@ -33,16 +35,18 @@ const ProfileMenu = () => {
       .then(response => response.json())
       .then(result => {
         if (result.status === 'success') {
-          dispatch(Login(""));
-          successMessage("You have successfully logged out!");
-          location.reload();
+          dispatch(Login(result));
+          successMessage("You have successfully logged in!");
+          setloadBtn(false);
         }
         if (result.status === 'fail') {
           warningMessage("Try again something went wrong");
+          setloadBtn(false);
         }
       })
       .catch(error => {
         warningMessage(`Something went wrong try again ${error.message}`);
+        setloadBtn(false);
       });
   }
 
@@ -59,8 +63,8 @@ const ProfileMenu = () => {
           <DropdownItem tag="a" href="/my-account"><i className="bx bx-user font-size-16 align-middle me-1" />My Account</DropdownItem>
           <div className="dropdown-divider" />
 
-          <Link onClick={LogoutHandler} className="dropdown-item cursor-pointer">
-            <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" /><span>Logout</span>
+          <Link onClick={LogoutHandler}
+            className="dropdown-item"><i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" /><span>Logout</span>
           </Link>
         </DropdownMenu>
 

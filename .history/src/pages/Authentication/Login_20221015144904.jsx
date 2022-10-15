@@ -7,10 +7,10 @@ import { useHistory, useLocation, Link } from "react-router-dom"
 import LoginForm from "./components/LoginForm";
 import loginImg from "../../assets/images/Register/login.svg";
 import { successMessage, warningMessage } from "../../components/Toast"
-import { useStore1Dispatch } from "../../index";
+import { useStore1Dispatch } from "../../../../index";
 import { Login } from "../../Redux/Slices/userSlice";
 
-const LoginComp = () => {
+const Login = props => {
   const history = useHistory()
   const location = useLocation()
   const dispatch = useStore1Dispatch();
@@ -39,12 +39,9 @@ const LoginComp = () => {
       .then(response => response.json())
       .then(result => {
         if (result.status === 'success') {
-          dispatch(Login(result));
+          dispatch(Login(result.data.data));
           successMessage("You have successfully logged in!");
           setloadBtn(false);
-          window.setTimeout(() => {
-            history.push("/dashboard");
-          }, 3000);
         }
         if (result.status === 'fail') {
           warningMessage("Try again something went wrong");
@@ -106,4 +103,9 @@ const LoginComp = () => {
   )
 }
 
-export default LoginComp
+const mapStateToProps = state => {
+  const { error } = state.Login
+  return { error }
+}
+
+export default Login

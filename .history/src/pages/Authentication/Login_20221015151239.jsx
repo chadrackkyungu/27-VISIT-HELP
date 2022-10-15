@@ -42,9 +42,6 @@ const LoginComp = () => {
           dispatch(Login(result));
           successMessage("You have successfully logged in!");
           setloadBtn(false);
-          window.setTimeout(() => {
-            history.push("/dashboard");
-          }, 3000);
         }
         if (result.status === 'fail') {
           warningMessage("Try again something went wrong");

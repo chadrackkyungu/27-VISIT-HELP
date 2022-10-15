@@ -349,24 +349,21 @@ label {
 }
 
 .img-container {
-    width: 80% !important;
+    width: 100%;
 }
 
 .img-container img {
-    width: 100% !important;
+    width: 100%;
 }
 
 .clr-registration {
     background: #0A8A6B
 }
 
-.btn-registration-clr:hover {
-    color: #ffffff;
-}
-
 .btn-registration-clr {
     background: #0A8A6B;
     color: #ffffff;
+    // font-weight: bold;
 }
 
 .reg-logo-clr {
