@@ -1,12 +1,13 @@
 import React, { useState, useRef } from "react";
 import { AvForm } from "availity-reactstrap-validation"
+import MetaTags from 'react-meta-tags';
 import { Container, Card, CardBody, Spinner, Row, Col, Button } from "reactstrap"
-import Image from "../../assets/images/gallery/placeholder.svg";
+import Image from "../../assets/images/users/user-9.jpg";
 import Form1 from "./components/AddtourForm";
 import Form2 from "./components/AddTourFrom2";
 import Layout from "../Layout"
 import { Link } from "react-router-dom";
-import { userDetails } from '../../Redux/Slices/userSlice'
+import { userDetails, Login } from '../../Redux/Slices/userSlice'
 import { useStore1Selector } from '../../index';
 import { successMessage, warningMessage } from "../../components/Toast"
 
@@ -34,60 +35,36 @@ const AddTour = () => {
         myHeaders.append("Authorization", `Bearer ${token}`);
         const formdata = new FormData();
 
-        formdata.append("startDates", values.startDate);
-        formdata.append("startDates", values.endDate);
-
-        formdata.append("name", values.tourName);
-        formdata.append("price", values.price);
-        formdata.append("duration", values.duration);
-        formdata.append("maxGroupSize", values.groupSize);
-        formdata.append("difficulty", values.type);
-        formdata.append("priceDiscount", values.priceDiscount);
-        formdata.append("summary", values.summary);
-        formdata.append("description", values.description);
-
-        formdata.append("startLocation", {
-            "description": values.LocationDescription,
-            "type": "Point",
-            "coordinates": [
-                values.longitude,
-                values.latitude
-            ],
-            "address": values.LocationAddress
-        });
-
-        formdata.append("imageCover", !profileServer ? " " : profileServer);
-        formdata.append("images", !profileServer1 ? " " : profileServer1);
-        formdata.append("images", !profileServer2 ? " " : profileServer2);
-        formdata.append("images", !profileServer3 ? " " : profileServer3);
-        formdata.append("images", !profileServer4 ? " " : profileServer4);
+        formdata.append("firstName", values.firstName);
+        formdata.append("lastName", values.lastName);
+        formdata.append("IdNumber", values.IdNumber);
+        formdata.append("phoneNumber", values.phoneNumber);
+        formdata.append("alternativeNumber", values.alternativeNumber);
+        formdata.append("gender", values.gender);
+        formdata.append("dateOfBirth", values.dateOfBirth);
+        formdata.append("streetAddress", values.streetAddress);
+        formdata.append("country", values.country);
+        formdata.append("stateProvince", values.stateProvince);
+        formdata.append("city", values.city);
+        formdata.append("houseNumber", values.houseNumber);
+        formdata.append("zipCode", values.zipCode);
+        formdata.append("agreed", values.checkboxCustomInputExample2[0]);
+        formdata.append("email", values.email);
+        formdata.append("photo", !profileServer ? " " : profileServer);
+        formdata.append("password", values.password);
+        formdata.append("passwordConfirm", values.passwordConfirm);
 
         const requestOptions = {
             method: 'POST',
             headers: myHeaders,
-            body: formdata,
+            body: raw,
             redirect: 'follow'
         };
 
         fetch("http://localhost:4000/api/v1/tours", requestOptions)
             .then(response => response.json())
-            .then(result => {
-                if (result.status === 'success') {
-                    successMessage("You have successfully created a tour!");
-                    setloadBtn(false)
-                    window.setTimeout(() => {
-                        history.push("/admin-tour");
-                    })
-                }
-                if (result.status === 'fail') {
-                    warningMessage(result.message);
-                    setloadBtn(false)
-                }
-            })
-            .catch(error => {
-                warningMessage(`Something went wrong try again ${error.message}`);
-                setloadBtn(false)
-            });
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
 
     }
 
@@ -189,7 +166,7 @@ const AddTour = () => {
                         <CardBody>
 
                             <Col md={12}>
-                                {/* <h4>Upload Image Cover</h4> */}
+                                <h4>Upload Image Cover</h4>
                                 <div className="d-flex justify-content-center align-items-center mt-3 mb-5">
                                     <img src={profile === undefined ? Image : profile} alt="user" width={900} height={350} className="rounded" />
                                     <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5"
@@ -201,7 +178,8 @@ const AddTour = () => {
                             </Col>
 
                             <Form1 />
-                            <Form2 />
+
+                            {/* <Form2 /> */}
 
                             <Row>
 
@@ -251,7 +229,7 @@ const AddTour = () => {
 
                             </Row>
                             <div className="text-center mt-5">
-                                <button className="btn text-white mt-4 w-50" type="submit" >
+                                <button className="btn text-white mt-4 w-50" type="submit" onClick={() => setSubmit(true)} >
                                     {!loadBtn ? <span className="me-2">Submit</span> : null}
                                     {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                                 </button>

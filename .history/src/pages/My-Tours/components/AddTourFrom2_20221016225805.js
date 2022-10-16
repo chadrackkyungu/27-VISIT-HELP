@@ -6,12 +6,12 @@ function Form2() {
     return (
         <div>
             <Row>
-                <h5 className='my-5'> Map Location </h5>
+                <h5 className='my-5'> Start Location    (where the location should start when you open the map) </h5>
                 <Col md={6}>
                     <div className="mb-3">
                         <AvField
                             name="Desc"
-                            label="LocationDescription"
+                            label="Description"
                             className="form-control"
                             type="text"
                             required
@@ -21,7 +21,7 @@ function Form2() {
                 <Col md={6}>
                     <div className="mb-3">
                         <AvField
-                            name="LocationAddress"
+                            name="address"
                             label="Address"
                             className="form-control"
                             type="text"

@@ -11,7 +11,7 @@ function Form2() {
                     <div className="mb-3">
                         <AvField
                             name="Desc"
-                            label="LocationDescription"
+                            label="Description"
                             className="form-control"
                             type="text"
                             required
@@ -21,7 +21,7 @@ function Form2() {
                 <Col md={6}>
                     <div className="mb-3">
                         <AvField
-                            name="LocationAddress"
+                            name="address"
                             label="Address"
                             className="form-control"
                             type="text"

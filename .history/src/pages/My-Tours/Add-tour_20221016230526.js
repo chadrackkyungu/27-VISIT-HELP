@@ -69,7 +69,7 @@ const AddTour = () => {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:4000/api/v1/tours", requestOptions)
+        fetch("https://tourisms.herokuapp.com/api/v1/tours", requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result.status === 'success') {

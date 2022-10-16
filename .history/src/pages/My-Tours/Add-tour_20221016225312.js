@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { AvForm } from "availity-reactstrap-validation"
+import MetaTags from 'react-meta-tags';
 import { Container, Card, CardBody, Spinner, Row, Col, Button } from "reactstrap"
 import Image from "../../assets/images/gallery/placeholder.svg";
 import Form1 from "./components/AddtourForm";
@@ -46,16 +47,6 @@ const AddTour = () => {
         formdata.append("summary", values.summary);
         formdata.append("description", values.description);
 
-        formdata.append("startLocation", {
-            "description": values.LocationDescription,
-            "type": "Point",
-            "coordinates": [
-                values.longitude,
-                values.latitude
-            ],
-            "address": values.LocationAddress
-        });
-
         formdata.append("imageCover", !profileServer ? " " : profileServer);
         formdata.append("images", !profileServer1 ? " " : profileServer1);
         formdata.append("images", !profileServer2 ? " " : profileServer2);
@@ -69,7 +60,7 @@ const AddTour = () => {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:4000/api/v1/tours", requestOptions)
+        fetch("https://tourisms.herokuapp.com/api/v1/tours", requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result.status === 'success') {
@@ -201,7 +192,8 @@ const AddTour = () => {
                             </Col>
 
                             <Form1 />
-                            <Form2 />
+
+                            {/* <Form2 /> */}
 
                             <Row>
 

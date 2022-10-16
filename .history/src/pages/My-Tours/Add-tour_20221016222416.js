@@ -1,7 +1,8 @@
 import React, { useState, useRef } from "react";
 import { AvForm } from "availity-reactstrap-validation"
+import MetaTags from 'react-meta-tags';
 import { Container, Card, CardBody, Spinner, Row, Col, Button } from "reactstrap"
-import Image from "../../assets/images/gallery/placeholder.svg";
+import Image from "../../assets/images/users/user-9.jpg";
 import Form1 from "./components/AddtourForm";
 import Form2 from "./components/AddTourFrom2";
 import Layout from "../Layout"
@@ -34,27 +35,17 @@ const AddTour = () => {
         myHeaders.append("Authorization", `Bearer ${token}`);
         const formdata = new FormData();
 
-        formdata.append("startDates", values.startDate);
-        formdata.append("startDates", values.endDate);
+        formdata.append("startDates", values.startDates);
+        formdata.append("startDates", values.alternativeNumber);
 
-        formdata.append("name", values.tourName);
-        formdata.append("price", values.price);
-        formdata.append("duration", values.duration);
-        formdata.append("maxGroupSize", values.groupSize);
-        formdata.append("difficulty", values.type);
-        formdata.append("priceDiscount", values.priceDiscount);
-        formdata.append("summary", values.summary);
-        formdata.append("description", values.description);
-
-        formdata.append("startLocation", {
-            "description": values.LocationDescription,
-            "type": "Point",
-            "coordinates": [
-                values.longitude,
-                values.latitude
-            ],
-            "address": values.LocationAddress
-        });
+        formdata.append("name", values.gender);
+        formdata.append("price", values.zipCode);
+        formdata.append("duration", values.dateOfBirth);
+        formdata.append("maxGroupSize", values.streetAddress);
+        formdata.append("difficulty", values.country);
+        formdata.append("city", values.city);
+        formdata.append("summary", values.houseNumber);
+        formdata.append("description", values.stateProvince);
 
         formdata.append("imageCover", !profileServer ? " " : profileServer);
         formdata.append("images", !profileServer1 ? " " : profileServer1);
@@ -65,7 +56,7 @@ const AddTour = () => {
         const requestOptions = {
             method: 'POST',
             headers: myHeaders,
-            body: formdata,
+            body: raw,
             redirect: 'follow'
         };
 
@@ -73,20 +64,17 @@ const AddTour = () => {
             .then(response => response.json())
             .then(result => {
                 if (result.status === 'success') {
-                    successMessage("You have successfully created a tour!");
-                    setloadBtn(false)
+                    successMessage("You have successfully logged out!");
                     window.setTimeout(() => {
                         history.push("/admin-tour");
                     })
                 }
                 if (result.status === 'fail') {
-                    warningMessage(result.message);
-                    setloadBtn(false)
+                    warningMessage("Try again something went wrong");
                 }
             })
             .catch(error => {
                 warningMessage(`Something went wrong try again ${error.message}`);
-                setloadBtn(false)
             });
 
     }
@@ -189,7 +177,7 @@ const AddTour = () => {
                         <CardBody>
 
                             <Col md={12}>
-                                {/* <h4>Upload Image Cover</h4> */}
+                                <h4>Upload Image Cover</h4>
                                 <div className="d-flex justify-content-center align-items-center mt-3 mb-5">
                                     <img src={profile === undefined ? Image : profile} alt="user" width={900} height={350} className="rounded" />
                                     <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5"
@@ -201,7 +189,8 @@ const AddTour = () => {
                             </Col>
 
                             <Form1 />
-                            <Form2 />
+
+                            {/* <Form2 /> */}
 
                             <Row>
 
@@ -251,7 +240,7 @@ const AddTour = () => {
 
                             </Row>
                             <div className="text-center mt-5">
-                                <button className="btn text-white mt-4 w-50" type="submit" >
+                                <button className="btn text-white mt-4 w-50" type="submit" onClick={() => setSubmit(true)} >
                                     {!loadBtn ? <span className="me-2">Submit</span> : null}
                                     {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                                 </button>

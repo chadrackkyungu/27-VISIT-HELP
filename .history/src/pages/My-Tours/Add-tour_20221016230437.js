@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { AvForm } from "availity-reactstrap-validation"
+import MetaTags from 'react-meta-tags';
 import { Container, Card, CardBody, Spinner, Row, Col, Button } from "reactstrap"
 import Image from "../../assets/images/gallery/placeholder.svg";
 import Form1 from "./components/AddtourForm";
@@ -69,7 +70,7 @@ const AddTour = () => {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:4000/api/v1/tours", requestOptions)
+        fetch("https://tourisms.herokuapp.com/api/v1/tours", requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result.status === 'success') {

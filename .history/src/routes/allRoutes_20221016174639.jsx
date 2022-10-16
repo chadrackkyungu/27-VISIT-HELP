@@ -43,7 +43,6 @@ const userRoutes = [
 
   { path: "/my-tickets", exact: true, component: MyTickets },
   { path: "/add-tour", exact: true, component: AddTour },
-  { path: "/edit-tour/:id", exact: true, component: UpdateTour },
 
   { path: "*", exact: true, component: () => <Redirect to="/dashboard" /> },
 ]

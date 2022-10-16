@@ -25,8 +25,8 @@ function Form1() {
                             name="duration"
                             label="Duration"
                             className="form-control"
-                            placeholder="Enter Number of duration"
-                            type="number"
+                            placeholder="Enter your duration"
+                            type="text"
                             required
                         />
                     </div>

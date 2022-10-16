@@ -25,8 +25,8 @@ function Form1() {
                             name="duration"
                             label="Duration"
                             className="form-control"
-                            placeholder="Enter Number of duration"
-                            type="number"
+                            placeholder="Enter your duration"
+                            type="text"
                             required
                         />
                     </div>
@@ -98,31 +98,6 @@ function Form1() {
 
                 </Col>
 
-                <Col md={6}>
-                    <div className="mb-3">
-                        <AvField
-                            name="startDate"
-                            label="Start Date"
-                            className="form-control"
-                            placeholder="Enter tour name"
-                            type="date"
-                            required
-                        />
-                    </div>
-                </Col>
-
-                <Col md={6}>
-                    <div className="mb-3">
-                        <AvField
-                            name="endDate"
-                            label="End Date"
-                            className="form-control"
-                            type="date"
-                            required
-                        />
-                    </div>
-                </Col>
-
                 <Col md={12}>
                     <div className="mb-3">
                         <AvField
@@ -131,7 +106,6 @@ function Form1() {
                             className="form-control"
                             type="textarea"
                             required
-                            rows={8}
                         />
                     </div>
                 </Col>
