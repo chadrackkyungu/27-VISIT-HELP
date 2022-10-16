@@ -18,15 +18,19 @@ const UpdateTour = () => {
     const tourImages = "https://tourisms.herokuapp.com/img/images/";
     const { data, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
 
+
     const filterTour = data.filter(tour => {
         return tour.id === id
     })
+
+    console.log(filterTour)
+
 
     const history = useHistory()
     const userDet = useStore1Selector(userDetails);
     const token = userDet?.token
     const [loadBtn, setloadBtn] = useState();
-    const [profile, setProfile] = useState();
+    const [profile, setProfile] = useState(filterTour[0]?.imageCover);
     const [profile1, setProfile1] = useState();
     const [profile2, setProfile2] = useState();
     const [profile3, setProfile3] = useState();
@@ -37,9 +41,21 @@ const UpdateTour = () => {
     const [profileServer3, setProfileServer3] = useState();
     const [profileServer4, setProfileServer4] = useState();
 
+    if (!data) { return <Loading /> }
+
     const handleValidSubmit = (e, values) => {
         e.preventDefault();
         setloadBtn(true)
+
+        const locations = JSON.stringify({
+            "type": "Point",
+            "coordinates": [
+                values.longitude,
+                values.latitude
+            ],
+            "address": values.LocationAddress,
+            "description": values.LocationDescription
+        })
 
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`);
@@ -55,6 +71,7 @@ const UpdateTour = () => {
         formdata.append("priceDiscount", values.priceDiscount);
         formdata.append("summary", values.summary);
         formdata.append("description", values.description);
+        formdata.append("startLocation", locations);
         formdata.append("imageCover", !profileServer ? " " : profileServer);
         formdata.append("images", !profileServer1 ? " " : profileServer1);
         formdata.append("images", !profileServer2 ? " " : profileServer2);
@@ -62,19 +79,19 @@ const UpdateTour = () => {
         formdata.append("images", !profileServer4 ? " " : profileServer4);
 
         const requestOptions = {
-            method: 'PATCH',
+            method: 'POST',
             headers: myHeaders,
             body: formdata,
             redirect: 'follow'
         };
 
-        fetch(`https://tourisms.herokuapp.com/api/v1/tours/${id}`, requestOptions)
+        fetch("https://tourisms.herokuapp.com/api/v1/tours", requestOptions)
             .then(response => response.json())
             .then(result => {
+                console.log(result);
                 if (result.status === 'success') {
-                    successMessage("Successfully updated!");
+                    successMessage("You have successfully created a tour!");
                     setloadBtn(false)
-                    reFetch();
                     window.setTimeout(() => {
                         history.push("/admin-tour");
                     })
@@ -92,6 +109,7 @@ const UpdateTour = () => {
                 warningMessage(`Something went wrong try again ${error.message}`);
                 setloadBtn(false)
             });
+
     }
 
     const refFileUpload = useRef(null);
@@ -182,8 +200,6 @@ const UpdateTour = () => {
         }
     };
 
-
-    if (!data) { return <Loading /> }
 
     return (
         <Layout>

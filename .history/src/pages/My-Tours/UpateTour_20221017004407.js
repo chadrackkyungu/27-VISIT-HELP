@@ -26,7 +26,7 @@ const UpdateTour = () => {
     const userDet = useStore1Selector(userDetails);
     const token = userDet?.token
     const [loadBtn, setloadBtn] = useState();
-    const [profile, setProfile] = useState();
+    const [profile, setProfile] = useState(filterTour[0]?.imageCover);
     const [profile1, setProfile1] = useState();
     const [profile2, setProfile2] = useState();
     const [profile3, setProfile3] = useState();
@@ -71,6 +71,7 @@ const UpdateTour = () => {
         fetch(`https://tourisms.herokuapp.com/api/v1/tours/${id}`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                console.log(result);
                 if (result.status === 'success') {
                     successMessage("Successfully updated!");
                     setloadBtn(false)
@@ -92,6 +93,7 @@ const UpdateTour = () => {
                 warningMessage(`Something went wrong try again ${error.message}`);
                 setloadBtn(false)
             });
+
     }
 
     const refFileUpload = useRef(null);

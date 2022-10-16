@@ -45,6 +45,8 @@ const UpdateTour = () => {
         myHeaders.append("Authorization", `Bearer ${token}`);
         const formdata = new FormData();
 
+        console.log(values)
+
         formdata.append("startDates", values.startDate);
         formdata.append("startDates", values.endDate);
         formdata.append("name", values.tourName);
@@ -71,6 +73,7 @@ const UpdateTour = () => {
         fetch(`https://tourisms.herokuapp.com/api/v1/tours/${id}`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                console.log(result);
                 if (result.status === 'success') {
                     successMessage("Successfully updated!");
                     setloadBtn(false)
@@ -92,6 +95,7 @@ const UpdateTour = () => {
                 warningMessage(`Something went wrong try again ${error.message}`);
                 setloadBtn(false)
             });
+
     }
 
     const refFileUpload = useRef(null);

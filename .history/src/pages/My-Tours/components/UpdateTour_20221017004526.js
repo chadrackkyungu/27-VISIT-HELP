@@ -57,7 +57,7 @@ function Form1({ details }) {
                             label="TourType"
                             type="select"
                         >
-                            <option value={details[0]?.difficulty} selected={details[0]?.difficulty}> {details[0]?.difficulty} </option>
+                            <option> {details[0]?.difficulty}</option>
                             <option> easy </option>
                             <option> medium </option>
                             <option> difficulty </option>
@@ -114,7 +114,7 @@ function Form1({ details }) {
                             className="form-control"
                             placeholder="Enter tour name"
                             type="date"
-                        // value={new Date(details[0]?.startDates[0])}
+                            value={new Date(details[0]?.startDates[0])}
                         />
                     </div>
                 </Col>
@@ -126,7 +126,7 @@ function Form1({ details }) {
                             label="End Date"
                             className="form-control"
                             type="date"
-                        // value={new Date(details[0]?.startDates[1])}
+                            value={new Date(details[0]?.startDates[1])}
                         />
                     </div>
                 </Col>

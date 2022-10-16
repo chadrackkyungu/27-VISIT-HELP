@@ -5,7 +5,6 @@ import { Row, Col } from "reactstrap"
 function Form1({ details }) {
 
     console.log(details)
-
     return (
         <div>
             <Row>
@@ -18,7 +17,6 @@ function Form1({ details }) {
                             placeholder="Enter tour name"
                             type="text"
                             required
-                            value={details[0]?.name}
                         />
                     </div>
                 </Col>
@@ -32,7 +30,6 @@ function Form1({ details }) {
                             placeholder="Enter Number of duration"
                             type="number"
                             required
-                            value={details[0]?.duration}
                         />
                     </div>
                 </Col>
@@ -45,7 +42,6 @@ function Form1({ details }) {
                             className="form-control"
                             type="text"
                             required
-                            value={details[0]?.summary}
                         />
                     </div>
                 </Col>
@@ -56,8 +52,9 @@ function Form1({ details }) {
                             name="type"
                             label="TourType"
                             type="select"
+                            required
                         >
-                            <option value={details[0]?.difficulty} selected={details[0]?.difficulty}> {details[0]?.difficulty} </option>
+                            <option> Select... </option>
                             <option> easy </option>
                             <option> medium </option>
                             <option> difficulty </option>
@@ -73,7 +70,6 @@ function Form1({ details }) {
                             className="form-control"
                             type="number"
                             required
-                            value={details[0]?.maxGroupSize}
                         />
                     </div>
                 </Col>
@@ -87,7 +83,6 @@ function Form1({ details }) {
                                     className="form-control"
                                     type="number"
                                     required
-                                    value={details[0]?.price}
                                 />
                             </div>
                         </Col>
@@ -98,7 +93,6 @@ function Form1({ details }) {
                                     label="Price Discount"
                                     className="form-control"
                                     type="number"
-                                    value={details[0]?.priceDiscount}
                                 />
                             </div>
                         </Col>
@@ -114,7 +108,7 @@ function Form1({ details }) {
                             className="form-control"
                             placeholder="Enter tour name"
                             type="date"
-                        // value={new Date(details[0]?.startDates[0])}
+                            required
                         />
                     </div>
                 </Col>
@@ -126,7 +120,7 @@ function Form1({ details }) {
                             label="End Date"
                             className="form-control"
                             type="date"
-                        // value={new Date(details[0]?.startDates[1])}
+                            required
                         />
                     </div>
                 </Col>
@@ -140,7 +134,6 @@ function Form1({ details }) {
                             type="textarea"
                             required
                             rows={8}
-                            value={details[0]?.description}
                         />
                     </div>
                 </Col>

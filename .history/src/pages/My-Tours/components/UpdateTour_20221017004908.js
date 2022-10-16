@@ -57,7 +57,7 @@ function Form1({ details }) {
                             label="TourType"
                             type="select"
                         >
-                            <option value={details[0]?.difficulty} selected={details[0]?.difficulty}> {details[0]?.difficulty} </option>
+                            <option value={details[0]?.difficulty} selected> {details[0]?.difficulty} </option>
                             <option> easy </option>
                             <option> medium </option>
                             <option> difficulty </option>
