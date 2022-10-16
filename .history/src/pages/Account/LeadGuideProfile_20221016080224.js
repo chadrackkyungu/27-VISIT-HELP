@@ -1,6 +1,9 @@
-import React, { useState, useRef } from "react"
-import { Container, Card, CardBody, Button, Spinner } from "reactstrap"
+import PropTypes from 'prop-types'
+import MetaTags from 'react-meta-tags';
+import React, { useState, useEffect, useRef } from "react"
+import { Container, Card, CardBody, Button, Col, Row } from "reactstrap"
 import { AvForm } from "availity-reactstrap-validation"
+import Image from "../../assets/images/users/user-9.jpg";
 import Layout from '../Layout';
 import UpdateLeadProfile from './components/LeadguideProfile';
 import { userDetails, Login } from '../../Redux/Slices/userSlice'
@@ -19,50 +22,13 @@ const LeadGuideProfile = () => {
     const userDet = useStore1Selector(userDetails);
     const details = userDet?.data?.data;
     const photo = details?.photo
-    const token = userDet?.token
+
+    console.log(userDet)
 
     function handleValidSubmit(e, values) {
+        e.target.preventDefault();
         setloadBtn(true);
-
-        const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
-
-        const formdata = new FormData();
-        formdata.append("photo", !profileServer ? " " : profileServer);
-        formdata.append("phoneNumber", values.phoneNumber);
-        formdata.append("alternativeNumber", values.alternativeNumber);
-        formdata.append("city", values.city);
-        formdata.append("stateProvince", values.stateProvince);
-        formdata.append("zipCode", values.zipCode);
-        formdata.append("houseNumber", values.houseNumber);
-
-        const requestOptions = {
-            method: 'PATCH',
-            headers: myHeaders,
-            body: formdata,
-            redirect: 'follow'
-        };
-
-        fetch("http://localhost:4000/api/v1/users/updateMe", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                if (result.status === 'success') {
-                    dispatch(Login(""));
-                    successMessage("You have successfully update your account");
-                    setloadBtn(false);
-                    window.setTimeout(() => {
-                        history.push("/login");
-                    }, 2000)
-                }
-                if (result.status === 'fail') {
-                    warningMessage("Try again something went wrong");
-                    setloadBtn(false);
-                }
-            })
-            .catch(error => {
-                warningMessage(`Something went wrong try again ${error.message}`);
-                setloadBtn(false);
-            });
+        console.log(values);
 
     }
 
@@ -99,7 +65,7 @@ const LeadGuideProfile = () => {
                 <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
                     <Card>
                         <CardBody>
-                            <UpdateLeadProfile details={details} />
+                            <UpdateLeadProfile />
                         </CardBody>
                     </Card>
                     <div className="text-center">

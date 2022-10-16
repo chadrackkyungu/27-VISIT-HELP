@@ -1,6 +1,9 @@
-import React, { useState, useRef } from "react"
-import { Container, Card, CardBody, Button, Spinner } from "reactstrap"
+import PropTypes from 'prop-types'
+import MetaTags from 'react-meta-tags';
+import React, { useState, useEffect, useRef } from "react"
+import { Container, Card, CardBody, Button, Col, Row } from "reactstrap"
 import { AvForm } from "availity-reactstrap-validation"
+import Image from "../../assets/images/users/user-9.jpg";
 import Layout from '../Layout';
 import UpdateLeadProfile from './components/LeadguideProfile';
 import { userDetails, Login } from '../../Redux/Slices/userSlice'
@@ -22,6 +25,10 @@ const LeadGuideProfile = () => {
     const token = userDet?.token
 
     function handleValidSubmit(e, values) {
+        e.target.preventDefault();
+        setloadBtn(true);
+        console.log(values);
+
         setloadBtn(true);
 
         const myHeaders = new Headers();

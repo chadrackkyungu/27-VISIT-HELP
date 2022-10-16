@@ -1,19 +1,23 @@
 import React, { useState, useRef } from "react"
 import { Container, Card, CardBody, Button, Spinner } from "reactstrap"
 import { AvForm } from "availity-reactstrap-validation"
+import UpdateProfile from './components/UpdateProfile';
+import UpdatePasswordProfile from './components/UpdatePasswordProfile';
+import Image from "../../assets/images/users/user-9.jpg";
 import Layout from '../Layout';
-import UpdateLeadProfile from './components/LeadguideProfile';
+import UpdateAdminProfile from './components/UpdateAdminProfile';
 import { userDetails, Login } from '../../Redux/Slices/userSlice'
 import { useStore1Selector, useStore1Dispatch } from '../../index';
 import { successMessage, warningMessage } from "../../components/Toast"
 import { useHistory } from 'react-router-dom';
 
-const LeadGuideProfile = () => {
+const AdminProfile = () => {
 
     const dispatch = useStore1Dispatch();
     const history = useHistory()
     const userImg = "https://tourisms.herokuapp.com/img/users/";
-    const [loadBtn, setloadBtn] = useState();
+    const [loadBtn, setloadBtn] = useState(false);
+    const [loadBtn2, setloadBtn2] = useState(false);
     const [profile, setProfile] = useState();
     const [profileServer, setProfileServer] = useState();
     const userDet = useStore1Selector(userDetails);
@@ -30,11 +34,8 @@ const LeadGuideProfile = () => {
         const formdata = new FormData();
         formdata.append("photo", !profileServer ? " " : profileServer);
         formdata.append("phoneNumber", values.phoneNumber);
-        formdata.append("alternativeNumber", values.alternativeNumber);
-        formdata.append("city", values.city);
-        formdata.append("stateProvince", values.stateProvince);
-        formdata.append("zipCode", values.zipCode);
         formdata.append("houseNumber", values.houseNumber);
+        formdata.append("email", values.email);
 
         const requestOptions = {
             method: 'PATCH',
@@ -99,7 +100,7 @@ const LeadGuideProfile = () => {
                 <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
                     <Card>
                         <CardBody>
-                            <UpdateLeadProfile details={details} />
+                            <UpdateAdminProfile />
                         </CardBody>
                     </Card>
                     <div className="text-center">
@@ -109,9 +110,23 @@ const LeadGuideProfile = () => {
                         </button>
                     </div>
                 </AvForm>
+
+                <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit2(e, v) }}>
+                    <Card>
+                        <CardBody>
+                            <UpdatePasswordProfile />
+                        </CardBody>
+                    </Card>
+                    <div className="text-center">
+                        <button className="btn btn-registration-clr w-md waves-effect waves-light mb-4" type="submit" onClick={() => setSubmit(true)} >
+                            {!loadBtn2 ? <span className="me-2">Update</span> : null}
+                            {!loadBtn2 ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
+                        </button>
+                    </div>
+                </AvForm>
             </Container>
         </Layout>
     )
 }
 
-export default LeadGuideProfile
+export default AdminProfile
