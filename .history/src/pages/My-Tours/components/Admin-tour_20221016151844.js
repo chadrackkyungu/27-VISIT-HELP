@@ -1,57 +1,35 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row, Card, CardBody } from "reactstrap"
-import { Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
+import tour1 from "../../../assets/images/gallery/tour-1.svg"
 import useFetch from "../../../hooks/useFecth";
 import Loading from '../../../components/Loading';
-import { userDetails } from '../../../Redux/Slices/userSlice'
-import { useStore1Selector } from '../../../index';
-import { successMessage, warningMessage } from "../../../components/Toast"
 
 function AdminTour() {
 
     const [smExample, setSmExample] = useState(false);
-    const [tourID, setTourId] = useState();
-    const userDet = useStore1Selector(userDetails);
-    const token = userDet?.token
+    const [filteredTour, setFilteredTour] = useState();
     const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
-    const { data, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
+    const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
 
     if (!data) { return <Loading /> }
 
-    const DeleteTour = (Id) => {
-        setTourId(Id)
+    const DeleteTour = (tourId) => {
+        setFilteredTour(tourId)
         setSmExample(true)
     }
+    const filterTourArr = data.filter(tour => {
+        return (
+            tour.id === filteredTour
+        )
+    })
+
+    console.log(filterTourArr);
 
     const deleteFunc = () => {
-        const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
-
-        const requestOptions = {
-            method: 'DELETE',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-
-        fetch(`https://tourisms.herokuapp.com/api/v1/tours/${tourID}`, requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                // if (result.status === 'success') {
-                //     successMessage("Successfully deleted!");
-                //     setSmExample(false)
-                // }
-                if (result.status === 'fail') {
-                    warningMessage(result.message);
-                    setSmExample(false)
-                }
-            })
-            .catch(error => {
-                successMessage(`Successful deleted !`);
-                setSmExample(false)
-                reFetch();
-            });
+        alert("successfully deleted the tour")
     }
 
     return (
@@ -83,16 +61,18 @@ function AdminTour() {
                 }
             </Row>
 
+
             <Modal show={smExample} onHide={() => setSmExample(false)} size="md">
                 <Modal.Header closeButton>
                     <h4 className="text-danger"> Are you sure you want delete ? </h4>
                 </Modal.Header>
 
                 <Modal.Footer className="d-flex justify-content-around">
-                    <button className="btn text-white" onClick={() => setSmExample(false)}> No </button>
-                    <button className="btn text-white" onClick={deleteFunc}>Yes</button>
+                    <button className="btn btn-primary" onClick={() => setSmExample(false)}> No </button>
+                    <button className="btn btn-primary" onClick={deleteFunc}>Yes</button>
                 </Modal.Footer>
             </Modal>
+
 
         </div>
     )

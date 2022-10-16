@@ -25,6 +25,8 @@ function AdminTour() {
         setSmExample(true)
     }
 
+    console.log(tourID)
+
     const deleteFunc = () => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`);
@@ -45,6 +47,7 @@ function AdminTour() {
                 if (result.status === 'fail') {
                     warningMessage(result.message);
                     setSmExample(false)
+                    reFetch();
                 }
             })
             .catch(error => {
@@ -83,6 +86,7 @@ function AdminTour() {
                 }
             </Row>
 
+
             <Modal show={smExample} onHide={() => setSmExample(false)} size="md">
                 <Modal.Header closeButton>
                     <h4 className="text-danger"> Are you sure you want delete ? </h4>
@@ -93,6 +97,7 @@ function AdminTour() {
                     <button className="btn text-white" onClick={deleteFunc}>Yes</button>
                 </Modal.Footer>
             </Modal>
+
 
         </div>
     )

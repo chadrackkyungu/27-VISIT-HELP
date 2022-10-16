@@ -101,6 +101,7 @@ h3 {
 }
 
 .lead-guide-tour-card {
+    width: 40% !important;
     border-radius: 15px !important;
 }
 
@@ -110,9 +111,4 @@ h3 {
 
 .lead-guide-img-container img {
     width: 100%;
-    margin-bottom: 2em;
-}
-
-.tour-img-container img {
-    border-radius: 15px;
 }

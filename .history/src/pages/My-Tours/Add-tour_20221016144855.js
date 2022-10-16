@@ -5,7 +5,6 @@ import { Container, Card, CardBody, Spinner } from "reactstrap"
 import Form1 from "./components/AddtourForm";
 import Form2 from "./components/AddTourFrom2";
 import Layout from "../Layout"
-import { Link } from "react-router-dom";
 
 const AddTour = () => {
 
@@ -22,7 +21,7 @@ const AddTour = () => {
     return (
         <Layout>
             <Container fluid>
-                <Link to="/admin-tour" className="btn text-white mb-3"> Back</Link>
+                <Link> Back</Link>
                 <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
                     <Card>
                         <CardBody>

@@ -9,7 +9,7 @@ const LeadGuideTours = () => {
     return (
         <React.Fragment>
 
-            <Row >
+            <Row className='mt-5'>
                 <Col md={4}>
                     <h4> Upcoming </h4>
                     <Card className='lead-guide-tour-card'>

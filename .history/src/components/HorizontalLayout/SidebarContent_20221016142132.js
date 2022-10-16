@@ -162,12 +162,12 @@ const SidebarContent = props => {
                                         </Link>
                                     </li>
 
-                                    {/* <li>
+                                    <li>
                                         <Link to="/add-tour" className=" waves-effect">
                                             <i className="ti-plus"></i>
                                             <span>{props.t("Add a new tour")}</span>
                                         </Link>
-                                    </li> */}
+                                    </li>
                                 </>
                             ) : null
                         }

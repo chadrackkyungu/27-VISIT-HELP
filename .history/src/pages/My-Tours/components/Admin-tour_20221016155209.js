@@ -16,12 +16,12 @@ function AdminTour() {
     const userDet = useStore1Selector(userDetails);
     const token = userDet?.token
     const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
-    const { data, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
+    const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
 
     if (!data) { return <Loading /> }
 
-    const DeleteTour = (Id) => {
-        setTourId(Id)
+    const DeleteTour = (tourId) => {
+        setTourId(tourId)
         setSmExample(true)
     }
 
@@ -38,19 +38,19 @@ function AdminTour() {
         fetch(`https://tourisms.herokuapp.com/api/v1/tours/${tourID}`, requestOptions)
             .then(response => response.json())
             .then(result => {
-                // if (result.status === 'success') {
-                //     successMessage("Successfully deleted!");
-                //     setSmExample(false)
-                // }
+                console.log(result);
+                if (result.status === 'success') {
+                    successMessage("Successfully deleted!");
+                    setSmExample(false)
+                }
                 if (result.status === 'fail') {
                     warningMessage(result.message);
                     setSmExample(false)
                 }
             })
             .catch(error => {
-                successMessage(`Successful deleted !`);
+                warningMessage(`Something went wrong try again ${error.message}`);
                 setSmExample(false)
-                reFetch();
             });
     }
 
@@ -83,6 +83,7 @@ function AdminTour() {
                 }
             </Row>
 
+
             <Modal show={smExample} onHide={() => setSmExample(false)} size="md">
                 <Modal.Header closeButton>
                     <h4 className="text-danger"> Are you sure you want delete ? </h4>
@@ -93,6 +94,7 @@ function AdminTour() {
                     <button className="btn text-white" onClick={deleteFunc}>Yes</button>
                 </Modal.Footer>
             </Modal>
+
 
         </div>
     )

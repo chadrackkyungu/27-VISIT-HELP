@@ -22,7 +22,7 @@ const AddTour = () => {
     return (
         <Layout>
             <Container fluid>
-                <Link to="/admin-tour" className="btn text-white mb-3"> Back</Link>
+                <Link to="/" className="btn text-white"> Back</Link>
                 <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
                     <Card>
                         <CardBody>

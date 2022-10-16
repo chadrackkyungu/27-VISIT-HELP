@@ -91,7 +91,6 @@ const SidebarContent = props => {
             <SimpleBar style={{ maxHeight: "100%" }} ref={ref}>
                 <div id="sidebar-menu">
                     <ul className="metismenu list-unstyled mt-5" id="side-menu">
-
                         {
                             userRole === "user" ? (<>
                                 <li className="menu-title">{props.t("User Account")} </li>
@@ -162,12 +161,12 @@ const SidebarContent = props => {
                                         </Link>
                                     </li>
 
-                                    {/* <li>
+                                    <li>
                                         <Link to="/add-tour" className=" waves-effect">
                                             <i className="ti-plus"></i>
                                             <span>{props.t("Add a new tour")}</span>
                                         </Link>
-                                    </li> */}
+                                    </li>
                                 </>
                             ) : null
                         }

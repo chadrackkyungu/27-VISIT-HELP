@@ -9,16 +9,17 @@ const LeadGuideTours = () => {
     return (
         <React.Fragment>
 
-            <Row >
-                <Col md={4}>
+            <Row className='mt-5'>
+                <Col md={3}>
                     <h4> Upcoming </h4>
-                    <Card className='lead-guide-tour-card'>
+                    <Card className='tour-card'>
                         <CardBody>
                             <div className="lead-guide-img-container">
                                 <img src={tour1} alt="" />
                             </div>
                             <div className="d-flex justify-content-between">
                                 <h4>Park virunga</h4>
+                                <h5>R 250</h5>
                             </div>
                             <div className="d-flex justify-content-between align-items-center">
                                 <Link to="/tour-details/1" className='btn btn-success'>View details</Link>
@@ -29,15 +30,16 @@ const LeadGuideTours = () => {
             </Row>
 
             <Row className='mt-5'>
-                <Col md={4}>
+                <Col md={3}>
                     <h4 className="text-danger"> Completed </h4>
-                    <Card className='lead-guide-tour-card'>
+                    <Card className='tour-card'>
                         <CardBody>
                             <div className="lead-guide-img-container">
                                 <img src={tour1} alt="" />
                             </div>
                             <div className="d-flex justify-content-between">
                                 <h4>Park virunga</h4>
+                                <h5>R 250</h5>
                             </div>
                             <div className="d-flex justify-content-between align-items-center">
                                 <Link to="/tour-details/1" className='btn btn-success'>View details</Link>

@@ -92,9 +92,10 @@ const SidebarContent = props => {
                 <div id="sidebar-menu">
                     <ul className="metismenu list-unstyled mt-5" id="side-menu">
 
+
                         {
                             userRole === "user" ? (<>
-                                <li className="menu-title">{props.t("User Account")} </li>
+                                <li className="menu-title">{props.t("Account")} </li>
                                 <li>
                                     <Link to="/profile" className="waves-effect">
                                         <i className="ti-user"></i>
@@ -114,7 +115,6 @@ const SidebarContent = props => {
                         {
                             userRole === "lead-guide" ? (
                                 <>
-                                    <li className="menu-title">{props.t("Lead Guide Account")} </li>
                                     <li>
                                         <Link to="/lead-guide-profile" className="waves-effect">
                                             <i className="ti-user"></i>
@@ -135,7 +135,6 @@ const SidebarContent = props => {
                         {
                             userRole === "admin" ? (
                                 <>
-                                    <li className="menu-title">{props.t("Admin Account")} </li>
                                     <li>
                                         <Link to="/admin-profile" className="waves-effect">
                                             <i className="ti-user"></i>
@@ -162,18 +161,19 @@ const SidebarContent = props => {
                                         </Link>
                                     </li>
 
-                                    {/* <li>
+                                    <li>
                                         <Link to="/add-tour" className=" waves-effect">
                                             <i className="ti-plus"></i>
                                             <span>{props.t("Add a new tour")}</span>
                                         </Link>
-                                    </li> */}
+                                    </li>
                                 </>
                             ) : null
                         }
 
-                        {/* 
-                        <li>
+
+
+                        {/* <li>
                             <Link to="/#" className="has-arrow waves-effect">
                                 <i className="ti-package"></i>
                                 <span>{props.t("UI Elements")}</span>
@@ -189,8 +189,8 @@ const SidebarContent = props => {
                                     <Link to="/ui-cards">{props.t("Cards")}</Link>
                                 </li>
                             </ul>
-                        </li> 
-                        */}
+                        </li> */}
+
 
                     </ul>
                 </div>
