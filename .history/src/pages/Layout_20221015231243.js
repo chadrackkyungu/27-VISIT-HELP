@@ -6,7 +6,6 @@ import "./Styles.scss"
 import SidebarContent from 'components/HorizontalLayout/SidebarContent';
 import { useStore1Selector } from '../index';
 import { userDetails } from '../Redux/Slices/userSlice'
-import { Link } from 'react-router-dom';
 
 function Layout(props) {
 
@@ -19,7 +18,7 @@ function Layout(props) {
                 <Container fluid>
                     <Card className="overflow-hidden mt-5">
                         <CardBody className="p-4">
-                            <h5> To view this content you need to login  <Link to="/login">Login</Link> </h5>
+                            <h5> Please login </h5>
                         </CardBody>
                     </Card>
                 </Container>

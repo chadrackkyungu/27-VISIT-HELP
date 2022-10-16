@@ -93,7 +93,6 @@ const SidebarContent = props => {
                 <div id="sidebar-menu">
                     <ul className="metismenu list-unstyled mt-5" id="side-menu">
                         <li className="menu-title">{props.t("Account")} </li>
-
                         {
                             userRole === "user" ? (<>
                                 <li>
@@ -104,7 +103,7 @@ const SidebarContent = props => {
                                 </li>
                                 <li>
                                     <Link to="/my-bookings" className="waves-effect">
-                                        <i className="ti-ticket"></i>
+                                        <i className="ti-user"></i>
                                         <span>{props.t("My Bookings")}</span>
                                     </Link>
                                 </li>
@@ -139,33 +138,34 @@ const SidebarContent = props => {
                                     <li>
                                         <Link to="/admin-profile" className="waves-effect">
                                             <i className="ti-user"></i>
-                                            <span>{props.t("My Profile")}</span>
+                                            <span>{props.t("Admin profile")}</span>
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="/my-tickets" className=" waves-effect">
-                                            <i className="ti-ticket"></i>
-                                            <span>{props.t("My tickets")}</span>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/admin-tour" className=" waves-effect">
-                                            <i className="ti-reload"></i>
-                                            <span>{props.t("My tours")}</span>
+                                        <Link to="/my-lead-guide" className=" waves-effect">
+                                            <i className="ti-calendar"></i>
+                                            <span>{props.t("My lead guide")}</span>
                                         </Link>
                                     </li>
 
                                     <li>
-                                        <Link to="/my-lead-guide" className=" waves-effect">
-                                            <i className="ti-plus"></i>
-                                            <span>{props.t("Add a lead guide")}</span>
+                                        <Link to="/admin-tour" className=" waves-effect">
+                                            <i className="ti-calendar"></i>
+                                            <span>{props.t("Amin tour")}</span>
+                                        </Link>
+                                    </li>
+
+                                    <li>
+                                        <Link to="/my-tickets" className=" waves-effect">
+                                            <i className="ti-calendar"></i>
+                                            <span>{props.t("My tickets")}</span>
                                         </Link>
                                     </li>
 
                                     <li>
                                         <Link to="/add-tour" className=" waves-effect">
-                                            <i className="ti-plus"></i>
-                                            <span>{props.t("Add a new tour")}</span>
+                                            <i className="ti-calendar"></i>
+                                            <span>{props.t("Add tour")}</span>
                                         </Link>
                                     </li>
                                 </>

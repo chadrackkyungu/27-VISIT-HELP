@@ -5,15 +5,14 @@ import MetisMenu from "metismenujs"
 import { withRouter } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { withTranslation } from "react-i18next"
-import { useStore1Selector } from '../../index';
-import { userDetails } from '../../Redux/Slices/userSlice'
+import { useStore1Selector } from '../index';
+import { userDetails } from '../Redux/Slices/userSlice'
 
 const SidebarContent = props => {
     const ref = useRef()
 
     const userDet = useStore1Selector(userDetails);
-    const userRole = userDet.data.data.role;
-    console.log(userRole);
+    console.log(userDet);
 
     useEffect(() => {
         const pathName = props.location.pathname
@@ -93,85 +92,65 @@ const SidebarContent = props => {
                 <div id="sidebar-menu">
                     <ul className="metismenu list-unstyled mt-5" id="side-menu">
                         <li className="menu-title">{props.t("Account")} </li>
+                        <li>
+                            <Link to="/profile" className="waves-effect">
+                                <i className="ti-user"></i>
+                                <span>{props.t("My profile")}</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/my-bookings" className="waves-effect">
+                                <i className="ti-user"></i>
+                                <span>{props.t("My bookings")}</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/lead-guide-profile" className="waves-effect">
+                                <i className="ti-user"></i>
+                                <span>{props.t("Lead guide profile")}</span>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/admin-profile" className="waves-effect">
+                                <i className="ti-user"></i>
+                                <span>{props.t("Admin profile")}</span>
+                            </Link>
+                        </li>
 
-                        {
-                            userRole === "user" ? (<>
-                                <li>
-                                    <Link to="/profile" className="waves-effect">
-                                        <i className="ti-user"></i>
-                                        <span>{props.t("My Profile")}</span>
-                                    </Link>
-                                </li>
-                                <li>
-                                    <Link to="/my-bookings" className="waves-effect">
-                                        <i className="ti-ticket"></i>
-                                        <span>{props.t("My Bookings")}</span>
-                                    </Link>
-                                </li>
-                            </>
-                            ) : null
-                        }
+                        <li>
+                            <Link to="/lead-guide-tours" className=" waves-effect">
+                                <i className="ti-calendar"></i>
+                                <span>{props.t("Lead guide tour")}</span>
+                            </Link>
+                        </li>
 
-                        {
-                            userRole === "lead-guide" ? (
-                                <>
-                                    <li>
-                                        <Link to="/lead-guide-profile" className="waves-effect">
-                                            <i className="ti-user"></i>
-                                            <span>{props.t("Lead guide profile")}</span>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/lead-guide-tours" className=" waves-effect">
-                                            <i className="ti-calendar"></i>
-                                            <span>{props.t("Lead guide tour")}</span>
-                                        </Link>
-                                    </li>
+                        <li>
+                            <Link to="/my-lead-guide" className=" waves-effect">
+                                <i className="ti-calendar"></i>
+                                <span>{props.t("My lead guide")}</span>
+                            </Link>
+                        </li>
 
-                                </>
-                            ) : null
-                        }
+                        <li>
+                            <Link to="/admin-tour" className=" waves-effect">
+                                <i className="ti-calendar"></i>
+                                <span>{props.t("Amin tour")}</span>
+                            </Link>
+                        </li>
 
+                        <li>
+                            <Link to="/my-tickets" className=" waves-effect">
+                                <i className="ti-calendar"></i>
+                                <span>{props.t("My tickets")}</span>
+                            </Link>
+                        </li>
 
-                        {
-                            userRole === "admin" ? (
-                                <>
-                                    <li>
-                                        <Link to="/admin-profile" className="waves-effect">
-                                            <i className="ti-user"></i>
-                                            <span>{props.t("My Profile")}</span>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/my-tickets" className=" waves-effect">
-                                            <i className="ti-ticket"></i>
-                                            <span>{props.t("My tickets")}</span>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/admin-tour" className=" waves-effect">
-                                            <i className="ti-reload"></i>
-                                            <span>{props.t("My tours")}</span>
-                                        </Link>
-                                    </li>
-
-                                    <li>
-                                        <Link to="/my-lead-guide" className=" waves-effect">
-                                            <i className="ti-plus"></i>
-                                            <span>{props.t("Add a lead guide")}</span>
-                                        </Link>
-                                    </li>
-
-                                    <li>
-                                        <Link to="/add-tour" className=" waves-effect">
-                                            <i className="ti-plus"></i>
-                                            <span>{props.t("Add a new tour")}</span>
-                                        </Link>
-                                    </li>
-                                </>
-                            ) : null
-                        }
-
+                        <li>
+                            <Link to="/add-tour" className=" waves-effect">
+                                <i className="ti-calendar"></i>
+                                <span>{props.t("Add tour")}</span>
+                            </Link>
+                        </li>
 
 
                         {/* <li>

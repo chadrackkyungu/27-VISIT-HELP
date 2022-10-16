@@ -13,6 +13,8 @@ function Layout(props) {
     const userDet = useStore1Selector(userDetails);
     const checkLogin = userDet?.token
 
+    console.log(userDet)
+
     if (!checkLogin) {
         return (
             <div className="page-content">

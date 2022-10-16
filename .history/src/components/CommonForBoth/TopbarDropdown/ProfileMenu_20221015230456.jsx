@@ -13,7 +13,6 @@ const ProfileMenu = () => {
   const [menu, setMenu] = useState(false);
   const userDet = useStore1Selector(userDetails);
   const dispatch = useStore1Dispatch();
-
   const userImg = "https://tourisms.herokuapp.com/img/users/";
   const pic = userDet?.data?.data?.photo;
   const token = userDet?.token
@@ -21,7 +20,6 @@ const ProfileMenu = () => {
   const LogoutHandler = () => {
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
-
     const raw = "";
     const requestOptions = {
       method: 'POST',
@@ -36,6 +34,7 @@ const ProfileMenu = () => {
         if (result.status === 'success') {
           dispatch(Login(""));
           successMessage("You have successfully logged out!");
+          // location.reload();
           window.setTimeout(() => {
             history.push("/login");
           })
