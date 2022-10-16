@@ -3,6 +3,8 @@ import { AvField } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
 function UpdateProfile({ details }) {
+
+    console.log(details)
     return (
         <div>
             <Row>
@@ -14,7 +16,6 @@ function UpdateProfile({ details }) {
                             type="number"
                             placeholder="Enter your phone number"
                             required
-                            value={details.phoneNumber}
                         />
                     </div>
                 </Col>
@@ -26,7 +27,6 @@ function UpdateProfile({ details }) {
                             type="number"
                             placeholder="Enter your phone number"
                             required
-                            value={details.alternativeNumber}
                         />
                     </div>
                 </Col>
@@ -38,7 +38,6 @@ function UpdateProfile({ details }) {
                             type="text"
                             required
                             placeholder="Enter your city"
-                            value={details.city}
                         />
                     </div>
                 </Col>
@@ -53,7 +52,6 @@ function UpdateProfile({ details }) {
                             type="text"
                             required
                             placeholder="Enter state or province"
-                            value={details.stateProvince}
                         />
                     </div>
                 </Col>
@@ -65,7 +63,6 @@ function UpdateProfile({ details }) {
                             type="text"
                             required
                             placeholder="Enter your zip code"
-                            value={details.zipCode}
                         />
                     </div>
                 </Col>
@@ -77,7 +74,6 @@ function UpdateProfile({ details }) {
                             type="text"
                             required
                             placeholder="Enter your house number"
-                            value={details.houseNumber}
                         />
                     </div>
                 </Col>
@@ -93,7 +89,6 @@ function UpdateProfile({ details }) {
                             placeholder="Enter your email address"
                             type="email"
                             required
-                            value={details.email}
                         />
                     </div>
                 </Col>

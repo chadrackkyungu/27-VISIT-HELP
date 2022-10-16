@@ -3,6 +3,9 @@ import { AvField } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
 function UpdateProfile({ details }) {
+
+    console.log(details)
+
     return (
         <div>
             <Row>
@@ -14,7 +17,7 @@ function UpdateProfile({ details }) {
                             type="number"
                             placeholder="Enter your phone number"
                             required
-                            value={details.phoneNumber}
+                            value={details.firstName}
                         />
                     </div>
                 </Col>
@@ -26,7 +29,7 @@ function UpdateProfile({ details }) {
                             type="number"
                             placeholder="Enter your phone number"
                             required
-                            value={details.alternativeNumber}
+                            value={details.lastName}
                         />
                     </div>
                 </Col>

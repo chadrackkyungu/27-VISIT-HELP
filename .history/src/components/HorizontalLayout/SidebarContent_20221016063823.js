@@ -13,6 +13,7 @@ const SidebarContent = props => {
 
     const userDet = useStore1Selector(userDetails);
     const userRole = userDet.data.data.role;
+    console.log(userRole);
 
     useEffect(() => {
         const pathName = props.location.pathname

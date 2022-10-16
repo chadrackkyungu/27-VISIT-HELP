@@ -57,7 +57,7 @@ const UserProfile = () => {
           setloadBtn(false);
           window.setTimeout(() => {
             history.push("/login");
-          }, 2000)
+          }, 1000)
         }
         if (result.status === 'fail') {
           warningMessage("Try again something went wrong");

@@ -5,14 +5,13 @@ import { AvForm } from "availity-reactstrap-validation"
 import UpdateProfile from './components/UpdateProfile';
 import UpdatePasswordProfile from './components/UpdatePasswordProfile';
 import Layout from '../Layout';
-import { userDetails, Login } from '../../Redux/Slices/userSlice'
-import { useStore1Selector, useStore1Dispatch } from '../../index';
+import { userDetails } from '../../Redux/Slices/userSlice'
+import { useStore1Selector } from '../../index';
 import { successMessage, warningMessage } from "../../components/Toast"
 import { useHistory } from 'react-router-dom';
 
 const UserProfile = () => {
 
-  const dispatch = useStore1Dispatch();
   const history = useHistory()
   const userImg = "https://tourisms.herokuapp.com/img/users/";
   const [loadBtn, setloadBtn] = useState(false);
@@ -26,6 +25,7 @@ const UserProfile = () => {
 
   //* UPDATE MY PROFILE
   function handleValidSubmit(e, values) {
+    e.preventDefault();
     setloadBtn(true);
 
     const myHeaders = new Headers();
@@ -52,7 +52,6 @@ const UserProfile = () => {
       .then(response => response.json())
       .then(result => {
         if (result.status === 'success') {
-          dispatch(Login(""));
           successMessage("You have successfully update your account");
           setloadBtn(false);
           window.setTimeout(() => {
@@ -73,11 +72,14 @@ const UserProfile = () => {
 
   //* UPDATE MY PASSWORD
   function handleValidSubmit2(e, values) {
+    e.preventDefault();
     setloadBtn2(true);
 
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
     myHeaders.append("Content-Type", "application/json");
+
+    console.log(values)
 
     const raw = JSON.stringify({
       "passwordCurrent": values.passwordCurrent,
@@ -93,18 +95,17 @@ const UserProfile = () => {
     };
 
     fetch("https://tourisms.herokuapp.com/api/v1/users/updateMyPassword", requestOptions)
-      .then(response => response.json())
+      .then(response => response.text())
       .then(result => {
         if (result.status === 'success') {
-          dispatch(Login(""));
           successMessage("You have successfully updated your password");
           setloadBtn2(false);
           window.setTimeout(() => {
             history.push("/login");
-          }, 1000)
+          }, 2000)
         }
         if (result.status === 'fail') {
-          warningMessage(result.message);
+          warningMessage("Try again something went wrong");
           setloadBtn2(false);
         }
       })
@@ -139,7 +140,7 @@ const UserProfile = () => {
     <Layout>
       <Container fluid>
         <div className="d-flex justify-content-center align-items-center mb-4">
-          <img src={!profile ? `${userImg}${photo}` : profile} alt="user" width={100} height={100} className="rounded" />
+          <img src={profile === undefined ? `${userImg}${photo}` : profile} alt="user" width={100} height={100} className="rounded" />
           <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5" onClick={onThumbChangeClick}
           > <i className="ion ion-md-image"></i>
           </Button>

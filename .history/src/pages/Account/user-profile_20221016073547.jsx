@@ -26,6 +26,7 @@ const UserProfile = () => {
 
   //* UPDATE MY PROFILE
   function handleValidSubmit(e, values) {
+    e.preventDefault();
     setloadBtn(true);
 
     const myHeaders = new Headers();
@@ -73,6 +74,7 @@ const UserProfile = () => {
 
   //* UPDATE MY PASSWORD
   function handleValidSubmit2(e, values) {
+    e.preventDefault();
     setloadBtn2(true);
 
     const myHeaders = new Headers();
@@ -101,7 +103,7 @@ const UserProfile = () => {
           setloadBtn2(false);
           window.setTimeout(() => {
             history.push("/login");
-          }, 1000)
+          }, 2000)
         }
         if (result.status === 'fail') {
           warningMessage(result.message);

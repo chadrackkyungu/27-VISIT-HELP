@@ -14,7 +14,7 @@ const UserProfile = () => {
 
   const dispatch = useStore1Dispatch();
   const history = useHistory()
-  const userImg = "https://tourisms.herokuapp.com/img/users/";
+  const userImg = "http://localhost:4000/img/users/";
   const [loadBtn, setloadBtn] = useState(false);
   const [loadBtn2, setloadBtn2] = useState(false);
   const [profile, setProfile] = useState();
@@ -26,6 +26,7 @@ const UserProfile = () => {
 
   //* UPDATE MY PROFILE
   function handleValidSubmit(e, values) {
+    e.preventDefault();
     setloadBtn(true);
 
     const myHeaders = new Headers();
@@ -73,6 +74,7 @@ const UserProfile = () => {
 
   //* UPDATE MY PASSWORD
   function handleValidSubmit2(e, values) {
+    e.preventDefault();
     setloadBtn2(true);
 
     const myHeaders = new Headers();
@@ -101,7 +103,7 @@ const UserProfile = () => {
           setloadBtn2(false);
           window.setTimeout(() => {
             history.push("/login");
-          }, 1000)
+          }, 2000)
         }
         if (result.status === 'fail') {
           warningMessage(result.message);
@@ -139,7 +141,7 @@ const UserProfile = () => {
     <Layout>
       <Container fluid>
         <div className="d-flex justify-content-center align-items-center mb-4">
-          <img src={!profile ? `${userImg}${photo}` : profile} alt="user" width={100} height={100} className="rounded" />
+          <img src={profile === undefined ? `${userImg}${photo}` : profile} alt="user" width={100} height={100} className="rounded" />
           <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5" onClick={onThumbChangeClick}
           > <i className="ion ion-md-image"></i>
           </Button>

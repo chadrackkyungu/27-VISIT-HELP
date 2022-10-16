@@ -5,18 +5,14 @@ import { AvForm } from "availity-reactstrap-validation"
 import UpdateProfile from './components/UpdateProfile';
 import UpdatePasswordProfile from './components/UpdatePasswordProfile';
 import Layout from '../Layout';
-import { userDetails, Login } from '../../Redux/Slices/userSlice'
-import { useStore1Selector, useStore1Dispatch } from '../../index';
+import { userDetails } from '../../Redux/Slices/userSlice'
+import { useStore1Selector } from '../../index';
 import { successMessage, warningMessage } from "../../components/Toast"
-import { useHistory } from 'react-router-dom';
 
 const UserProfile = () => {
 
-  const dispatch = useStore1Dispatch();
-  const history = useHistory()
   const userImg = "https://tourisms.herokuapp.com/img/users/";
   const [loadBtn, setloadBtn] = useState(false);
-  const [loadBtn2, setloadBtn2] = useState(false);
   const [profile, setProfile] = useState();
   const [profileServer, setProfileServer] = useState();
   const userDet = useStore1Selector(userDetails);
@@ -24,9 +20,11 @@ const UserProfile = () => {
   const photo = details?.photo
   const token = userDet?.token
 
-  //* UPDATE MY PROFILE
   function handleValidSubmit(e, values) {
+    e.preventDefault();
     setloadBtn(true);
+
+    console.log(values)
 
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer ${token}`);
@@ -51,8 +49,8 @@ const UserProfile = () => {
     fetch("http://localhost:4000/api/v1/users/updateMe", requestOptions)
       .then(response => response.json())
       .then(result => {
+        console.log(result)
         if (result.status === 'success') {
-          dispatch(Login(""));
           successMessage("You have successfully update your account");
           setloadBtn(false);
           window.setTimeout(() => {
@@ -68,54 +66,9 @@ const UserProfile = () => {
         warningMessage(`Something went wrong try again ${error.message}`);
         setloadBtn(false);
       });
+
   }
 
-
-  //* UPDATE MY PASSWORD
-  function handleValidSubmit2(e, values) {
-    setloadBtn2(true);
-
-    const myHeaders = new Headers();
-    myHeaders.append("Authorization", `Bearer ${token}`);
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({
-      "passwordCurrent": values.passwordCurrent,
-      "password": values.password,
-      "passwordConfirm": values.passwordConfirm
-    });
-
-    const requestOptions = {
-      method: 'PATCH',
-      headers: myHeaders,
-      body: raw,
-      redirect: 'follow'
-    };
-
-    fetch("https://tourisms.herokuapp.com/api/v1/users/updateMyPassword", requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        if (result.status === 'success') {
-          dispatch(Login(""));
-          successMessage("You have successfully updated your password");
-          setloadBtn2(false);
-          window.setTimeout(() => {
-            history.push("/login");
-          }, 1000)
-        }
-        if (result.status === 'fail') {
-          warningMessage(result.message);
-          setloadBtn2(false);
-        }
-      })
-      .catch(error => {
-        warningMessage(`Something went wrong try again ${error.message}`);
-        setloadBtn2(false);
-      });
-  }
-
-
-  //* UPLOAD IMAGE
   const refFileUpload = useRef(null);
   const onThumbChangeClick = () => {
     if (refFileUpload) {
@@ -139,7 +92,7 @@ const UserProfile = () => {
     <Layout>
       <Container fluid>
         <div className="d-flex justify-content-center align-items-center mb-4">
-          <img src={!profile ? `${userImg}${photo}` : profile} alt="user" width={100} height={100} className="rounded" />
+          <img src={profile === undefined ? `${userImg}${photo}` : profile} alt="user" width={100} height={100} className="rounded" />
           <Button size="sm" variant="separator-light" className="btn-icon btn-icon-only position-absolute rounded s-0 b-0 mt-5" onClick={onThumbChangeClick}
           > <i className="ion ion-md-image"></i>
           </Button>
@@ -168,8 +121,8 @@ const UserProfile = () => {
           </Card>
           <div className="text-center">
             <button className="btn btn-registration-clr w-md waves-effect waves-light mb-4" type="submit">
-              {!loadBtn2 ? <span className="me-2">Update</span> : null}
-              {!loadBtn2 ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
+              {!loadBtn ? <span className="me-2">Update</span> : null}
+              {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
             </button>
           </div>
         </AvForm>
@@ -177,6 +130,17 @@ const UserProfile = () => {
       </Container>
     </Layout>
   )
+}
+
+UserProfile.propTypes = {
+  editProfile: PropTypes.func,
+  error: PropTypes.any,
+  success: PropTypes.any
+}
+
+const mapStatetoProps = state => {
+  const { error, success } = state.Profile
+  return { error, success }
 }
 
 export default UserProfile

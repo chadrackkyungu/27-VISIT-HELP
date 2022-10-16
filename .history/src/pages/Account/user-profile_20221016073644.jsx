@@ -101,7 +101,7 @@ const UserProfile = () => {
           setloadBtn2(false);
           window.setTimeout(() => {
             history.push("/login");
-          }, 1000)
+          }, 2000)
         }
         if (result.status === 'fail') {
           warningMessage(result.message);

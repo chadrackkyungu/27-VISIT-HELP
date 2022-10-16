@@ -3,6 +3,9 @@ import { AvField } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 
 function UpdateProfile({ details }) {
+
+    console.log(details)
+
     return (
         <div>
             <Row>

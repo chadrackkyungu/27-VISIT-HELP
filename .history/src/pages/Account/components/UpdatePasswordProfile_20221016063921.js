@@ -9,7 +9,7 @@ function UpdatePasswordProfile() {
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="passwordCurrent"
+                            name="password"
                             label="Current Password"
                             className="form-control"
                             placeholder="Enter your password"
@@ -21,7 +21,7 @@ function UpdatePasswordProfile() {
                 <Col md={4}>
                     <div className="mb-3">
                         <AvField
-                            name="password"
+                            name="Password"
                             label="Password"
                             className="form-control"
                             placeholder="Enter your password"
