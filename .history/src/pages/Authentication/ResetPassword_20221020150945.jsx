@@ -4,17 +4,15 @@ import { Card, CardBody, Col, Spinner, Row } from "reactstrap"
 import { AvForm } from "availity-reactstrap-validation"
 import ResetForm from "./components/ResetForm";
 import resetPassword from "../../assets/images/Register/reset-password.svg";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { successMessage, warningMessage } from "../../components/Toast"
 
 const ResetPassword = () => {
   const { token } = useParams()
-  const history = useHistory()
   const [loadBtn, setloadBtn] = useState();
 
   function handleValidSubmit(e, values) {
     e.preventDefault();
-    setloadBtn(true);
 
     const myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer null");
@@ -47,6 +45,7 @@ const ResetPassword = () => {
         warningMessage(`Fail to verified ${error.message}`)
         setloadBtn(false)
       });
+
   }
 
   return (
@@ -73,15 +72,10 @@ const ResetPassword = () => {
 
                     <ResetForm />
 
-                    <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit">
+                    <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit" onClick={() => setSubmit(true)} >
                       {!loadBtn ? <span className="me-2">Reset Password</span> : null}
                       {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                     </button>
-
-                    <div className="col-12 mt-5">
-                      You Remember your password ? <Link to="/login" className='text-success'> Login </Link>
-                    </div>
-
                   </AvForm>
                 </div>
               </CardBody>

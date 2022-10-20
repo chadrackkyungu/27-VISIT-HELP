@@ -16,9 +16,11 @@ const VerifiedEmail = () => {
         setloadBtn(true)
 
         const myHeaders = new Headers();
+        const raw = "";
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
+            body: raw,
             redirect: 'follow'
         };
 

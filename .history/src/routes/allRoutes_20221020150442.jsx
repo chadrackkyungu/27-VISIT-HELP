@@ -52,7 +52,7 @@ const authRoutes = [
   { path: "/login", exact: true, component: Login },
   { path: "/forgot-password", exact: true, component: ForgetPwd },
   { path: "/register", exact: true, component: Register },
-  { path: "/resetPassword/:token", exact: true, component: ResetPassword },
+  { path: "/reset-password/:token", exact: true, component: ResetPassword },
   { path: "/verify/:userId/:token", exact: true, component: VerifiedEmail },
 ]
 

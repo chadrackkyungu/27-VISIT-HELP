@@ -4,7 +4,7 @@ import { Card, CardBody, Col, Spinner, Row } from "reactstrap"
 import { AvForm } from "availity-reactstrap-validation"
 import ResetForm from "./components/ResetForm";
 import resetPassword from "../../assets/images/Register/reset-password.svg";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { successMessage, warningMessage } from "../../components/Toast"
 
 const ResetPassword = () => {
@@ -77,11 +77,6 @@ const ResetPassword = () => {
                       {!loadBtn ? <span className="me-2">Reset Password</span> : null}
                       {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                     </button>
-
-                    <div className="col-12 mt-5">
-                      You Remember your password ? <Link to="/login" className='text-success'> Login </Link>
-                    </div>
-
                   </AvForm>
                 </div>
               </CardBody>

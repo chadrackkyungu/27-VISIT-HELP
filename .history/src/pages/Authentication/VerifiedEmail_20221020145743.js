@@ -1,8 +1,7 @@
 import MetaTags from 'react-meta-tags';
 import React, { useState } from "react"
 import "../Styles.scss";
-import { Col, Card, Spinner } from "reactstrap"
-import { AvForm } from "availity-reactstrap-validation"
+import { Row, Col, Card, Spinner } from "reactstrap"
 import { useHistory, useParams } from "react-router-dom"
 import { successMessage, warningMessageCenter } from "../../components/Toast"
 
@@ -12,13 +11,15 @@ const VerifiedEmail = () => {
     const history = useHistory()
     const [loadBtn, setloadBtn] = useState();
 
-    const handleValidSubmit = () => {
+    const verifiedHandler = () => {
         setloadBtn(true)
 
         const myHeaders = new Headers();
+        const raw = "";
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
+            body: raw,
             redirect: 'follow'
         };
 
@@ -51,7 +52,7 @@ const VerifiedEmail = () => {
                         <Card className="overflow-hidden">
                             <p className="text-dark mt-5 mb-4 m-5 text-center"> Click on the button bellow to verify your email </p>
                             <div className=" text-center">
-                                <button className="btn btn-registration-clr w-md waves-effect waves-light w-75 mt-4 mb-5 " type="submit">
+                                <button className="btn btn-registration-clr w-md waves-effect waves-light w-75 mt-4 mb-5 " type="submit" onClick={() => { verifiedHandler }}>
                                     {!loadBtn ? <span className="me-2">Verify</span> : null}
                                     {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                                 </button>

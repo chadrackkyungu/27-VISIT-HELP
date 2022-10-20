@@ -1,8 +1,7 @@
 import MetaTags from 'react-meta-tags';
 import React, { useState } from "react"
 import "../Styles.scss";
-import { Col, Card, Spinner } from "reactstrap"
-import { AvForm } from "availity-reactstrap-validation"
+import { Row, Col, Card, Spinner } from "reactstrap"
 import { useHistory, useParams } from "react-router-dom"
 import { successMessage, warningMessageCenter } from "../../components/Toast"
 
@@ -12,13 +11,15 @@ const VerifiedEmail = () => {
     const history = useHistory()
     const [loadBtn, setloadBtn] = useState();
 
-    const handleValidSubmit = () => {
+    const verifiedHandler = () => {
         setloadBtn(true)
 
         const myHeaders = new Headers();
+        const raw = "";
         const requestOptions = {
             method: 'GET',
             headers: myHeaders,
+            body: raw,
             redirect: 'follow'
         };
 

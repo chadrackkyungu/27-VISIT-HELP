@@ -4,49 +4,33 @@ import { Card, CardBody, Col, Spinner, Row } from "reactstrap"
 import { AvForm } from "availity-reactstrap-validation"
 import ResetForm from "./components/ResetForm";
 import resetPassword from "../../assets/images/Register/reset-password.svg";
-import { Link, useHistory, useParams } from "react-router-dom";
-import { successMessage, warningMessage } from "../../components/Toast"
+import { useParams } from "react-router-dom";
 
 const ResetPassword = () => {
   const { token } = useParams()
-  const history = useHistory()
   const [loadBtn, setloadBtn] = useState();
 
   function handleValidSubmit(e, values) {
     e.preventDefault();
-    setloadBtn(true);
+    console.log(values)
 
-    const myHeaders = new Headers();
+    var myHeaders = new Headers();
     myHeaders.append("Authorization", "Bearer null");
     myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Cookie", "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDlhZTZlOTYwMDM5YmQyYWM3ZGNmYSIsImlhdCI6MTY2NjI2MTU4MSwiZXhwIjoxNjc0MDM3NTgxfQ.ddUY-1IXV-YOV3XBbgG7_aMakfuqfFc-P-MCGN3MdFE");
 
-    const raw = JSON.stringify({
-      "password": values.password,
-      "passwordConfirm": values.password
+    var raw = JSON.stringify({
+      "password": "pass1234",
+      "passwordConfirm": "pass1234"
     });
 
-    const requestOptions = {
+    var requestOptions = {
       method: 'PATCH',
       headers: myHeaders,
       body: raw,
       redirect: 'follow'
     };
 
-    fetch(`https://tourisms.herokuapp.com/api/v1/users/resetPassword/${token}`, requestOptions)
-      .then(response => response.json())
-      .then(result => {
-        if (result.status === 'success') {
-          successMessage('Successful update your password')
-          setloadBtn(false)
-          window.setTimeout(() => {
-            history.push("/login");
-          }, 3000);
-        }
-      })
-      .catch(error => {
-        warningMessage(`Fail to verified ${error.message}`)
-        setloadBtn(false)
-      });
   }
 
   return (
@@ -73,15 +57,10 @@ const ResetPassword = () => {
 
                     <ResetForm />
 
-                    <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit">
+                    <button className="btn btn-registration-clr w-md waves-effect waves-light w-100 mt-4" type="submit" onClick={() => setSubmit(true)} >
                       {!loadBtn ? <span className="me-2">Reset Password</span> : null}
                       {!loadBtn ? null : <span>  <Spinner as="span" animation="border" size="sm" /> Loading...</span>}
                     </button>
-
-                    <div className="col-12 mt-5">
-                      You Remember your password ? <Link to="/login" className='text-success'> Login </Link>
-                    </div>
-
                   </AvForm>
                 </div>
               </CardBody>

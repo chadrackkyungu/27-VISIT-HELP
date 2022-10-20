@@ -10,7 +10,7 @@ export const successMessage = (message) => {
 }
 
 export const warningMessageCenter = (message) => {
-  toast.success(message, { position: toast.POSITION.TOP_CENTER });
+  toast.success(message, { position: toast.POSITION.TOP_UP_CENTER });
 }
 
 export const successUpdate = (message) => {
