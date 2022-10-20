@@ -15,7 +15,6 @@ function Cards() {
   const { data, length, error, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
   if (!data) { return <Loading /> }
 
-  console.log(user)
 
   return (
     <React.Fragment className="banner mt-5 mb-5">
