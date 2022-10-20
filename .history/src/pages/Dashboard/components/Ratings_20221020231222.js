@@ -47,7 +47,7 @@ function Ratings({ tourId, setViewModal }) {
                     setViewModal(false);
                 }
                 if (result.status === 'error') {
-                    warningMessage(`The same user can not post the same comment twice`);
+                    warningMessage("Try again something went wrong");
                     setloadBtn(false);
                     setViewModal(false);
                 }

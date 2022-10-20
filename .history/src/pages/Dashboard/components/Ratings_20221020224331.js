@@ -7,12 +7,11 @@ import { userDetails } from "../../../Redux/Slices/userSlice";
 import { useStore1Selector } from "../../../index";
 
 function Ratings({ tourId, setViewModal }) {
-
     const [loadBtn, setloadBtn] = useState();
     const [customize, setcustomize] = useState("")
     const starStyle = {}
     const user = useStore1Selector(userDetails);
-    const token = user?.token
+    const token = user?.original?.data;
 
     const handleValidSubmit = (e, values) => {
         setloadBtn(true);
@@ -22,7 +21,7 @@ function Ratings({ tourId, setViewModal }) {
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
-            "rating": customize,
+            "rating": 5,
             "review": values.comments
         });
 
@@ -36,6 +35,7 @@ function Ratings({ tourId, setViewModal }) {
         fetch(`http://localhost:4000/api/v1/tours/${tourId}/reviews`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                console.log(" Result : ", result)
                 if (result.status === 'success') {
                     successMessage("We are appreciate for your comments");
                     setloadBtn(false);
@@ -46,11 +46,11 @@ function Ratings({ tourId, setViewModal }) {
                     setloadBtn(false);
                     setViewModal(false);
                 }
-                if (result.status === 'error') {
-                    warningMessage(`The same user can not post the same comment twice`);
-                    setloadBtn(false);
-                    setViewModal(false);
-                }
+                // if (result.status === 'error') {
+                //     warningMessage("Try again something went wrong");
+                //     setloadBtn(false);
+                //     setViewModal(false);
+                // }
             })
             .catch(error => {
                 warningMessage(`Something went wrong try again ${error.message}`);

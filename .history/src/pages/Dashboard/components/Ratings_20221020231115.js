@@ -5,9 +5,10 @@ import RatingTooltip from "react-rating-tooltip"
 import { successMessage, warningMessage } from "../../../components/Toast"
 import { userDetails } from "../../../Redux/Slices/userSlice";
 import { useStore1Selector } from "../../../index";
+import useFetch from "../../../hooks/useFecth";
 
 function Ratings({ tourId, setViewModal }) {
-
+    const { reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
     const [loadBtn, setloadBtn] = useState();
     const [customize, setcustomize] = useState("")
     const starStyle = {}
@@ -40,6 +41,7 @@ function Ratings({ tourId, setViewModal }) {
                     successMessage("We are appreciate for your comments");
                     setloadBtn(false);
                     setViewModal(false);
+                    reFetch()
                 }
                 if (result.status === 'fail') {
                     warningMessage("Try again something went wrong");
@@ -47,7 +49,7 @@ function Ratings({ tourId, setViewModal }) {
                     setViewModal(false);
                 }
                 if (result.status === 'error') {
-                    warningMessage(`The same user can not post the same comment twice`);
+                    warningMessage("Try again something went wrong");
                     setloadBtn(false);
                     setViewModal(false);
                 }

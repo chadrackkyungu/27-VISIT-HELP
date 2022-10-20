@@ -31,9 +31,8 @@ const TourDetails = () => {
 
                     <ImageSlider id={id} />
                     <TourContent id={id} />
-                    {/* <Map id={id} /> */}
+                    <Map id={id} />
                     <ReviewCard id={id} />
-
                     <button className="btn text-white m-3" type="button" onClick={modalHandler}> Post your comments </button>
                     <BuyButton id={id} />
 
@@ -49,7 +48,7 @@ const TourDetails = () => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Ratings tourId={id} setViewModal={setViewModal} />
+                    <Ratings tourId={id} />
                 </Modal.Body>
             </Modal>
 

@@ -4,21 +4,20 @@ import { AvForm, AvField } from "availity-reactstrap-validation"
 import RatingTooltip from "react-rating-tooltip"
 import { successMessage, warningMessage } from "../../../components/Toast"
 import { userDetails } from "../../../Redux/Slices/userSlice";
-import { useStore1Selector } from "../../../index";
 
-function Ratings({ tourId, setViewModal }) {
-
+function Ratings({ tourId }) {
     const [loadBtn, setloadBtn] = useState();
     const [customize, setcustomize] = useState("")
     const starStyle = {}
     const user = useStore1Selector(userDetails);
-    const token = user?.token
+    console.log(user)
 
     const handleValidSubmit = (e, values) => {
+        e.preventDefault();
         setloadBtn(true);
 
         const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
+        myHeaders.append("Authorization", `Bearer ${5}`);
         myHeaders.append("Content-Type", "application/json");
 
         const raw = JSON.stringify({
@@ -33,29 +32,22 @@ function Ratings({ tourId, setViewModal }) {
             redirect: 'follow'
         };
 
-        fetch(`http://localhost:4000/api/v1/tours/${tourId}/reviews`, requestOptions)
+        fetch(`https://tourisms.herokuapp.com/api/v1/tours/${tourId}/reviews`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                console.log(result.data);
                 if (result.status === 'success') {
                     successMessage("We are appreciate for your comments");
                     setloadBtn(false);
-                    setViewModal(false);
                 }
                 if (result.status === 'fail') {
                     warningMessage("Try again something went wrong");
                     setloadBtn(false);
-                    setViewModal(false);
-                }
-                if (result.status === 'error') {
-                    warningMessage(`The same user can not post the same comment twice`);
-                    setloadBtn(false);
-                    setViewModal(false);
                 }
             })
             .catch(error => {
                 warningMessage(`Something went wrong try again ${error.message}`);
                 setloadBtn(false);
-                setViewModal(false);
             });
     }
 
@@ -83,7 +75,6 @@ function Ratings({ tourId, setViewModal }) {
                     </button>
                 </div>
             </AvForm>
-
         </CardBody>
     )
 }

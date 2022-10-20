@@ -7,7 +7,6 @@ import { userDetails } from "../../../Redux/Slices/userSlice";
 import { useStore1Selector } from "../../../index";
 
 function Ratings({ tourId, setViewModal }) {
-
     const [loadBtn, setloadBtn] = useState();
     const [customize, setcustomize] = useState("")
     const starStyle = {}
@@ -36,6 +35,7 @@ function Ratings({ tourId, setViewModal }) {
         fetch(`http://localhost:4000/api/v1/tours/${tourId}/reviews`, requestOptions)
             .then(response => response.json())
             .then(result => {
+                console.log(" Result : ", result)
                 if (result.status === 'success') {
                     successMessage("We are appreciate for your comments");
                     setloadBtn(false);
@@ -47,7 +47,7 @@ function Ratings({ tourId, setViewModal }) {
                     setViewModal(false);
                 }
                 if (result.status === 'error') {
-                    warningMessage(`The same user can not post the same comment twice`);
+                    warningMessage("Try again something went wrong");
                     setloadBtn(false);
                     setViewModal(false);
                 }
