@@ -18,7 +18,7 @@ function Mybookings() {
     const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
     const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/bookings`, token);
 
-    if (!data) {
+    if (!tours) {
         return <Loading />
     }
 
@@ -29,6 +29,7 @@ function Mybookings() {
     const tours = filterTour?.map(tour => {
         return tour.tour
     })
+
 
     return (
         <Layout>

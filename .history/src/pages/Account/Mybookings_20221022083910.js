@@ -30,6 +30,7 @@ function Mybookings() {
         return tour.tour
     })
 
+
     return (
         <Layout>
             <CardBody>

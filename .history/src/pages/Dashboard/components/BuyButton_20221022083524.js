@@ -59,7 +59,7 @@ function BuyButton({ id }) {
             redirect: 'follow'
         };
 
-        fetch(`https://tourisms.herokuapp.com/api/v1/tours/${id}/bookings`, requestOptions)
+        fetch(`http://localhost:4000/api/v1/tours/${id}/bookings`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(`successful made a bookings ${result}`)

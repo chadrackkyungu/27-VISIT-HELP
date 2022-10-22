@@ -8,7 +8,7 @@ import { userDetails } from '../../Redux/Slices/userSlice'
 import { useStore1Selector } from '../../index';
 import useFetch from "../../hooks/useFecth";
 import { BsArrowRight } from "react-icons/bs";
-import Loading from '../../components/Loading';
+import Loading from '../../../components/Loading';
 
 function Mybookings() {
 
@@ -18,17 +18,15 @@ function Mybookings() {
     const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
     const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/bookings`, token);
 
-    if (!data) {
-        return <Loading />
-    }
-
     const filterTour = data.filter(tour => {
         return tour?.user?._id === userId
     });
 
-    const tours = filterTour?.map(tour => {
+    const tours = filterTour.map(tour => {
         return tour.tour
     })
+
+    if (!tours) { return <Loading /> }
 
     return (
         <Layout>
