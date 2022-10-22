@@ -2,7 +2,7 @@ import React from 'react'
 import "../Styles.scss";
 import { Link } from 'react-router-dom';
 import { Col, Row, Card, CardBody } from "reactstrap"
-// import tour1 from "../../assets/images/gallery/tour-1.svg"
+import tour1 from "../../assets/images/gallery/tour-1.svg"
 import Layout from '../Layout';
 import { userDetails } from '../../Redux/Slices/userSlice'
 import { useStore1Selector } from '../../index';
@@ -27,6 +27,7 @@ function Mybookings() {
 
     return (
         <Layout>
+            <h2> My Bookings </h2>
             <CardBody>
                 <Row className='mt-5 mx-5'>
                     {
@@ -36,7 +37,7 @@ function Mybookings() {
                                     <Card className='tour-card'>
                                         <CardBody>
                                             <div className='pb-4 image-cover'>
-                                                <img src={`${tourImg}${tour?.imageCover}`} alt="" />
+                                                <img src={`${tourImg}${tour.imageCover}`} alt="" />
                                             </div>
                                             <div className="d-flex justify-content-between">
                                                 <h5 className='text-dark'>{tour.name}</h5>

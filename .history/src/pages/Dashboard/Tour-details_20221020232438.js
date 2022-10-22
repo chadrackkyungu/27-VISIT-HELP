@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import "./Style.scss";
 import MetaTags from 'react-meta-tags';
 import { Container } from "reactstrap"
@@ -7,15 +7,15 @@ import { useParams, Link } from "react-router-dom"
 import { BiArrowBack } from "react-icons/bi";
 import ImageSlider from './components/ImageSlider';
 import TourContent from './components/tourContent';
-// import Map from './components/Map';
+import Map from './components/Map';
 import ReviewCard from './components/ReviewCard';
 import BuyButton from './components/BuyButton';
 import Ratings from "./components/Ratings";
 
-
+import { loadStripe } from "@stripe/stripe-js";
+const stripePromise = loadStripe("pk_test_51LWmoLF1YNOAGxK9HWSDzSfoSb2MmKjtPb4lDiPOR3MLyWBILfDz1qdKXQ9eywYdZnsdVWgNHcM7hr1dHzluNut700hypApaqK");
 
 const TourDetails = () => {
-
     const { id } = useParams()
     const [viewModal, setViewModal] = useState(false);
 

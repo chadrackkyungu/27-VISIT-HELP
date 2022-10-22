@@ -1,13 +1,11 @@
 import React from 'react'
-import "../Styles.scss";
 import { Link } from 'react-router-dom';
 import { Col, Row, Card, CardBody } from "reactstrap"
-// import tour1 from "../../assets/images/gallery/tour-1.svg"
+import tour1 from "../../assets/images/gallery/tour-1.svg"
 import Layout from '../Layout';
 import { userDetails } from '../../Redux/Slices/userSlice'
 import { useStore1Selector } from '../../index';
 import useFetch from "../../hooks/useFecth";
-import { BsArrowRight } from "react-icons/bs";
 
 function Mybookings() {
 
@@ -24,6 +22,7 @@ function Mybookings() {
     const tours = filterTour.map(tour => {
         return tour.tour
     })
+    console.log(" Result : ", tours)
 
     return (
         <Layout>
@@ -35,18 +34,18 @@ function Mybookings() {
                                 <Col md={4} key={i}>
                                     <Card className='tour-card'>
                                         <CardBody>
-                                            <div className='pb-4 image-cover'>
-                                                <img src={`${tourImg}${tour?.imageCover}`} alt="" />
+                                            <div className='w-100 pb-4'>
+                                                <img src={`${tourImg}${tour.imageCover}`} alt="" />
                                             </div>
                                             <div className="d-flex justify-content-between">
-                                                <h5 className='text-dark'>{tour.name}</h5>
-                                                <h4 className='text-primary'>R {tour.price}</h4>
+                                                <h4>Park virunga</h4>
+                                                <h4>R 250</h4>
                                             </div>
-                                            <p className='tour-description'> {tour.description} </p>
+                                            <p className='tour-description'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat error nostrum numquam, deserunt, doloribus accusamus quo incidunt iste animi magnam quidem eius. Aliquam, sint recusandae. Quidem ad rerum doloremque sapiente.</p>
 
-                                            <h5 className="d-flex justify-content-between align-items-center">
-                                                <Link to={`/tour-details/${tour._id}`}  >View details <BsArrowRight /> </Link>
-                                            </h5>
+                                            <div className="d-flex justify-content-between align-items-center">
+                                                <Link to="/tour-details/1" className='btn btn-success'>View details</Link>
+                                            </div>
                                         </CardBody>
                                     </Card>
                                 </Col>

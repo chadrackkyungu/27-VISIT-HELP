@@ -46,11 +46,19 @@ function BuyButton({ id }) {
             })
     }
 
+    console.log(filterTour[0]?.price)
+
     const BookTour = async () => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`);
 
         const formdata = new FormData();
+        formdata.append("price", filterTour[0]?.price);
+        formdata.append("description", filterTour[0]?.description);
+        formdata.append("imageCover", filterTour[0]?.imageCover);
+        formdata.append("name", filterTour[0]?.name);
+        formdata.append("summary", filterTour[0]?.summary);
+        formdata.append("duration", filterTour[0]?.duration);
 
         const requestOptions = {
             method: 'POST',

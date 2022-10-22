@@ -38,7 +38,6 @@ function BuyButton({ id }) {
                         sessionId: res.session.id
                     })
                     setBtnSpin(false)
-                    BookTour();
                 }
             }).catch(err => {
                 console.log(err);
@@ -46,20 +45,23 @@ function BuyButton({ id }) {
             })
     }
 
+
     const BookTour = async () => {
-        const myHeaders = new Headers();
-        myHeaders.append("Authorization", `Bearer ${token}`);
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNTEzZjY0ZTM4NjY4YjNmNDVlMWNhNiIsImlhdCI6MTY2NjM4NDEzMiwiZXhwIjoxNjc0MTYwMTMyfQ.F9zi6nfEGafBctx7ksTeErHo-m5ieR-n8Hpm6mf_8uI");
+        myHeaders.append("Cookie", "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNTEzZjY0ZTM4NjY4YjNmNDVlMWNhNiIsImlhdCI6MTY2NjM4NDEzMiwiZXhwIjoxNjc0MTYwMTMyfQ.F9zi6nfEGafBctx7ksTeErHo-m5ieR-n8Hpm6mf_8uI");
 
-        const formdata = new FormData();
+        var formdata = new FormData();
+        formdata.append("price", "200");
 
-        const requestOptions = {
+        var requestOptions = {
             method: 'POST',
             headers: myHeaders,
             body: formdata,
             redirect: 'follow'
         };
 
-        fetch(`http://localhost:4000/api/v1/tours/${id}/bookings`, requestOptions)
+        fetch("http://localhost:4000/api/v1/tours/6349d7ef6bbd1502673a4869/bookings", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(`successful made a bookings ${result}`)
@@ -75,10 +77,12 @@ function BuyButton({ id }) {
                     <h3> WHAT ARE YOU WAITING FOR? </h3>
                     <p className='mt-5'> <b> {filterTour[0]?.duration}  days. 1 adventure. Infinite memories. Make it yours today! </b> </p>
                     <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
-                        <button className="btn btn-warning w-50 p-4" type="submit">
-                            <span className="me-2 h3"> Book Now </span>
+                        {/* <button className='btn btn-warning w-25 p-2' type="submit"> Book Now</button> */}
+
+                        <button className="btn btn-warning w-25 p-2" type="submit">
+                            <span className="me-2"> Book Now </span>
                             {
-                                !btnSpin ? null : <Spinner as="span" animation="border" size="lg" />
+                                !btnSpin ? null : <Spinner as="span" animation="border" size="sm" />
                             }
                         </button>
                     </AvForm>

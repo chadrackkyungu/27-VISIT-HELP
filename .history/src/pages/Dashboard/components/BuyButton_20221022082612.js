@@ -46,6 +46,8 @@ function BuyButton({ id }) {
             })
     }
 
+    console.log(filterTour[0]?.price)
+
     const BookTour = async () => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`);

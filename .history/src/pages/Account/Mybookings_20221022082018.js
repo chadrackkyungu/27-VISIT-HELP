@@ -2,7 +2,7 @@ import React from 'react'
 import "../Styles.scss";
 import { Link } from 'react-router-dom';
 import { Col, Row, Card, CardBody } from "reactstrap"
-// import tour1 from "../../assets/images/gallery/tour-1.svg"
+import tour1 from "../../assets/images/gallery/tour-1.svg"
 import Layout from '../Layout';
 import { userDetails } from '../../Redux/Slices/userSlice'
 import { useStore1Selector } from '../../index';
@@ -36,17 +36,17 @@ function Mybookings() {
                                     <Card className='tour-card'>
                                         <CardBody>
                                             <div className='pb-4 image-cover'>
-                                                <img src={`${tourImg}${tour?.imageCover}`} alt="" />
+                                                <img src={`${tourImg}${tour.imageCover}`} alt="" />
                                             </div>
                                             <div className="d-flex justify-content-between">
-                                                <h5 className='text-dark'>{tour.name}</h5>
-                                                <h4 className='text-primary'>R {tour.price}</h4>
+                                                <h4 className='text-dark'>{tour.name}</h4>
+                                                <h3 className='text-primary'>R {tour.price}</h3>
                                             </div>
                                             <p className='tour-description'> {tour.description} </p>
 
-                                            <h5 className="d-flex justify-content-between align-items-center">
-                                                <Link to={`/tour-details/${tour._id}`}  >View details <BsArrowRight /> </Link>
-                                            </h5>
+                                            <div className="d-flex justify-content-between align-items-center">
+                                                <Link to={`/tour-details/${tour._id}`} className="me-3">View details <BsArrowRight /> </Link>
+                                            </div>
                                         </CardBody>
                                     </Card>
                                 </Col>

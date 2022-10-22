@@ -36,7 +36,7 @@ function Mybookings() {
                                     <Card className='tour-card'>
                                         <CardBody>
                                             <div className='pb-4 image-cover'>
-                                                <img src={`${tourImg}${tour?.imageCover}`} alt="" />
+                                                <img src={`${tourImg}${tour.imageCover}`} alt="" />
                                             </div>
                                             <div className="d-flex justify-content-between">
                                                 <h5 className='text-dark'>{tour.name}</h5>

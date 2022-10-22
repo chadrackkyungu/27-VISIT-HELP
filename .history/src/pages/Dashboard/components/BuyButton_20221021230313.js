@@ -49,9 +49,7 @@ function BuyButton({ id }) {
     const BookTour = async () => {
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`);
-
         const formdata = new FormData();
-
         const requestOptions = {
             method: 'POST',
             headers: myHeaders,
@@ -75,10 +73,10 @@ function BuyButton({ id }) {
                     <h3> WHAT ARE YOU WAITING FOR? </h3>
                     <p className='mt-5'> <b> {filterTour[0]?.duration}  days. 1 adventure. Infinite memories. Make it yours today! </b> </p>
                     <AvForm className="mt-1" onValidSubmit={(e, v) => { handleValidSubmit(e, v) }}>
-                        <button className="btn btn-warning w-50 p-4" type="submit">
-                            <span className="me-2 h3"> Book Now </span>
+                        <button className="btn btn-warning w-25 p-2" type="submit">
+                            <span className="me-2"> Book Now </span>
                             {
-                                !btnSpin ? null : <Spinner as="span" animation="border" size="lg" />
+                                !btnSpin ? null : <Spinner as="span" animation="border" size="sm" />
                             }
                         </button>
                     </AvForm>
