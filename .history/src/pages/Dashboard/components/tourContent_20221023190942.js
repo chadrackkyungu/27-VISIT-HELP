@@ -31,7 +31,7 @@ function tourContent({ id }) {
         return lead.tours === id
     })
 
-    console.log("result ..... : ", leadGuide)
+    console.log("lead guides : ", filter)
 
     return (
         <div>

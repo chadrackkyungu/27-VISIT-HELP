@@ -9,7 +9,6 @@ import Loading from '../../../components/Loading';
 function tourContent({ id }) {
 
     let leadGuide;
-    const userImg = "https://tourisms.herokuapp.com/img/users/";
     const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
     {
         const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/users/lead-guide`, null);
@@ -31,7 +30,7 @@ function tourContent({ id }) {
         return lead.tours === id
     })
 
-    console.log("result ..... : ", leadGuide)
+    console.log(filter)
 
     return (
         <div>
@@ -44,20 +43,21 @@ function tourContent({ id }) {
                     <p> <b>DIFFICULTY </b> : {filterTour[0]?.difficulty} </p>
                     <p> <b>PARTICIPANTS </b> : {filterTour[0]?.maxGroupSize} </p>
 
-                    <h4 className='my-5'> LEAD GUIDES </h4>
+                    <h4 className='my-5'> YOUR TOUR GUIDES </h4>
 
                     <div className="guide-container">
                         {
-                            filter?.map(lead => {
-                                return (
-                                    <div className='lead-guide-container d-flex align-items-center mb-4'>
-                                        <img src={`${userImg}${lead?.photo}`} alt="" className='tour-img me-3' />
-                                        <p className='mt-3'> <b> {lead?.firstName} {lead?.lastName}</b> </p>
-                                    </div>
-                                )
-                            }
-                            )
+                            filter?.map(lead => (
+                                <div className='lead-guide-container'>
+                                    <img src={Img} alt="" className='tour-img' />
+                                    <p> <b> Steven Miller </b> </p>
+                                </div>
+                            ))
                         }
+                        {/* <div className='lead-guide-container'>
+                            <img src={Img2} alt="" className='tour-img' />
+                            <p> <b>Steven Miller </b> </p>
+                        </div> */}
                     </div>
 
                 </Col>

@@ -31,7 +31,7 @@ function tourContent({ id }) {
         return lead.tours === id
     })
 
-    console.log("result ..... : ", leadGuide)
+    console.log("lead guides : ", filter)
 
     return (
         <div>
@@ -44,7 +44,7 @@ function tourContent({ id }) {
                     <p> <b>DIFFICULTY </b> : {filterTour[0]?.difficulty} </p>
                     <p> <b>PARTICIPANTS </b> : {filterTour[0]?.maxGroupSize} </p>
 
-                    <h4 className='my-5'> LEAD GUIDES </h4>
+                    <h4 className='my-5'> YOUR TOUR GUIDES </h4>
 
                     <div className="guide-container">
                         {
@@ -52,7 +52,7 @@ function tourContent({ id }) {
                                 return (
                                     <div className='lead-guide-container d-flex align-items-center mb-4'>
                                         <img src={`${userImg}${lead?.photo}`} alt="" className='tour-img me-3' />
-                                        <p className='mt-3'> <b> {lead?.firstName} {lead?.lastName}</b> </p>
+                                        <p> <b> {lead?.firstName} {lead?.lastName}</b> </p>
                                     </div>
                                 )
                             }
