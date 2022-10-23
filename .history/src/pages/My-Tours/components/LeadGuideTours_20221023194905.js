@@ -20,12 +20,13 @@ const LeadGuideTours = () => {
     const filter = data?.filter(myTour => {
         return myTour?._id === userId
     })
+    console.log(filter[0]?.tours)
 
     return (
         <React.Fragment>
-            <Row>
+            <Row >
                 <Col md={4}>
-                    {/* <h4> My to </h4> */}
+                    <h4> Upcoming </h4>
                     <Card className='tour-card'>
                         <CardBody>
                             <div className='tour-img-container'>
@@ -34,7 +35,7 @@ const LeadGuideTours = () => {
                             <div className="d-flex justify-content-between">
                                 <h6 className='mt-3 text-uppercase'> {filter[0]?.tours?.name} </h6>
                             </div>
-                            <p> {filter[0]?.tours?.summary} </p>
+                            <p> {filter[0]?.tours?.description} </p>
 
                             <div className="d-flex justify-content-between align-items-center mt-3">
                                 <Link to={`/tour-details/${filter[0]?.tours?._id}`}>  View  <BsArrowRight />  </Link>

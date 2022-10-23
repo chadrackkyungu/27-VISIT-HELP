@@ -20,10 +20,11 @@ const LeadGuideTours = () => {
     const filter = data?.filter(myTour => {
         return myTour?._id === userId
     })
+    console.log(filter[0]?.tours)
 
     return (
         <React.Fragment>
-            <Row>
+            <Row >
                 <Col md={4}>
                     {/* <h4> My to </h4> */}
                     <Card className='tour-card'>

@@ -17,30 +17,35 @@ const LeadGuideTours = () => {
     const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
     const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/users/lead-guide`, token);
 
+    console.log(data)
+    console.log(userId)
+
     const filter = data?.filter(myTour => {
         return myTour?._id === userId
     })
 
+    console.log(filter[0]?.tours)
+
     return (
         <React.Fragment>
-            <Row>
+            <Row >
                 <Col md={4}>
-                    {/* <h4> My to </h4> */}
-                    <Card className='tour-card'>
-                        <CardBody>
-                            <div className='tour-img-container'>
-                                <img src={`${tourImg}${filter[0]?.tours?.imageCover}`} alt="" />
-                            </div>
-                            <div className="d-flex justify-content-between">
-                                <h6 className='mt-3 text-uppercase'> {filter[0]?.tours?.name} </h6>
-                            </div>
-                            <p> {filter[0]?.tours?.summary} </p>
-
-                            <div className="d-flex justify-content-between align-items-center mt-3">
-                                <Link to={`/tour-details/${filter[0]?.tours?._id}`}>  View  <BsArrowRight />  </Link>
-                            </div>
-                        </CardBody>
-                    </Card>
+                    <h4> Upcoming </h4>
+                    <Col md={4} key={i}>
+                        <Card className='tour-card'>
+                            <CardBody>
+                                {/* <div className='tour-img-container'>
+                                    <img src={`${tourImg}${filter[0]?.tours?.imageCover}`} alt="" />
+                                </div>
+                                <div className="d-flex justify-content-between">
+                                    <h6 className='mt-3 text-uppercase'> {filter[0]?.tours?.name} </h6>
+                                </div>
+                                <div className="d-flex justify-content-between align-items-center mt-3">
+                                    <Link to={`/tour-details/${filter[0]?.tours?._id}`}>  View  <BsArrowRight />  </Link>
+                                </div> */}
+                            </CardBody>
+                        </Card>
+                    </Col>
                 </Col>
             </Row>
         </React.Fragment>

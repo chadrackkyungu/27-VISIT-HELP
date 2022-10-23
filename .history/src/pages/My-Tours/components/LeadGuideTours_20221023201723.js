@@ -20,6 +20,7 @@ const LeadGuideTours = () => {
     const filter = data?.filter(myTour => {
         return myTour?._id === userId
     })
+    console.log(filter[0]?.tours)
 
     return (
         <React.Fragment>
