@@ -185,7 +185,7 @@ const Employees = () => {
 
                 <Modal.Footer className="d-flex justify-content-around">
                     <button className="btn btn-success" onClick={() => setSmExample(false)}> No </button>
-                    <button className='btn btn-danger' onClick={deleteFunc}>Yes</button>
+                    <button className='btn ' onClick={deleteFunc}>Yes</button>
                 </Modal.Footer>
             </Modal>
         </Layout>
