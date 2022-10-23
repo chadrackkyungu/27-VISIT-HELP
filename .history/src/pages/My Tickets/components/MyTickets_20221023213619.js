@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Row, Card, CardBody, Spinner, Badge } from "reactstrap";
-import { Modal } from 'react-bootstrap';
+import { Container, Row, Card, CardBody, Modal, Spinner, Badge } from "reactstrap";
 import { MDBDataTable } from "mdbreact"
 import useFetch from "../../../hooks/useFecth";
 import { useStore1Selector } from "../../../index";
 import { userDetails } from "../../../Redux/Slices/userSlice";
 import { Link } from 'react-router-dom';
-import TicketDetails from './TicketDetails';
 
 function TicketsTable() {
 
@@ -14,10 +12,6 @@ function TicketsTable() {
     const token = user.token;
     const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
     const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/bookings`, token);
-
-    const [lExample, setLExample] = useState(false);
-    const [smExample, setSmExample] = useState(false);
-    const [LeadGuide, setLeadGuide] = useState();
 
     const tours = data?.map(tour => {
         return tour.tour
@@ -33,6 +27,16 @@ function TicketsTable() {
         user_new_arr.push(tour.user)
     })
 
+    function viewFunc(id) {
+        // setViewmodal(true)
+        // setViewID(id)
+    }
+
+    function editFunc(id) {
+        // setmodal_center(!modal_center)
+        // setViewID(id)
+    }
+
     function deleteFunc(id) {
         // setDeleteID(id)
         // setDeleteModal(true)
@@ -43,8 +47,12 @@ function TicketsTable() {
             ...res,
             status_arr,
             user_new_arr,
+            // viewBtn: <Link className=" btn-success p-1" onClick={() => viewFunc(res._id)}> view </Link>,
+            // deleteBtn: <button className=" btn-danger" onClick={() => deleteFunc(res._id)}> Delete </button>
         })
     })
+
+    console.log(".......: ", result)
 
     return (
         <div>
@@ -62,10 +70,17 @@ function TicketsTable() {
                                 <th className="align-middle">Full Name</th>
                                 <th className="align-middle">Price</th>
                                 <th className="align-middle">Status</th>
-                                {/* <th className="align-middle">View</th> */}
+                                <th className="align-middle">View</th>
                                 <th className="align-middle">Delete</th>
+
+                                {/* <th className="align-middle">Tour Name</th>
+                                <th className="align-middle">Price</th>
+
+                                <th className="align-middle">Status</th>
+                                <th className="align-middle">Delete</th> */}
                             </tr>
                         </thead>
+
                         {
                             result?.map((book, i) => {
                                 console.log(book)
@@ -80,19 +95,19 @@ function TicketsTable() {
                                             </td>
                                             <td>{book?.name}</td>
                                             <td>{book?.price}</td>
-                                            <td className='text-success'> <i className="ti-check-box"></i> Paid </td>
-                                            {/* <td>
+                                            <td className='text-success'>{"Paid"}</td>
+                                            <td>
                                                 <Badge className="bg-success cursor-pointer p-2"
                                                     onClick={() => {
-                                                        setLExample(true)
-                                                        setLeadGuide(book?._id)
+                                                        // setSmExample(true)
+                                                        // setLeadGuide(leads?._id)
                                                     }}> View </Badge>
-                                            </td> */}
+                                            </td>
                                             <td>
                                                 <Badge className="bg-danger cursor-pointer p-2"
                                                     onClick={() => {
-                                                        setSmExample(true)
-                                                        setLeadGuide(book?._id)
+                                                        // setSmExample(true)
+                                                        // setLeadGuide(leads?._id)
                                                     }}> Delete </Badge>
                                             </td>
                                         </tr>
@@ -104,32 +119,16 @@ function TicketsTable() {
                 </div>
             </Card>
 
-            {/* <Modal show={lExample} onHide={() => setLExample(false)} size="lg">
-                <Modal.Header closeButton>
-                    <Modal.Title> Lead guide details </Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-                    <TicketDetails id={LeadGuide} />
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <button variant="danger" onClick={() => setLExample(false)}> Close </button>
-                </Modal.Footer>
-            </Modal> */}
-
-
-            <Modal show={smExample} onHide={() => setSmExample(false)} size="md">
+            {/* <Modal show={smExample} onHide={() => setSmExample(false)} size="md">
                 <Modal.Header closeButton>
                     <h4 className="text-danger"> Are you sure you want delete this ? </h4>
                 </Modal.Header>
 
                 <Modal.Footer className="d-flex justify-content-around">
-                    <button className='btn text-white' onClick={() => setSmExample(false)}> No </button>
-                    <button className='btn btn-danger' onClick={deleteFunc}>Yes</button>
+                    <Button variant="secondary" onClick={() => setSmExample(false)}> No </Button>
+                    <Button variant="danger" onClick={deleteFunc}>Yes</Button>
                 </Modal.Footer>
-            </Modal>
-
+            </Modal> */}
         </div>
     )
 }

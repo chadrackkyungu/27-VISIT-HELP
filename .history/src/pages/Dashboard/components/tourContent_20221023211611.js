@@ -28,8 +28,12 @@ function tourContent({ id }) {
     }
 
     const filterLead = leadGuide?.filter(lead => {
-        return lead?.tours?._id === id
+
+        console.log(id)
+        return lead.tours === id
     })
+
+    console.log("result ..... : ", filterLead)
 
     return (
         <div>

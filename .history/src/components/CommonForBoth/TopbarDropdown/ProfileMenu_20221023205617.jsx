@@ -69,19 +69,10 @@ const ProfileMenu = () => {
 
           <div className="dropdown-divider" />
 
-          {
-            !userDet ? (
-              <Link to="/login" className="dropdown-item cursor-pointer">
-                <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
-                <span>Login</span>
-              </Link>
-            ) : (
-              <Link className="dropdown-item cursor-pointer">
-                <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
-                <span onClick={LogoutHandler}>Logout</span>
-              </Link>
-            )
-          }
+          <Link className="dropdown-item cursor-pointer">
+            <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
+            <span onClick={LogoutHandler}>Logout</span>
+          </Link>
 
         </DropdownMenu>
 

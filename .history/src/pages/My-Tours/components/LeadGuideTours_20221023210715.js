@@ -22,8 +22,10 @@ const LeadGuideTours = () => {
         return myTour?._id === userId
     })
 
+    console.log(filter[0]?.tours)
+
     if (!filter[0]?.tours) {
-        return <React.Fragment> <Empty empty="You have no tour assign to you yet" />  </React.Fragment>
+        return <React.Fragment> <Empty />  </React.Fragment>
     }
 
     return (

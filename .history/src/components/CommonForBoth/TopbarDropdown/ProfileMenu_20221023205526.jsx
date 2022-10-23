@@ -19,7 +19,7 @@ const ProfileMenu = () => {
   const token = userDet?.token
 
 
-  console.log(!userDet ? null : 0)
+  console.log(userDet)
 
   const LogoutHandler = () => {
     const myHeaders = new Headers();
@@ -69,19 +69,10 @@ const ProfileMenu = () => {
 
           <div className="dropdown-divider" />
 
-          {
-            !userDet ? (
-              <Link to="/login" className="dropdown-item cursor-pointer">
-                <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
-                <span>Login</span>
-              </Link>
-            ) : (
-              <Link className="dropdown-item cursor-pointer">
-                <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
-                <span onClick={LogoutHandler}>Logout</span>
-              </Link>
-            )
-          }
+          <Link className="dropdown-item cursor-pointer">
+            <i className="bx bx-power-off font-size-16 align-middle me-1 text-danger" />
+            <span onClick={LogoutHandler}>Logout</span>
+          </Link>
 
         </DropdownMenu>
 

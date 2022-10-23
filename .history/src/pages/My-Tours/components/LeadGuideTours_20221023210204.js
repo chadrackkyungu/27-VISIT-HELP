@@ -8,7 +8,6 @@ import Loading from '../../../components/Loading';
 import { useStore1Selector } from "../../../index";
 import { userDetails } from "../../../Redux/Slices/userSlice";
 import { BsArrowRight } from "react-icons/bs";
-import Empty from "components/Empty";
 
 const LeadGuideTours = () => {
 
@@ -22,9 +21,7 @@ const LeadGuideTours = () => {
         return myTour?._id === userId
     })
 
-    if (!filter[0]?.tours) {
-        return <React.Fragment> <Empty empty="You have no tour assign to you yet" />  </React.Fragment>
-    }
+    console.log(filter)
 
     return (
         <React.Fragment>

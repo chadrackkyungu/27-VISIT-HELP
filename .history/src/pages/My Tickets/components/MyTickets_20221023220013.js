@@ -62,13 +62,13 @@ function TicketsTable() {
                                 <th className="align-middle">Full Name</th>
                                 <th className="align-middle">Price</th>
                                 <th className="align-middle">Status</th>
-                                {/* <th className="align-middle">View</th> */}
+                                <th className="align-middle">View</th>
                                 <th className="align-middle">Delete</th>
                             </tr>
                         </thead>
+
                         {
                             result?.map((book, i) => {
-                                console.log(book)
                                 return (
                                     <tbody key={i}>
                                         <tr key={"_tr_" + "key"} >
@@ -81,13 +81,13 @@ function TicketsTable() {
                                             <td>{book?.name}</td>
                                             <td>{book?.price}</td>
                                             <td className='text-success'> <i className="ti-check-box"></i> Paid </td>
-                                            {/* <td>
+                                            <td>
                                                 <Badge className="bg-success cursor-pointer p-2"
                                                     onClick={() => {
                                                         setLExample(true)
                                                         setLeadGuide(book?._id)
                                                     }}> View </Badge>
-                                            </td> */}
+                                            </td>
                                             <td>
                                                 <Badge className="bg-danger cursor-pointer p-2"
                                                     onClick={() => {
@@ -104,7 +104,7 @@ function TicketsTable() {
                 </div>
             </Card>
 
-            {/* <Modal show={lExample} onHide={() => setLExample(false)} size="lg">
+            <Modal show={lExample} onHide={() => setLExample(false)} size="lg">
                 <Modal.Header closeButton>
                     <Modal.Title> Lead guide details </Modal.Title>
                 </Modal.Header>
@@ -116,7 +116,7 @@ function TicketsTable() {
                 <Modal.Footer>
                     <button variant="danger" onClick={() => setLExample(false)}> Close </button>
                 </Modal.Footer>
-            </Modal> */}
+            </Modal>
 
 
             <Modal show={smExample} onHide={() => setSmExample(false)} size="md">

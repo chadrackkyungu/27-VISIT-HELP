@@ -28,8 +28,10 @@ function tourContent({ id }) {
     }
 
     const filterLead = leadGuide?.filter(lead => {
-        return lead?.tours?._id === id
+        return lead.tours === id
     })
+
+    console.log("result ..... : ", filterLead)
 
     return (
         <div>
@@ -46,7 +48,7 @@ function tourContent({ id }) {
 
                     <div className="guide-container">
                         {
-                            filterLead?.map(lead => {
+                            filter?.map(lead => {
                                 return (
                                     <div className='lead-guide-container d-flex align-items-center mb-4'>
                                         <img src={`${userImg}${lead?.photo}`} alt="" className='tour-img me-3' />
