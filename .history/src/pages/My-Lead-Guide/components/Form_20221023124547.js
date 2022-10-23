@@ -47,7 +47,6 @@ function Form({ closeModal }) {
         formdata.append("email", values.email);
         formdata.append("role", values.role);
         formdata.append("photo", profileServer);
-        formdata.append("tours", values.tours);
         formdata.append("password", values.password);
         formdata.append("passwordConfirm", values.passwordConfirm);
 
@@ -58,27 +57,27 @@ function Form({ closeModal }) {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:4000/api/v1/users/add-tour-guid", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                console.log(result);
-                if (result.status === "success") {
-                    successMessage('Successful added')
-                    reFetch();
-                    setloadBtn(false)
-                    closeModal(false)
-                }
-                if (result.status === "fail") {
-                    warningMessage(`Sorry something went wrong please try again!! ${result.message}`)
-                    setloadBtn(false)
-                    closeModal(false)
-                }
-            })
-            .catch(error => {
-                warningMessage(`Sorry something went wrong please try again ${error.message}`)
-                setloadBtn(false)
-                closeModal(false)
-            });
+        // fetch("https://tourisms.herokuapp.com/api/v1/users/add-tour-guid", requestOptions)
+        //     .then(response => response.json())
+        //     .then(result => {
+        //         console.log(result);
+        //         if (result.status === "success") {
+        //             successMessage('Successful added')
+        //             reFetch();
+        //             setloadBtn(false)
+        //             closeModal(false)
+        //         }
+        //         if (result.status === "fail") {
+        //             warningMessage(`Sorry something went wrong please try again!! ${result.message}`)
+        //             setloadBtn(false)
+        //             closeModal(false)
+        //         }
+        //     })
+        //     .catch(error => {
+        //         warningMessage(`Sorry something went wrong please try again ${error.message}`)
+        //         setloadBtn(false)
+        //         closeModal(false)
+        //     });
     }
 
     const refFileUpload = useRef(null);

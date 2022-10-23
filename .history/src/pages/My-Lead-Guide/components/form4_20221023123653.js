@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { AvField } from "availity-reactstrap-validation"
 import { Row, Col } from "reactstrap"
 import useFetch from 'hooks/useFecth';
 
 function from4() {
     const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
+
+    console.log(data);
+
     return (
         <div>
             <Row>
@@ -80,22 +83,18 @@ function from4() {
                 </Col>
             </Row>
 
-            <Col md={8}>
+            <Col md={4}>
                 <div className="mb-3">
                     <AvField
-                        name="tours"
+                        name="country"
                         label="Assign a tour"
                         type="select"
                         required
                         placeholder="Enter your country"
                     >
                         <option> Select... </option>
-                        {
-                            data?.map(tour => (
-                                <option value={tour._id} >{tour.name}</option>
-                            ))
-                        }
-
+                        <option> South Africa </option>
+                        <option> Lesotho </option>
                     </AvField>
                 </div>
             </Col>

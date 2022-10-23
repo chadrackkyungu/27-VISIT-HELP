@@ -16,17 +16,17 @@ function Form({ closeModal }) {
     const userDet = useStore1Selector(userDetails);
     const token = userDet?.token
     const { reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/users`, token);
-
+    const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
 
     const [loadBtn, setloadBtn] = useState();
     const [profile, setProfile] = useState();
+
+    console.log(data)
     const [profileServer, setProfileServer] = useState();
 
     const handleValidSubmit = (e, values) => {
         e.preventDefault();
         setloadBtn(true)
-
-        console.log(values)
 
         const myHeaders = new Headers();
         myHeaders.append("Authorization", `Bearer ${token}`);
@@ -47,7 +47,6 @@ function Form({ closeModal }) {
         formdata.append("email", values.email);
         formdata.append("role", values.role);
         formdata.append("photo", profileServer);
-        formdata.append("tours", values.tours);
         formdata.append("password", values.password);
         formdata.append("passwordConfirm", values.passwordConfirm);
 
@@ -58,7 +57,7 @@ function Form({ closeModal }) {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:4000/api/v1/users/add-tour-guid", requestOptions)
+        fetch("https://tourisms.herokuapp.com/api/v1/users/add-tour-guid", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result);

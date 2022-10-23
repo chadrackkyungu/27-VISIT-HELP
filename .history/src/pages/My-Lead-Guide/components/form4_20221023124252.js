@@ -5,6 +5,9 @@ import useFetch from 'hooks/useFecth';
 
 function from4() {
     const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
+
+    console.log(data);
+
     return (
         <div>
             <Row>
@@ -83,7 +86,7 @@ function from4() {
             <Col md={8}>
                 <div className="mb-3">
                     <AvField
-                        name="tours"
+                        name="country"
                         label="Assign a tour"
                         type="select"
                         required

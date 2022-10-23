@@ -58,7 +58,7 @@ function Form({ closeModal }) {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:4000/api/v1/users/add-tour-guid", requestOptions)
+        fetch("https://tourisms.herokuapp.com/api/v1/users/add-tour-guid", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result);

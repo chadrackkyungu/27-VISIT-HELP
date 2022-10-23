@@ -83,7 +83,7 @@ function from4() {
             <Col md={8}>
                 <div className="mb-3">
                     <AvField
-                        name="tours"
+                        name="country"
                         label="Assign a tour"
                         type="select"
                         required
