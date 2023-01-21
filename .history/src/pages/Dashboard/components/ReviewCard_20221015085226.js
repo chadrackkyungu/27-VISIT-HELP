@@ -11,8 +11,8 @@ function ReviewCard() {
 
     const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNDVjZTcwMzZjZWUyN2M4YzUyZTdlMiIsImlhdCI6MTY2NTgxNTY0MSwiZXhwIjoxNjczNTkxNjQxfQ.-3jU0TdJY9Ikx4cgG0RwoIVRC7ZJbFqlwENfwqmrAM4"
 
-    const tourImg = "https://tourisms.herokuapp.com/img/users/";
-    const { data, length, error, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/reviews`, token);
+    const tourImg = "https://tourism.up.railway.app/img/users/";
+    const { data, length, error, reFetch } = useFetch(`https://tourism.up.railway.app/api/v1/reviews`, token);
 
     if (!data) {
         return <Loading />

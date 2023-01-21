@@ -16,7 +16,7 @@ const useFetch = (url) => {
             redirect: 'follow'
         };
 
-        fetch("https://tourisms.herokuapp.com/api/v1/tours", requestOptions)
+        fetch("https://tourism.up.railway.app/api/v1/tours", requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result.status === "success") {

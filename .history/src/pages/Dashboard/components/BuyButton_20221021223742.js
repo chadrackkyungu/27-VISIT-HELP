@@ -12,7 +12,7 @@ const stripePromise = loadStripe("pk_test_51LWmoLF1YNOAGxK9HWSDzSfoSb2MmKjtPb4lD
 function BuyButton({ id }) {
     const user = useStore1Selector(userDetails);
     const token = user?.token
-    const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`);
+    const { data } = useFetch(`https://tourism.up.railway.app/api/v1/tours`);
     if (!data) { return <Loading /> }
     const filterTour = data.filter(tour => tour.id === id);
     const [btnSpin, setBtnSpin] = useState()

@@ -10,8 +10,8 @@ import Loading from '../../../components/Loading';
 
 function ReviewCard() {
     const { id } = useParams();
-    const userImg = "https://tourisms.herokuapp.com/img/users/";
-    const { data, length, error, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/reviews`, null);
+    const userImg = "https://tourism.up.railway.app/img/users/";
+    const { data, length, error, reFetch } = useFetch(`https://tourism.up.railway.app/api/v1/reviews`, null);
 
     if (!data) {
         return <Loading />

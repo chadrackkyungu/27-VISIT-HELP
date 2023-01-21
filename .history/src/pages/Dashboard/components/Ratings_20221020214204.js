@@ -33,7 +33,7 @@ function Ratings({ tourId, setViewModal }) {
             redirect: 'follow'
         };
 
-        fetch(`https://tourisms.herokuapp.com/api/v1/tours/${tourId}/reviews`, requestOptions)
+        fetch(`https://tourism.up.railway.app/api/v1/tours/${tourId}/reviews`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 if (result.status === 'success') {

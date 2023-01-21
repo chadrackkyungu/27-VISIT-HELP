@@ -28,7 +28,7 @@ function Ratings(props) {
             redirect: 'follow'
         };
 
-        fetch("https://tourisms.herokuapp.com/api/v1/tours/634a454939af8be7c6c337c6/reviews", requestOptions)
+        fetch("https://tourism.up.railway.app/api/v1/tours/634a454939af8be7c6c337c6/reviews", requestOptions)
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));

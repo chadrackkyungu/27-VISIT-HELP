@@ -9,8 +9,8 @@ import Loading from '../../../components/Loading';
 
 function ReviewCard() {
 
-    const tourImg = "https://tourisms.herokuapp.com/img/users/";
-    const { data, length, error, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/reviews`);
+    const tourImg = "https://tourism.up.railway.app/img/users/";
+    const { data, length, error, reFetch } = useFetch(`https://tourism.up.railway.app/api/v1/reviews`);
 
     if (!data) {
         return <Loading />

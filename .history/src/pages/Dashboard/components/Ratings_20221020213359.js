@@ -32,7 +32,7 @@ function Ratings({ tourId }) {
             redirect: 'follow'
         };
 
-        fetch(`https://tourisms.herokuapp.com/api/v1/tours/${tourId}/reviews`, requestOptions)
+        fetch(`https://tourism.up.railway.app/api/v1/tours/${tourId}/reviews`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result.data);

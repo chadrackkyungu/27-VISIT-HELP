@@ -15,9 +15,9 @@ import Loading from '../../../components/Loading';
 function ImageSlider() {
 
     const { id } = useParams();
-    const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
-    const tourCoverImg = "https://tourisms.herokuapp.com/img/images/";
-    const { data } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`);
+    const tourImg = "https://tourism.up.railway.app/img/imageCover/";
+    const tourCoverImg = "https://tourism.up.railway.app/img/images/";
+    const { data } = useFetch(`https://tourism.up.railway.app/api/v1/tours`);
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     if (!data) {

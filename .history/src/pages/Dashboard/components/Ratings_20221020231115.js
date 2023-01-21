@@ -8,7 +8,7 @@ import { useStore1Selector } from "../../../index";
 import useFetch from "../../../hooks/useFecth";
 
 function Ratings({ tourId, setViewModal }) {
-    const { reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
+    const { reFetch } = useFetch(`https://tourism.up.railway.app/api/v1/tours`, null);
     const [loadBtn, setloadBtn] = useState();
     const [customize, setcustomize] = useState("")
     const starStyle = {}

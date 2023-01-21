@@ -14,9 +14,9 @@ import Loading from '../../components/Loading';
 
 const UpdateTour = () => {
     const { id } = useParams();
-    const tourImg = "https://tourisms.herokuapp.com/img/imageCover/";
-    const tourImages = "https://tourisms.herokuapp.com/img/images/";
-    const { data, reFetch } = useFetch(`https://tourisms.herokuapp.com/api/v1/tours`, null);
+    const tourImg = "https://tourism.up.railway.app/img/imageCover/";
+    const tourImages = "https://tourism.up.railway.app/img/images/";
+    const { data, reFetch } = useFetch(`https://tourism.up.railway.app/api/v1/tours`, null);
 
 
     const filterTour = data.map(tour => {
@@ -84,7 +84,7 @@ const UpdateTour = () => {
             redirect: 'follow'
         };
 
-        fetch("https://tourisms.herokuapp.com/api/v1/tours", requestOptions)
+        fetch("https://tourism.up.railway.app/api/v1/tours", requestOptions)
             .then(response => response.json())
             .then(result => {
                 console.log(result);
