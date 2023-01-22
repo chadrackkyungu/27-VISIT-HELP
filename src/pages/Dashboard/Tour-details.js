@@ -43,7 +43,7 @@ const TourDetails = () => {
                     {/* <Map id={id} /> */}
                     <ReviewCard id={id} />
 
-                    <button className="btn text-white m-3" type="button" onClick={modalHandler}> Post your comments </button>
+                    {/* <button className="btn text-white m-3" type="button" onClick={modalHandler}> Post your comments </button> */}
 
                     <BuyButton id={id} loginFirst={user?.status} />
 

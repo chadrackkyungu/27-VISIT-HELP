@@ -4,7 +4,7 @@ import MetaTags from 'react-meta-tags';
 import { Container } from "reactstrap"
 import { Modal } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom"
-import { BiArrowBack } from "react-icons/bi";
+import { BsArrowLeft } from "react-icons/bs";
 import ImageSlider from './components/ImageSlider';
 import TourContent from './components/tourContent';
 // import Map from './components/Map';
@@ -19,11 +19,15 @@ const TourDetails = () => {
     const user = useStore1Selector(userDetails);
     const { id } = useParams()
     const [viewModal, setViewModal] = useState(false);
+    const [prevPost, setPrevPost] = useState(false);
 
     const modalHandler = () => {
-        setViewModal(true);
+        if (user?.status !== "success") {
+            setPrevPost(true)
+        } else {
+            setViewModal(true);
+        }
     }
-    console.log(user?.status)
 
     return (
         <React.Fragment>
@@ -32,15 +36,17 @@ const TourDetails = () => {
                     <title>Visit-Help</title>
                 </MetaTags>
                 <Container fluid>
-                    <Link to="/dashboard" className="btn text-white"> <BiArrowBack size={24} /> </Link>
+                    <Link to="/dashboard"> <BsArrowLeft size={22} /> Back </Link>
 
                     <ImageSlider id={id} />
                     <TourContent id={id} />
                     {/* <Map id={id} /> */}
                     <ReviewCard id={id} />
 
-                    <button className="btn text-white m-3" type="button" onClick={modalHandler}> Post your comments </button>
-                    <BuyButton id={id} />
+                    {/* <button className="btn text-white m-3" type="button" onClick={modalHandler}> Post your comments </button> */}
+
+                    <BuyButton id={id} loginFirst={user?.status} />
+
                 </Container>
             </div>
 
@@ -53,9 +59,19 @@ const TourDetails = () => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    <Ratings tourId={id} setViewModal={setViewModal} />
+                    <Ratings tourId={id} />
                 </Modal.Body>
             </Modal>
+
+            <Modal className="modal-right scroll-out-negative"
+                show={prevPost} onHide={() => setPrevPost(false)} scrollable
+                dialogClassName="full" size="md">
+                <Modal.Body className="d-flex">
+                    <h3 className="text-center me-3"> Please login to perform this action </h3>
+                    <Link to="/login" className='btn text-white'> Login </Link>
+                </Modal.Body>
+            </Modal>
+
         </React.Fragment>
     )
 }
